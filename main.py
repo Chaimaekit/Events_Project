@@ -56,6 +56,9 @@ async def stream(request: Request):
         async for message in events_ma_generator():
             if await request.is_disconnected():
                 break
+            if len(message) == 0:
+                yield{"message":"End of stream !!"}
+                break
             yield message
     return StreamingResponse(event_publisher(), media_type="text/event-stream")
 
