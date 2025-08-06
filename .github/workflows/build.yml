@@ -1,6 +1,8 @@
 on: push
+
 jobs:
-   first:
-       runs-on: windows-latest
-       steps:
-           -run: node --version
+  first:
+    runs-on: windows-latest
+    steps:
+      - name: Check Node.js version
+        run: node --version
