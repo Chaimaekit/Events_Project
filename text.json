@@ -1,0 +1,204 @@
+[
+{   "obj":1,
+    "struct":{
+        "id": null,
+        "name": "Open Portfolio Casablanca",
+        "description": "Open Portfolio est un \u00e9v\u00e9nement artistique international de r\u00e9f\u00e9rence, cr\u00e9\u00e9 il y a plus de 11 ans dans le but de soutenir, valoriser et professionnaliser les artistes \u00e9mergents dans le domaine des arts graphiques, avec un accent particulier sur l\u2019estampe et l\u2019\u00e9dition contemporaine. Pens\u00e9 comme un levier pour le d\u00e9veloppement de jeunes talents, le programme s\u2019inscrit dans une d\u00e9marche \u00e0 la fois p\u00e9dagogique, exp\u00e9rimentale et professionnalisante. Depuis sa cr\u00e9ation, il a permis \u00e0 plus de 200 artistes issus de tous les continents d\u2019acc\u00e9der \u00e0 une visibilit\u00e9 concr\u00e8te et \u00e0 des opportunit\u00e9s de diffusion souvent inaccessibles \u00e0 ce stade de leur parcours.\nT\u00e9l\u00e9chargez le Catalogue Open Portfolio Casablanca",
+        "date": {
+            "customDate": null,
+            "startAt": "16-05-2025",
+            "endAt": null
+        },
+        "city": "Casablanca",
+        "place": null,
+        "producer": "Casablanca Events & Animation",
+        "category": [
+            "Actualit\u00e9s",
+            "evenemenets culturels"
+        ],
+        "offers": null,
+        "url": "https://casaevents.ma/?p=49019"
+    }
+},
+{   "obj":2,
+    "struct":{
+        "id": "1418781937969",
+        "name": "North Africa Smart Infrastructure Summit 2025",
+        "description": "Join us at the North Africa Smart Infrastructure Summit 2025 to explore the latest trends in technology and innovation for a smarter future!",
+        "date": {
+            "customDate": "2025-06-18T11:08:04Z",
+            "startAt": "2025-09-1003:00",
+            "endAt": "2025-09-1100:30"
+        },
+        "city": "morocco",
+        "place": "Four Seasons Hotel Rabat At Kasr Al Bahr, Morocco",
+        "producer": null,
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/2004",
+                "display_name": "High Tech"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/102",
+                "display_name": "Science & Technology",
+                "localized": {
+                    "display_name": "Science & Technology"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/1",
+                "display_name": "Conference"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/smart",
+                "display_name": "smart",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/summit",
+                "display_name": "summit",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/infrastructure",
+                "display_name": "infrastructure",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/2025",
+                "display_name": "2025",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/northafrica",
+                "display_name": "northafrica",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "is_free": true,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/north-africa-smart-infrastructure-summit-2025-tickets-1418781937969"
+    }
+},
+{   "obj":3,
+    "struct":{
+        "id": 818,
+        "name": "BASSOU - Nouveau Spectacle \" \u00c0 Toute\" \u00e0 Rabat",
+        "description": "Get ready for an unforgettable evening of laughter with Mohamed Bassou's brand new show \"\u00c0 Toute\"! This talented comedian is back with fresh material that will have you laughing from start to finish. Known for his sharp wit and relatable humor, Bassou brings his unique perspective on everyday life in a performance that's guaranteed to entertain. Join us on January 25th, 2025 in Rabat for a night of pure comedy gold that will leave you wanting more. Don't miss this chance to see one of Morocco's funniest performers live \u2013 secure your tickets now before they sell out!",
+        "date": {
+            "customDate": "",
+            "startAt": "2025-07-25 21:00:00",
+            "endAt": "2025-07-25 23:30:00"
+        },
+        "city": "Rabat",
+        "place": "Th\u00e9\u00e2tre Mohammed V 172 Av. Al Mansour Addahbi",
+        "producer": "WORK EVENT",
+        "category": [
+            {
+                "id": 3,
+                "labelle": "Concerts & Festivals",
+                "slug": "concerts-festivals",
+                "icon": null,
+                "color": null,
+                "active": 1,
+                "order": 2,
+                "pivot": {
+                    "event_id": 818,
+                    "category_id": 3,
+                    "is_main": 1
+                }
+            }
+        ],
+        "offers": [
+            {
+                "id": 2390,
+                "libelle": "Balcon",
+                "description": "placement libre",
+                "is_pack": 0,
+                "pack_ntickets": 1,
+                "price": 150,
+                "color": "#f6b73c",
+                "number_max_achat": 20,
+                "number_min_achat": 1,
+                "type": "pas de siege",
+                "custom_code_barres": 0,
+                "available_seats": 700,
+                "pivot": {
+                    "event_id": 818,
+                    "siege_id": 2390
+                }
+            }
+        ],
+        "url": "https://events.ma/concerts-festivals/bassou-25-07-25"
+    }
+},
+{   "obj":4,
+    "struct":{
+        "id": 4872,
+        "name": "STAGE DE BASKETBALL MULTIACTIVITES AU GREEN SPORT PARK BOUSKOURA",
+        "description": "Les grandes vacances arrivent \u00e0 grands pas et vient le moment d\u2019occuper vos petits avec des activit\u00e9s vari\u00e9es sportives et ludiques !Les c\u00e9l\u00e8bres Summer Camp Chicago sont de retour \u00e0 BOUSKOURA ! Les stages d\u2019\u00e9t\u00e9 Chicago sont ouverts\u00a0pour les enfants de 4 \u00e0 17 ans !P\u00e9riode et dur\u00e9e :Lundi au vendredi de 09 H \u00e0 16H00Semaine 1 : Du 30 Juin AU 04 JuilletSemaine 2 : Du 07 Au 11 JuilletSemaine 3 : Du 14 Au 18 JuilletSemaine 4 : Du 21 Au 25 JuilletProgrammes &amp; Activit\u00e9s :STAGE DE BASKETBALL MULTI A",
+        "date": {
+            "customDate": "Semaine 2 : Du 07 Au 11 Juillet , Semaine 3 : Du 14 Au 18 Juillet , Semaine 4 : Du 21 Au 25 Juillet",
+            "startAt": "25/07/2025 - 16:00",
+            "endAt": null
+        },
+        "city": "BOUSKOURA",
+        "place": "Green sport park",
+        "producer": "Juventus Academy Maroc",
+        "category": "Divertissement",
+        "offers": [
+            {
+                "id": 11790,
+                "title": "Du 14 Au 18 Juillet",
+                "description": null,
+                "price": 1000,
+                "oldPrice": null,
+                "quantityMinAllowed": 1,
+                "quantityMaxAllowed": 1,
+                "available": true,
+                "multiplier": 1,
+                "isDefault": false,
+                "freePlacement": false
+            },
+            {
+                "id": 11798,
+                "title": "Du 21 Au 25 Juillet",
+                "description": null,
+                "price": 1000,
+                "oldPrice": null,
+                "quantityMinAllowed": 1,
+                "quantityMaxAllowed": 1,
+                "available": true,
+                "multiplier": 1,
+                "isDefault": false,
+                "freePlacement": false
+            }
+        ],
+        "url": "https://guichet.com/ma-en/event/famille-loisirs/stage-de-basketball-multiactivites-au-green-sport-park-bouskoura-4872"
+    }
+}
+]

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Streaming Events</title>
+</head>
+<body>
+  <h1>Live Event Stream</h1>
+  <div id="stream-output"></div>
+
+  <script>
+    const output = document.getElementById("stream-output");
+    const source = new EventSource("http://localhost:8000/stream");
+
+    source.onmessage = function(event) {
+      const p = document.createElement("p");
+      p.textContent = event.data;
+      output.appendChild(p);
+    };
+
+    source.onerror = function() {
+      const p = document.createElement("p");
+      p.textContent = "Stream connection lost.";
+      output.appendChild(p);
+      source.close();
+    };
+  </script>
+</body>
+</html>
