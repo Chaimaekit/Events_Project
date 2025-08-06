@@ -1,7 +1,4 @@
-on:
-  push:
-    branches:
-      - master
+on: push
 jobs:
    first:
        runs-on: windows-latest
