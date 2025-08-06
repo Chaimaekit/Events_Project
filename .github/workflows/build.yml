@@ -16,5 +16,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run your script
-        run: python main.py
+      - name: Start FastAPI server
+        run: |
+            nohup python main.py &  # run in background
+            sleep 5  # give it time to start
+
+      - name: Test endpoint
+        run: curl http://127.0.0.1:8000/stream_events_ma
+
+
