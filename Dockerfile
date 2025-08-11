@@ -1,17 +1,14 @@
-
-FROM python:3.9
-
+FROM python:3.10-slim
 
 WORKDIR /app
 
+# Install system dependencies if needed (optional)
+# RUN apt-get update && apt-get install -y ...
 
-COPY ./requirements.txt /app/requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
+COPY . .
 
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
-
-
-COPY . /app
-
-
-CMD ["python", "main.py"]
+# Optional: set default command (can be overridden by Prefect infra)
+ENTRYPOINT ["prefect"]

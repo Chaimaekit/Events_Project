@@ -18,21 +18,37 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt prefect
-      
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: docker build -t chaimaaeljerrar/scraping-image:latest .
+
+      - name: Push Docker image
+        run: docker push chaimaaeljerrar/scraping-image:latest
+
       - name: Deploy flow to Prefect
         env:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
         run: |
-          prefect deploy workflow.py:print_events \
-            -n "scraper" \
-            --cron "*/2 * * * *" \
-            --pool "default"
+          prefect deployment apply deployment.yaml
+
+      - name: Wait for deployment to register
+        run: sleep 10
+
+      - name: List deployments
+        env:
+          PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
+          PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
+        run: prefect deployment ls print_events
 
       - name: Trigger deployment immediately
         env:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
-        run: |
-          prefect deployment run "print_events/scraper"
-
+        run: prefect deployment run "print_events/scraper"
