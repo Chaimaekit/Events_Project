@@ -27,7 +27,7 @@ jobs:
           prefect deploy workflow.py:print_events \
             -n "Scraper Deployment" \
             --cron "*/2 * * * *" \
-            -q "default"
+            --pool "default"
 
       - name: Trigger deployment immediately
         run: prefect deployment run "print_events/Scraper Deployment"
