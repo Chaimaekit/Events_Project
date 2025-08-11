@@ -1,6 +1,6 @@
 version: 1
 deployments:
-  - name: print-events
+  - name: scraper
     entrypoint: workflow.py:print_events
     work_pool:
       name: default

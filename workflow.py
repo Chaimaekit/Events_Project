@@ -40,7 +40,7 @@ def print_events():
 
 if __name__ == "__main__":
      print_events.deploy(
-        name="print-events",
+        name="scraper",
         work_pool_name="default",
         image="prefecthq/prefect-client:3-latest",  # image with your code
         push=False,
