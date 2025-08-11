@@ -8,8 +8,7 @@ deployments:
       - prefect.deployments.steps.git_clone:
           repository: "https://github.com/Chaimaekit/Events_Project.git"
           branch: main
-          directory: "/opt/prefect/flows"
-    directory: /opt/prefect/flows
+    directory: /root/flows 
     schedules:
       - cron: "*/2 * * * *"
         timezone: UTC
