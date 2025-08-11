@@ -4,6 +4,9 @@ deployments:
     entrypoint: workflow.py:print_events
     work_pool:
       name: default
+      work_pool_type: docker
+      job_variables:
+        image: chaimaaeljerrar/scraping-image:latest  # Your built image
     schedules:
-      - cron: "*/2 * * * *"   # every 2 minutes
+      - cron: "*/2 * * * *"
         timezone: UTC
