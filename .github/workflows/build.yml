@@ -25,7 +25,7 @@ jobs:
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
         run: |
           prefect deploy workflow.py:print_events \
-            -n "Scraper Deployment" \
+            -n "scraper" \
             --cron "*/2 * * * *" \
             --pool "default"
 
@@ -34,5 +34,5 @@ jobs:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
         run: |
-          prefect deployment run "print_events/Scraper Deployment"
+          prefect deployment run "print_events/scraper"
 
