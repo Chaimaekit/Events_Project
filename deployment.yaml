@@ -1,20 +1,9 @@
-name: scraper
-flow_name: print_events
-flow_location: workflow.py
-
-storage:
-  type: "docker"
-  image: "chaimaaeljerrar/scraping-image:latest"
-
-infrastructure:
-  type: "docker"
-  env: {}
-  image: "chaimaaeljerrar/scraping-image:latest"
-
-work_pool_name: default
-
-schedules:
-  - type: "cron"
-    cron: "*/2 * * * *"
-    timezone: "UTC"
-
+version: 1
+deployments:
+  - name: scraper
+    entrypoint: workflow.py:print_events
+    work_pool:
+      name: default
+    schedules:
+      - cron: "*/2 * * * *"   # every 2 minutes
+        timezone: UTC
