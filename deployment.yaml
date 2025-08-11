@@ -4,9 +4,12 @@ deployments:
     entrypoint: workflow.py:print_events
     work_pool:
       name: default
-      job_variables:
-        image: prefecthq/prefect:3-python3.10
-        command: bash -c "pip install git+https://github.com/Chaimaekit/Events_Project.git && python -m prefect.engine"
+    pull:
+      - prefect.deployments.steps.git_clone:
+          repository: "https://github.com/Chaimaekit/Events_Project.git"
+          branch: main
+          directory: "/opt/prefect/flows"
+    directory: /opt/prefect/flows
     schedules:
       - cron: "*/2 * * * *"
         timezone: UTC
