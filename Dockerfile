@@ -1,11 +1,5 @@
-# Use Prefect's official image as a base
-FROM prefecthq/prefect:2-python3.10
+FROM prefecthq/prefect-client:3-latest
 
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy your code into the image
-COPY . /app
-
-# Install dependencies
+# Install your python dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
