@@ -16,8 +16,12 @@ jobs:
         with:
           python-version: '3.10'
       
-      - name: Install dependencies
-        run: pip install -r requirements.txt prefect
+      - name: Install Prefect latest 2.x
+        run: |
+          pip install --upgrade pip
+          pip install "prefect==2.11.16"
+          pip install -r requirements.txt
+
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -36,12 +40,7 @@ jobs:
           PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
         run: |
-          prefect deploy workflow.py:print_events \
-            -n scraper \
-            --cron "*/2 * * * *" \
-            --pool default \
-            --storage-image chaimaaeljerrar/scraping-image:latest \
-            --infrastructure-type docker
+          prefect deployment apply deployment.yaml
 
       - name: Wait for deployment to register
         run: sleep 10
