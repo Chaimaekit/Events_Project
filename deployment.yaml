@@ -1,11 +1,15 @@
+version: 1
 pull:
-- prefect.deployments.steps.git_clone:
-    repository: https://github.com/Chaimaekit/Events_Project.git
-    commit_sha: "{{ $GITHUB_SHA }}"
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/Chaimaekit/Events_Project.git
+      commit_sha: "{{ $GITHUB_SHA }}"
 
 deployments:
-- name: print-events
-  version: 0.0.1
-  entrypoint: workflow.py:print_events
-  work_pool:
-    name: default
+  - name: print-events
+    version: 0.0.1
+    entrypoint: workflow.py:print_events
+    work_pool:
+      name: default
+    schedules:
+      - cron: "*/2 * * * *"
+        timezone: UTC
