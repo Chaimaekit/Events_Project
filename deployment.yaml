@@ -1,13 +1,20 @@
 name: scraper
 flow_name: print_events
 flow_location: workflow.py
+
 storage:
-  type: docker
-  image: chaimaaeljerrar/scraping-image:latest
+  type: "docker"
+  image: "chaimaaeljerrar/scraping-image:latest"
+
 infrastructure:
-  type: docker
-  image: chaimaaeljerrar/scraping-image:latest
-schedule:
-  cron: "*/2 * * * *"
-  timezone: UTC
+  type: "docker"
+  env: {}
+  image: "chaimaaeljerrar/scraping-image:latest"
+
 work_pool_name: default
+
+schedules:
+  - type: "cron"
+    cron: "*/2 * * * *"
+    timezone: "UTC"
+
