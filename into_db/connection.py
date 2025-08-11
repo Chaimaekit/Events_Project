@@ -10,3 +10,11 @@ def insert_events(events):
         if not collection.find_one({"url": event["url"]}):
             collection.insert_one(event)
     print("inserted in db !!")
+
+def get_db_events():
+    result = []
+    events = collection.find()
+    for event in events:
+        event["_id"] = str(event["_id"])
+        result.append(event)
+    return result

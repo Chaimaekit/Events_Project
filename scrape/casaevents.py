@@ -40,5 +40,4 @@ def get_casa_events():
                         url = link
                         ).model_dump()
                 results.append(send_event)
-    insert_events(results)
     return results

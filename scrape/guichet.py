@@ -32,5 +32,4 @@ def get_guichet():
                 next_page = data["pagination"]["nextPage"]
                 response = requests.get(f"https://apiv2.guichet.com/v1/ticketing/events?limit=20&page={next_page}")
                 data = response.json()
-            insert_events(results)
             return results

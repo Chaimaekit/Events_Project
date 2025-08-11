@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Query
 from fastapi.responses import StreamingResponse, JSONResponse
 import asyncio
 from scrape.casaevents import get_casa_events
@@ -6,6 +6,7 @@ from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 import uvicorn
+from elastic_script import check_doc
 
 app = FastAPI()
 
@@ -71,6 +72,10 @@ async def stream(request: Request):
 #                 break
 #             yield message
 #     return StreamingResponse(event_publisher(), media_type="text/event-stream")
+
+@app.get("/elastic_results")
+def search_event(event_name: str):
+    return JSONResponse(content=check_doc("events_index",event_name), status_code=200)
 
 @app.get("/normal")
 def get_normal_data():

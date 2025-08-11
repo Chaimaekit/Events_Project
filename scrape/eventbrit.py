@@ -65,5 +65,4 @@ def get_event_brit():
             url = obj.get("url", "")
             ).model_dump()
         results.append(send_event)
-    insert_events(results)
     return results
