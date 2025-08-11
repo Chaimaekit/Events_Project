@@ -40,7 +40,7 @@ def print_events():
 
 if __name__ == "__main__":
     print_events.deploy(
-        name="my-events-deployment",
+        name="scraper",
         work_pool_name="default",
         image="chaimaaeljerrar/scraping-image:latest",
         push=False,
