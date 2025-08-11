@@ -42,7 +42,8 @@ if __name__ == "__main__":
     print_events.deploy(
         name="scraper",
         work_pool_name="default",
-        image="chaimaaeljerrar/scraping-image:latest",
+        image="prefecthq/prefect:2-python3.10",
         push=False,
+        storage="github/Chaimaekit/Events_Project",
         cron="*/2 * * * *",
     )
