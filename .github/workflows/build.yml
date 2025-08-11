@@ -28,13 +28,3 @@ jobs:
         run: |
            prefect deploy --prefect-file deployment.yaml
 
-      - name: Wait for deployment to register
-        run: sleep 10
-
-      - name: Trigger deployment immediately
-        env:
-          PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
-          PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
-        run: 
-          prefect deployment ls
-          prefect deployment run "print-events/scraper" default --param '{"run_immediately": true}'
