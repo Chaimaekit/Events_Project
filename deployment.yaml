@@ -4,9 +4,9 @@ deployments:
     entrypoint: workflow.py:print_events
     work_pool:
       name: default
-      work_pool_type: docker
       job_variables:
-        image: chaimaaeljerrar/scraping-image:latest  # Your built image
+        image: prefecthq/prefect:3-python3.10
+        command: bash -c "pip install git+https://github.com/Chaimaekit/Events_Project.git && python -m prefect.engine"
     schedules:
       - cron: "*/2 * * * *"
         timezone: UTC

@@ -38,6 +38,5 @@ jobs:
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
         run: |
            prefect deploy --prefect-file deployment.yaml
-           prefect deploy --all --prefect-api-url https://api.prefect.cloud/api/accounts/7bf03eae-7571-4c5b-b06e-731f965b49e1/workspaces/36d5681a-f9dd-4a37-bc4d-9590f0adc22e
 
 
