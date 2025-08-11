@@ -5,12 +5,11 @@ deployments:
     work_pool:
       name: default
     image: prefecthq/prefect-client:3-latest
-    directory: /root/flows  # where repo will be cloned
+    directory: /root/flows
     pull:
-      steps:
-        - git_clone:
-            repository: https://github.com/Chaimaekit/Events_Project.git
-            branch: main
+      - git_clone:
+          repository: https://github.com/Chaimaekit/Events_Project.git
+          branch: main
     schedules:
       - cron: "*/2 * * * *"
         timezone: UTC
