@@ -39,4 +39,4 @@ def print_events():
     print(third_event)
 
 if __name__ == "__main__":
-    print_events.serve(name='my-flow', cron="*/2 * * * *")
+    print_events()
