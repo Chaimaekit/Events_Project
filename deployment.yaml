@@ -1,14 +1,16 @@
 version: 1
 deployments:
-  - name: scraper
+  - name: print-events
     entrypoint: workflow.py:print_events
     work_pool:
       name: default
+    image: prefecthq/prefect-client:3-latest
+    directory: /root/flows  # where repo will be cloned
     pull:
-      - prefect.deployments.steps.git_clone:
-          repository: "https://github.com/Chaimaekit/Events_Project.git"
-          branch: main
-    directory: /root/flows 
+      steps:
+        - git_clone:
+            repository: https://github.com/Chaimaekit/Events_Project.git
+            branch: main
     schedules:
       - cron: "*/2 * * * *"
         timezone: UTC
