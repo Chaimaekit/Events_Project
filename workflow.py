@@ -39,4 +39,10 @@ def print_events():
     print(third_event)
 
 if __name__ == "__main__":
-    print_events()
+     print_events.deploy(
+        name="print-events",
+        work_pool_name="default",
+        image="chaimaaeljerrar/scraping-image:latest",  # image with your code
+        push=False,
+        cron="*/2 * * * *",  # every 2 minutes
+    )

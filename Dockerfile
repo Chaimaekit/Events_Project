@@ -1,14 +1,11 @@
-FROM python:3.10-slim
+# Use Prefect's official image as a base
+FROM prefecthq/prefect:2-python3.10
 
+# Set working directory inside the container
 WORKDIR /app
 
-# Install system dependencies if needed (optional)
-# RUN apt-get update && apt-get install -y ...
+# Copy your code into the image
+COPY . /app
 
-COPY requirements.txt .
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-# Optional: set default command (can be overridden by Prefect infra)
-ENTRYPOINT ["prefect"]
