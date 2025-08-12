@@ -7,7 +7,7 @@ deployments:
   - name: print-events
     entrypoint: workflow.py:print_events
     work_pool:
-      name: my-docker-pool
+      name: default
     infrastructure:
       image: chaimaaeljerrar/scraping-image:latest
     schedules:
