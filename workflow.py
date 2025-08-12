@@ -8,27 +8,18 @@ from into_db.connection import insert_events
 @task
 def insert_casa_events():
     events = get_casa_events()
-    if events:
-        insert_events(events)
 
 @task
 def insert_event_brit():
     events = get_event_brit()
-    if events:
-        insert_events(events)
 
 @task
 def insert_events_ma():
     events = get_events_ma()
-    if events:
-        insert_events(events)
-    return events
 
 @task
 def insert_guichet():
     events = get_guichet()
-    if events:
-        insert_events(events)
 
 @flow(log_prints=True)
 def print_events():
