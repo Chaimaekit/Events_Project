@@ -7,19 +7,19 @@ from into_db.connection import insert_events
 
 @task
 def insert_casa_events():
-    events = get_casa_events()
+    return get_casa_events()
 
 @task
 def insert_event_brit():
-    events = get_event_brit()
+    return get_event_brit()
 
 @task
 def insert_events_ma():
-    events = get_events_ma()
+    return get_events_ma()
 
 @task
 def insert_guichet():
-    events = get_guichet()
+    return get_guichet()
 
 @flow(log_prints=True)
 def print_events():
