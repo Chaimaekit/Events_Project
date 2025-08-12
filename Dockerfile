@@ -6,5 +6,4 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Optionally copy your full repo, comment this if you rely on git_clone pull step
-# COPY . /opt/prefect/flows
+COPY . /opt/prefect/flows
