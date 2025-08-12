@@ -2,14 +2,14 @@ version: 1
 pull:
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/Chaimaekit/Events_Project.git
-      commit_sha: "{{ $GITHUB_SHA }}"
-
+      branch: main
 deployments:
   - name: print-events
-    version: 0.0.1
     entrypoint: workflow.py:print_events
     work_pool:
-      name: default
+      name: my-docker-pool
+    infrastructure:
+      image: chaimaaeljerrar/scraping-image:latest
     schedules:
       - cron: "*/2 * * * *"
         timezone: UTC
