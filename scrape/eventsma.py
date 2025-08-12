@@ -43,6 +43,6 @@ def get_events_ma():
         for result in get_event(data):
              results.append(result)
              yield result
-        resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": offset})#while len(data) > 0 limit10 offset+=10
+        resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": offset})
         data = resp.json().get("data", [])
     return results

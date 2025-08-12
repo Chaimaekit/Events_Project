@@ -37,3 +37,8 @@ def get_guichet():
             except Exception as e:
                 print(f"Error processing Guichet events: {e}")
                 return results
+    else:
+        print(f"Failed to fetch events from Guichet: {response.status_code}")
+        return results
+            
+print(get_guichet())
