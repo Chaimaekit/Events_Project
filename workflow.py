@@ -30,7 +30,7 @@ def insert_guichet():
     if events:
         insert_events(events)
 
-@flow
+@flow(log_prints=True)
 def print_events():
     first_event = insert_casa_events()
     second_event = insert_event_brit()

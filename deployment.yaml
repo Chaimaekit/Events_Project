@@ -5,7 +5,7 @@ pull:
       branch: main
 deployments:
   - name: print-events
-    entrypoint: workflow.py:print-events
+    entrypoint: workflow.py:print_events
     work_pool:
       name: my-process-pool
 
