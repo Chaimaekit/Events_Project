@@ -13,7 +13,6 @@ def get_guichet():
             if response.status_code != 200:
                 print(f"Request failed with status {response.status_code}")
                 break
-
             try:
                 data = response.json()
             except ValueError:
