@@ -4,7 +4,6 @@ from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 from into_db.connection import insert_events
-from prefect.futures import wait_for_all
 
 @task
 def insert_casa_events():
@@ -22,15 +21,13 @@ def insert_events_ma():
 def insert_guichet():
     return get_guichet()
 
-@flow(log_prints=True)
+@flow
 def print_events():
-    futures = [
-        insert_casa_events().submit(),
-        insert_event_brit().submit(),
-        insert_events_ma().submit(),
-        insert_guichet().submit()
-    ]
-    wait_for_all(futures)
+    first_event = insert_casa_events().submit()
+    second_event = insert_event_brit().submit(wait_for=[first_event])
+    third_event = insert_events_ma().submit(wait_for=[second_event])
+    forth_event = insert_guichet().submit(wait_for=[third_event])
+    print(forth_event)
 
 if __name__ == "__main__":
      print_events.deploy(
