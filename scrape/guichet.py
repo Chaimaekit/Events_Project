@@ -41,4 +41,3 @@ def get_guichet():
         print(f"Failed to fetch events from Guichet: {response.status_code}")
         return results
             
-print(get_guichet())
