@@ -20,13 +20,8 @@ def indexing():
 
     print("Connected to Elasticsearch.")
 
-
-    for result in get_guichet():
-        events.append(result)
-
-    for event in events:
-        es.index(index='events_index', document=event)
-        print("Indexing succeded !")
+    es.index(index='events_index', document=get_guichet())
+    print("Indexing succeded !")
 
 def check_doc(index_name, event):
     result = es.search(index=index_name, body={
