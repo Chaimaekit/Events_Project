@@ -10,7 +10,7 @@ def get_guichet():
         link = "https://guichet.com/ma-en/event/"
         
 
-        while next_page is not None:
+        while next_page is not None and int(next_page) < 10:  # Limit to 10 pages for testing
             url = "https://apiv2.guichet.com/v1/ticketing/events?limit=20&page=" + str(next_page)
             headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",

@@ -67,6 +67,11 @@ jobs:
         run: |
          python elastic_script.py
          echo "Events indexed to Elasticsearch successfully."
+      - name: Wait for indexing
+        run: |
+          echo "Waiting for events to be indexed..."
+          sleep 100 # Adjust the sleep time as necessary
+          
       - name: All indexed
         run: |
           echo "All events have been indexed to Elasticsearch."
@@ -77,3 +82,4 @@ jobs:
             },
             "size": 10
           }'
+        
