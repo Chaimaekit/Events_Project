@@ -11,7 +11,7 @@ import os
 load_dotenv()
 elastic_password = os.getenv("ELASTIC_PASSWORD")
 
-es = Elasticsearch("http://localhost:9200", basic_auth=("elastic", elastic_password))
+es = Elasticsearch("http://localhost:9200", basic_auth=("elastic", f"{elastic_password}"))
 
 def indexing():
     events = []
