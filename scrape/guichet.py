@@ -8,9 +8,12 @@ def get_guichet():
     try:
         url = "https://apiv2.guichet.com/v1/ticketing/events?limit=20&page=1"
         link = "https://guichet.com/ma-en/event/"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/"
+            }
 
         while url:
-            response = requests.get(url)
+            response = requests.get(url, headers=headers)
             time.sleep(5)
             if response.status_code != 200:
                 print(f"Request failed with status {response.status_code}")
