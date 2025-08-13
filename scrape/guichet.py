@@ -1,6 +1,7 @@
 import requests
 from struct_events.models import Events
 from into_db.connection import insert_events
+import time
 
 def get_guichet():
     results = []
@@ -10,6 +11,7 @@ def get_guichet():
 
         while url:
             response = requests.get(url)
+            time.sleep(5)
             if response.status_code != 200:
                 print(f"Request failed with status {response.status_code}")
                 break
