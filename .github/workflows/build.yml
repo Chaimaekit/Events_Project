@@ -15,7 +15,7 @@ jobs:
           - 9200:9200
         env:
           discovery.type: single-node
-          ELASTIC_PASSWORD: 8jfe*MB6Z-9r8PsuVzDs
+          ELASTIC_PASSWORD: ${{ secrets.ELASTIC_PASSWORD }}
           xpack.security.enabled: "false"
         options: >-
           --name es01
