@@ -6,7 +6,7 @@ import time
 def get_guichet():
     results = []
     try:
-        next_page = 1
+        next_page = "1"
         url = "https://apiv2.guichet.com/v1/ticketing/events"
         link = "https://guichet.com/ma-en/event/"
         
