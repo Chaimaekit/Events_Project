@@ -6,15 +6,15 @@ import time
 def get_guichet():
     results = []
     try:
-        next_page = "1"
+        next_page = 1
         url = "https://apiv2.guichet.com/v1/ticketing/events"
         link = "https://guichet.com/ma-en/event/"
         
 
-        while url:
+        while next_page is not None:
             headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-            "limit": "20",
+            "limit": 20,
             "page": next_page,
             "dnt": "1",
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
@@ -59,8 +59,6 @@ def get_guichet():
                     results.append(send_event)
 
                 next_page = data.get("pagination", {}).get("nextPage")
-                if not next_page:
-                   url = None
             except Exception as e:
                 print(f"Error processing event data: {e}")
                 return results
