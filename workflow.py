@@ -4,6 +4,7 @@ from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 from into_db.connection import insert_events
+import time
 
 @task
 def insert_casa_events():
@@ -23,10 +24,13 @@ def insert_guichet():
 
 @flow
 def print_events():
-    first_event = insert_casa_events().submit()
-    second_event = insert_event_brit().submit(wait_for=[first_event])
-    third_event = insert_events_ma().submit(wait_for=[second_event])
-    forth_event = insert_guichet().submit(wait_for=[third_event])
+    first_event = insert_casa_events()
+    time.sleep(5)
+    second_event = insert_event_brit()
+    time.sleep(5)
+    third_event = insert_events_ma()
+    time.sleep(5)
+    forth_event = insert_guichet()
     print(forth_event)
 
 if __name__ == "__main__":
