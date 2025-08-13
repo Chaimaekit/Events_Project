@@ -21,12 +21,6 @@ def indexing():
     print("Connected to Elasticsearch.")
 
 
-    for result in get_casa_events():
-        events.append(result)
-    for result in get_event_brit():
-        events.append(result)
-    for result in get_events_ma():
-        events.append(result)
     for result in get_guichet():
         events.append(result)
 
