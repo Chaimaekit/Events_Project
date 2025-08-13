@@ -15,7 +15,18 @@ def get_guichet():
             headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
             "limit": "20",
-            "page": next_page
+            "page": next_page,
+            "dnt": "1",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-ch-ua-platform": '"Windows"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua": '"Not.A/Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+            "accept-language": "en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "upgrade-insecure-requests": "1"
             }
             response = requests.get(url, headers=headers)
             time.sleep(5)
