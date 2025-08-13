@@ -40,7 +40,7 @@ jobs:
       - name: Wait for Elasticsearch to be ready
         run: |
           echo "Waiting for Elasticsearch..."
-          until curl -s -u elastic:8jfe*MB6Z-9r8PsuVzDs http://localhost:9200 >/dev/null; do
+          until curl -s -u elastic:${{ secrets.ELASTIC_PASSWORD }} http://localhost:9200 >/dev/null; do
             sleep 5
           done
           echo "Elasticsearch is up!"
@@ -70,7 +70,7 @@ jobs:
       - name: All indexed
         run: |
           echo "All events have been indexed to Elasticsearch."
-          curl -X GET "localhost:9200/events/_search?pretty" -u elastic:8jfe*MB6Z-9r8PsuVzDs -H 'Content-Type: application/json' -d'
+          curl -X GET "localhost:9200/events_index/_search?pretty" -u elastic:${{ secrets.ELASTIC_PASSWORD }} -H 'Content-Type: application/json' -d'
           {
             "query": {
               "match_all": {}

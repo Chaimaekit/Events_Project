@@ -4,8 +4,12 @@ from scrape.casaevents import get_casa_events
 from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
+from dotenv import load_dotenv
+import os
 
-es = Elasticsearch("http://localhost:9200", basic_auth=("elastic", "8jfe*MB6Z-9r8PsuVzDs"))
+elastic_password = os.getenv("ELASTIC_PASSWORD")
+
+es = Elasticsearch("http://localhost:9200", basic_auth=("elastic", elastic_password))
 
 def indexing():
     events = []
