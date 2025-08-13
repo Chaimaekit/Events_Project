@@ -25,7 +25,6 @@ def indexing():
         events.append(result)
 
     for event in events:
-        event.pop("_id")
         es.index(index='events_index', document=event)
         print("Indexing succeded !")
 
