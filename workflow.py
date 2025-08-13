@@ -33,7 +33,7 @@ if __name__ == "__main__":
      print_events.deploy(
         name="print-events",
         work_pool_name="my-process-pool",
-        image="chaimaaeljerrar/scraping-image:latest",  # image with your code
+        image="chaimaaeljerrar/scraping-image:latest", 
         push=True,
-        cron="*/2 * * * *",  # every 2 minutes
+        cron="*/2 * * * *",
     )
