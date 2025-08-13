@@ -16,7 +16,7 @@ jobs:
         env:
           discovery.type: single-node
           ELASTIC_PASSWORD: 8jfe*MB6Z-9r8PsuVzDs
-          xpack.security.http.ssl.enabled: "false"
+          xpack.security.enabled: "false"
         options: >-
           --name es01
           --health-cmd="curl --silent --fail localhost:9200/_cluster/health || exit 1"
