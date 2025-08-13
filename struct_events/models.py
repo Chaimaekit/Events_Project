@@ -1,6 +1,7 @@
 from pydantic import BaseModel, model_validator
 from typing import Optional
 from dateutil import parser
+import pytz
 
 
 class EventDate(BaseModel):
@@ -14,7 +15,8 @@ class EventDate(BaseModel):
             if not date_str or not isinstance(date_str, str):
                 return None
             try:
-                parsed = parser.parse(date_str, dayfirst=True, fuzzy=True)
+                tzinfos = {"CET": pytz.timezone("Africa/Casablanca")}
+                parsed = parser.parse(date_str, dayfirst=True, fuzzy=True, tzinfos=tzinfos)
                 return parsed.isoformat()
             except Exception:
                 return None
