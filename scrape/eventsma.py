@@ -34,14 +34,18 @@ def get_events_ma():
 
     results = []
     session = requests.Session()
-    resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": 0})#while len(data) > 0 limit10 offset+=10
-    data = resp.json().get("data", [])
-    offset = 0
-    
-    while len(data) > 0:
-        offset+=10
-        for result in get_event(data):
-             results.append(result)
-        resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": offset})
+    try:
+        resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": 0})#while len(data) > 0 limit10 offset+=10
         data = resp.json().get("data", [])
-    return results
+        offset = 0
+        
+        while len(data) > 0:
+            offset+=10
+            for result in get_event(data):
+                results.append(result)
+            resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": offset})
+            data = resp.json().get("data", [])
+        return results
+    except Exception as e:
+        print(f"Error fetching Events.ma events: {e}")
+        return results

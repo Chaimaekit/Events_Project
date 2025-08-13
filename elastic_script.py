@@ -46,5 +46,5 @@ def check_doc(index_name, event):
     if result:
         return result["hits"]["hits"]
     
-    
+
 indexing()
