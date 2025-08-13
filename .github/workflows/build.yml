@@ -8,6 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    services:
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
+        ports:
+          - 9200:9200
+        env:
+          discovery.type: single-node
+          ELASTIC_PASSWORD: 8jfe*MB6Z-9r8PsuVzDs
+          xpack.security.http.ssl.enabled: "false"
+        options: >-
+          --name es01
+          --health-cmd="curl --silent --fail localhost:9200/_cluster/health || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
     steps:
       - uses: actions/checkout@v3
       
@@ -20,6 +36,15 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Wait for Elasticsearch to be ready
+        run: |
+          echo "Waiting for Elasticsearch..."
+          until curl -s -u elastic:8jfe*MB6Z-9r8PsuVzDs http://localhost:9200 >/dev/null; do
+            sleep 5
+          done
+          echo "Elasticsearch is up!"
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -38,3 +63,17 @@ jobs:
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/04cfc121-fe25-4a7f-bc1f-16f9f4fdb002/workspaces/f563f432-b78c-4ed0-ace5-65563cbd1844
         run: prefect deploy --prefect-file deployment.yaml
 
+      - name: Elastic indexing
+        run: |
+         python elastic_script.py
+         echo "Events indexed to Elasticsearch successfully."
+      - name: All indexed
+        run: |
+          echo "All events have been indexed to Elasticsearch."
+          curl -X GET "localhost:9200/events/_search?pretty" -u elastic:8jfe*MB6Z-9r8PsuVzDs -H 'Content-Type: application/json' -d'
+          {
+            "query": {
+              "match_all": {}
+            },
+            "size": 10
+          }'
