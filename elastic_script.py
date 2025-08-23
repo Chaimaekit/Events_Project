@@ -63,3 +63,4 @@ def check_doc(index_name, event):
     
 if __name__ == "__main__":
     indexing()
+
