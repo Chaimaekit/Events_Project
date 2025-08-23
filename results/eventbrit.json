@@ -1,0 +1,891 @@
+[
+    {
+        "id": "1418781937969",
+        "name": "North Africa Smart Infrastructure Summit 2025",
+        "description": "Join us at the North Africa Smart Infrastructure Summit 2025 to explore the latest trends in technology and innovation for a smarter future!",
+        "date": {
+            "customDate": "2025-06-18T11:08:04Z",
+            "startAt": "2025-09-1003:00",
+            "endAt": "2025-09-1100:30"
+        },
+        "city": "morocco",
+        "place": "Four Seasons Hotel Rabat At Kasr Al Bahr, Morocco",
+        "producer": null,
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/2004",
+                "display_name": "High Tech"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/102",
+                "display_name": "Science & Technology",
+                "localized": {
+                    "display_name": "Science & Technology"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/1",
+                "display_name": "Conference"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/smart",
+                "display_name": "smart",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/summit",
+                "display_name": "summit",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/infrastructure",
+                "display_name": "infrastructure",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/2025",
+                "display_name": "2025",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/northafrica",
+                "display_name": "northafrica",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "is_free": true,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/north-africa-smart-infrastructure-summit-2025-tickets-1418781937969"
+    },
+    {
+        "id": "1095119936209",
+        "name": "MOROCCO SIEMA FOOD EXPO",
+        "description": "8th International Food Processing, Packaging and Machinery Exhibition",
+        "date": {
+            "customDate": "2024-11-25T11:30:22Z",
+            "startAt": "2025-09-0910:00",
+            "endAt": "2025-09-1119:00"
+        },
+        "city": "Sidi Belyout",
+        "place": "Rue de Boukraa",
+        "producer": "Elan Expo",
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/10003",
+                "display_name": "Food"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/110",
+                "display_name": "Food & Drink",
+                "localized": {
+                    "display_name": "Food & Drink"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/3",
+                "display_name": "Tradeshow, Consumer Show, or Expo"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/tradeshow",
+                "display_name": "tradeshow",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/packaging",
+                "display_name": "packaging",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/machinery",
+                "display_name": "machinery",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/processing",
+                "display_name": "processing",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/northafrica",
+                "display_name": "northafrica",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/food_industry",
+                "display_name": "food_industry",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/international_cuisine",
+                "display_name": "international_cuisine",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/culinary_experience",
+                "display_name": "culinary_experience",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/networking_opportunity",
+                "display_name": "networking_opportunity",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/morocco_siema_food_expo",
+                "display_name": "morocco_siema_food_expo",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "is_free": true,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/morocco-siema-food-expo-tickets-1095119936209"
+    },
+    {
+        "id": "1410172817859",
+        "name": "Data Center Forum Africa -  Brunch&Learn",
+        "description": "Rejoignez-nous \u00e0 Casablanca pour le Brunch & Learn du Data Center Forum Africa : talks d\u2019experts, networking et brunch gourmet !",
+        "date": {
+            "customDate": "2025-06-18T10:49:12Z",
+            "startAt": "2025-09-1809:00",
+            "endAt": "2025-09-1814:00"
+        },
+        "city": "Casablanca",
+        "place": "92 Boulevard de la Corniche",
+        "producer": "Mark-Com Event",
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/2004",
+                "display_name": "High Tech"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/102",
+                "display_name": "Science & Technology",
+                "localized": {
+                    "display_name": "Science & Technology"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/1",
+                "display_name": "Conference"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/technology",
+                "display_name": "technology",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/event",
+                "display_name": "event",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/ai",
+                "display_name": "ai",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/africa",
+                "display_name": "africa",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/cybersecurity",
+                "display_name": "cybersecurity",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/forum",
+                "display_name": "forum",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/datacenter",
+                "display_name": "datacenter",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/casablanca",
+                "display_name": "casablanca",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/moroc",
+                "display_name": "moroc",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "EUR",
+                "major_value": "525.40",
+                "value": 52540,
+                "display": "525.40 EUR"
+            },
+            "minimum_ticket_price": {
+                "currency": "EUR",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 EUR"
+            },
+            "is_free": false,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.co.uk/e/data-center-forum-africa-brunchlearn-tickets-1410172817859"
+    },
+    {
+        "id": "1494471888649",
+        "name": "ASEAN Bazaar & cultural Festival 2025",
+        "description": "Get ready for a blast of ASEAN culture at our Bazaar & Festival in 2025 - food, music, crafts, and more!",
+        "date": {
+            "customDate": "2025-07-16T09:02:01Z",
+            "startAt": "2025-08-0911:00",
+            "endAt": "2025-08-0916:00"
+        },
+        "city": "Rabat",
+        "place": "33 Avenue Lalla Meriem",
+        "producer": "Royal Thai Embassy in Rabat",
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/13007",
+                "display_name": "Heritage"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/113",
+                "display_name": "Community & Culture",
+                "localized": {
+                    "display_name": "Community & Culture"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/5",
+                "display_name": "Festival or Fair"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/festival",
+                "display_name": "festival",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/cultural",
+                "display_name": "cultural",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/bazaar",
+                "display_name": "bazaar",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/asean",
+                "display_name": "asean",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/2025",
+                "display_name": "2025",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "is_free": true,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/asean-bazaar-cultural-festival-2025-tickets-1494471888649"
+    },
+    {
+        "id": "1251804193039",
+        "name": "90s Vs 2000s Sunset Terrace Party! Agadir, Morocco",
+        "description": "Enjoy the music vibez in tandem with the most spectacular sunset views you will ever likely to see, featuring award-winning entertainment.",
+        "date": {
+            "customDate": "2025-05-28T15:29:10Z",
+            "startAt": "2025-07-2520:00",
+            "endAt": "2025-07-2523:30"
+        },
+        "city": "Agadir",
+        "place": "P4",
+        "producer": "The Bizznez Network",
+        "category": [
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/103",
+                "display_name": "Music",
+                "localized": {
+                    "display_name": "Music"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/11",
+                "display_name": "Party or Social Gathering"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/music",
+                "display_name": "music",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/terrace",
+                "display_name": "terrace",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/throwback",
+                "display_name": "throwback",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/nostalgia",
+                "display_name": "nostalgia",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/morocco",
+                "display_name": "morocco",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/sofitel",
+                "display_name": "sofitel",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/hiphopparty",
+                "display_name": "hiphopparty",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/agadir",
+                "display_name": "agadir",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/outdoor_events",
+                "display_name": "outdoor_events",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/rnb_music",
+                "display_name": "rnb_music",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "EUR",
+                "major_value": "33.17",
+                "value": 3317,
+                "display": "33.17 EUR"
+            },
+            "minimum_ticket_price": {
+                "currency": "EUR",
+                "major_value": "22.51",
+                "value": 2251,
+                "display": "22.51 EUR"
+            },
+            "is_free": false,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.co.uk/e/90s-vs-2000s-sunset-terrace-party-agadir-morocco-tickets-1251804193039"
+    },
+    {
+        "id": "1322696353399",
+        "name": "Atlas Mountains Men's Retreat",
+        "description": "Blending menswork, wilderness immersion and spirituality, the aim of this retreat is to help you go deeper - with yourself and with god.",
+        "date": {
+            "customDate": "2025-04-13T09:37:20Z",
+            "startAt": "2025-09-2812:00",
+            "endAt": "2025-10-0318:00"
+        },
+        "city": "Marrakesh",
+        "place": null,
+        "producer": "A Quiet Life",
+        "category": [
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/114",
+                "display_name": "Religion & Spirituality",
+                "localized": {
+                    "display_name": "Religion & Spirituality"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/18",
+                "display_name": "Camp, Trip, or Retreat"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "GBP",
+                "major_value": "76.55",
+                "value": 7655,
+                "display": "76.55 GBP"
+            },
+            "minimum_ticket_price": {
+                "currency": "GBP",
+                "major_value": "76.55",
+                "value": 7655,
+                "display": "76.55 GBP"
+            },
+            "is_free": false,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.co.uk/e/atlas-mountains-mens-retreat-tickets-1322696353399"
+    },
+    {
+        "id": "1478868448339",
+        "name": "Mission Impossible",
+        "description": "Trailer",
+        "date": {
+            "customDate": "2025-07-09T21:13:09Z",
+            "startAt": "2025-08-1810:00",
+            "endAt": "2025-08-1812:00"
+        },
+        "city": "Casablanca",
+        "place": "gare de casa port",
+        "producer": null,
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/4002",
+                "display_name": "Film"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/104",
+                "display_name": "Film, Media & Entertainment",
+                "localized": {
+                    "display_name": "Film, Media & Entertainment"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/7",
+                "display_name": "Screening"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/mission_impossible",
+                "display_name": "mission_impossible",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/challenge_accepted",
+                "display_name": "challenge_accepted",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/stealth_operations",
+                "display_name": "stealth_operations",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/impossible_mission",
+                "display_name": "impossible_mission",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/undercover_agent",
+                "display_name": "undercover_agent",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "is_free": true,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/mission-impossible-tickets-1478868448339"
+    },
+    {
+        "id": "167639800155",
+        "name": "MOROCCO (Casablanca to Chefchaouen) Travel",
+        "description": "Morocco",
+        "date": {
+            "customDate": "2021-08-18T19:28:41Z",
+            "startAt": "2025-11-0812:00",
+            "endAt": "2025-11-1509:00"
+        },
+        "city": "Casablanca",
+        "place": "Rte de Nouasseur",
+        "producer": "Mer Events (www.merevents.com). For any question, email us at info@merevents.com OR text 202-368-1878. PLEASE DON'T CONTACT OUR VENUES.",
+        "category": [
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/110",
+                "display_name": "Food & Drink",
+                "localized": {
+                    "display_name": "Food & Drink"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/11",
+                "display_name": "Party or Social Gathering"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/food",
+                "display_name": "food",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/travel",
+                "display_name": "travel",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/culture",
+                "display_name": "culture",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/trip",
+                "display_name": "trip",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/morocco",
+                "display_name": "morocco",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/casablanca",
+                "display_name": "casablanca",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/traveling",
+                "display_name": "traveling",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/things_to_do",
+                "display_name": "things_to_do",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/international_travel",
+                "display_name": "international_travel",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/travel_inspiration",
+                "display_name": "travel_inspiration",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "3510.24",
+                "value": 351024,
+                "display": "3510.24 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "2889.24",
+                "value": 288924,
+                "display": "2889.24 USD"
+            },
+            "is_free": false,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/morocco-casablanca-to-chefchaouen-travel-tickets-167639800155"
+    },
+    {
+        "id": "1436742107319",
+        "name": "Afterwork entrepreneuriat \u00e0 Agadir",
+        "description": "Un \u00e9v\u00e9nement qui combine networking et d\u00e9veloppement professionnel dans une ambiance conviviale et inspirante.",
+        "date": {
+            "customDate": "2025-06-27T15:26:35Z",
+            "startAt": "2025-07-2418:00",
+            "endAt": "2025-07-2421:00"
+        },
+        "city": "Agadir",
+        "place": "Agadir",
+        "producer": "Steven",
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/1001",
+                "display_name": "Startups & Small Business"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/101",
+                "display_name": "Business & Professional",
+                "localized": {
+                    "display_name": "Business & Professional"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/10",
+                "display_name": "Meeting or Networking Event"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/networking",
+                "display_name": "networking",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/afterwork",
+                "display_name": "afterwork",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/entrepreneuriat",
+                "display_name": "entrepreneuriat",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/opportunities",
+                "display_name": "opportunities",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/agadir",
+                "display_name": "agadir",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "EUR",
+                "major_value": "10.00",
+                "value": 1000,
+                "display": "10.00 EUR"
+            },
+            "minimum_ticket_price": {
+                "currency": "EUR",
+                "major_value": "10.00",
+                "value": 1000,
+                "display": "10.00 EUR"
+            },
+            "is_free": false,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.com/e/afterwork-entrepreneuriat-a-agadir-tickets-1436742107319"
+    },
+    {
+        "id": "829258764287",
+        "name": "Casablanca International Chess and Networking Event for Entrepreneurs",
+        "description": "\"Checkmate & Connect\" in Casablanca is the ultimate blend of intellectual chess challenges and international entrepreneurial networking.",
+        "date": {
+            "customDate": "2024-02-08T22:39:46Z",
+            "startAt": "2025-07-3018:00",
+            "endAt": "2025-07-3021:00"
+        },
+        "city": "Casablanca",
+        "place": "Avenue Mers Sultan",
+        "producer": "Checkmate & Connect",
+        "category": [
+            {
+                "prefix": "EventbriteSubCategory",
+                "tag": "EventbriteSubCategory/1001",
+                "display_name": "Startups & Small Business"
+            },
+            {
+                "prefix": "EventbriteCategory",
+                "tag": "EventbriteCategory/101",
+                "display_name": "Business & Professional",
+                "localized": {
+                    "display_name": "Business & Professional"
+                }
+            },
+            {
+                "prefix": "EventbriteFormat",
+                "tag": "EventbriteFormat/10",
+                "display_name": "Meeting or Networking Event"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/international",
+                "display_name": "international",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/connect",
+                "display_name": "connect",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/chess",
+                "display_name": "chess",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/casablanca",
+                "display_name": "casablanca",
+                "prefix": "OrganizerTag"
+            },
+            {
+                "_type": "tag",
+                "tag": "OrganizerTag/checkmate",
+                "display_name": "checkmate",
+                "prefix": "OrganizerTag"
+            }
+        ],
+        "offers": {
+            "maximum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "minimum_ticket_price": {
+                "currency": "USD",
+                "major_value": "0.00",
+                "value": 0,
+                "display": "0.00 USD"
+            },
+            "is_free": true,
+            "has_bogo_tickets": false,
+            "has_available_tickets": true,
+            "is_sold_out": false
+        },
+        "url": "https://www.eventbrite.fr/e/billets-casablanca-international-chess-and-networking-event-for-entrepreneurs-829258764287"
+    }
+]

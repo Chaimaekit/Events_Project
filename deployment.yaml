@@ -1,0 +1,16 @@
+version: 1
+pull:
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/Chaimaekit/Events_Project.git
+      branch: main
+deployments:
+  - name: print-events
+    entrypoint: workflow.py:print_events
+    work_pool:
+      name: my-process-pool
+
+    infrastructure:
+      image: chaimaaeljerrar/scraping-image:latest
+    schedules:
+      - cron: "*/2 * * * *"
+        timezone: UTC

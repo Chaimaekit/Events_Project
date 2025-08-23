@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Paginated Events — Dark Mode Polished</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Bootstrap CSS (kept for buttons, etc.) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* ====== Reset & base ====== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%; margin:0; padding:0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    html, body { overflow-y: auto; overflow-x: hidden; }
+
+    :root{
+      /* layout tokens */
+      --max-width:1100px;
+      --card-radius:16px;
+      --card-gap:1.25rem;
+      --carousel-side-padding:120px; /* updated by JS */
+
+      /* Light theme: main palette */
+      --bg-1: #fbf8ff; --bg-2: #efe8ff; --bg-3: #efe2d8; --bg-4: #e4d0bd;
+      --accent-1: #6b2f6a; --accent-2: #9b6d45;
+      --text-primary: #111111;
+      --muted-text: rgba(0,0,0,0.55);
+
+      /* Surfaces / glass */
+      --glass-bg: linear-gradient(90deg, rgba(255,255,255,0.65), rgba(255,255,255,0.38));
+      --glass-weak: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.24));
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.99));
+
+      /* floating accent */
+      --floating-bg: linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.80));
+      --floating-border: rgba(255,255,255,0.6);
+      --floating-text: var(--muted-text);
+
+      /* side arrows */
+      --side-arrow-bg: var(--glass-bg);
+      --side-arrow-border: rgba(0,0,0,0.06);
+      --side-arrow-color: var(--muted-text);
+
+      /* hero overlay / shadow */
+      --hero-overlay: linear-gradient(135deg, rgba(107,47,106,0.42) 0%, rgba(155,109,69,0.28) 60%, rgba(255,255,255,0.02) 100%);
+      --shadow: 0 12px 36px rgba(16,16,20,0.07);
+    }
+
+    /* Dark theme overrides */
+    body[data-theme="dark"]{
+      --bg-1: #070707; --bg-2: #0f0f12; --bg-3: #161616; --bg-4: #1b1b1b;
+      --accent-1: #c7b0d6; --accent-2: #8e6b50; /* softer accents in dark */
+      --text-primary: #ededed;
+      --muted-text: rgba(230,230,230,0.7);
+
+      --glass-bg: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      --glass-weak: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --card-bg: linear-gradient(180deg, rgba(18,18,18,0.94), rgba(12,12,12,0.96));
+
+      --floating-bg: linear-gradient(90deg, rgba(22,22,22,0.82), rgba(28,28,28,0.7));
+      --floating-border: rgba(255,255,255,0.04);
+      --floating-text: rgba(230,230,230,0.9);
+
+      --side-arrow-bg: linear-gradient(90deg, rgba(22,22,22,0.72), rgba(22,22,22,0.6));
+      --side-arrow-border: rgba(255,255,255,0.04);
+      --side-arrow-color: rgba(230,230,230,0.85);
+
+      --hero-overlay: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(40,40,40,0.35) 60%, rgba(0,0,0,0.02) 100%);
+      --shadow: 0 12px 36px rgba(0,0,0,0.65);
+    }
+
+    /* small transition for theme changes */
+    .theme-transition * { transition: background-color .28s ease, color .28s ease, box-shadow .28s ease, border-color .28s ease; }
+
+    /* Body, decorative blobs */
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      min-height:100vh;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 30%, var(--bg-3) 66%, var(--bg-4) 100%);
+      position:relative;
+    }
+    body::before, body::after { content:""; position:fixed; width:420px; height:420px; border-radius:50%; filter: blur(56px); opacity:.45; z-index:0; pointer-events:none; }
+    body::before{ left:-140px; top:-120px; background: radial-gradient(circle at 30% 30%, rgba(107,47,106,0.75), rgba(155,109,69,0.18) 50%, transparent 65%); transform:rotate(-12deg); }
+    body::after{ right:-160px; bottom:-120px; background: radial-gradient(circle at 70% 70%, rgba(155,109,69,0.65), rgba(107,47,106,0.08) 45%, transparent 70%); transform:rotate(10deg); }
+
+    /* Top strip */
+    .top-strip{
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      width: min(var(--max-width), 94vw);
+      display:flex; align-items:center; justify-content:space-between; padding:6px 12px; border-radius:999px; gap:12px; z-index:60;
+      background: var(--glass-bg);
+      box-shadow: 0 6px 18px rgba(16,16,20,0.06);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted-text);
+    }
+    .logo{ display:flex; gap:.6rem; align-items:center; font-weight:700; color: var(--accent-1); }
+    .logo .mark{ width:36px; height:36px; border-radius:9px; background: linear-gradient(135deg,var(--accent-1),var(--accent-2)); display:inline-flex; align-items:center; justify-content:center; color:inherit; font-size:16px; box-shadow: 0 4px 14px rgba(16,16,20,0.08); }
+
+    /* Footer */
+    .footer-band{
+      position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); width: min(var(--max-width),94vw);
+      padding:8px 12px; border-radius:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; z-index:60;
+      background: var(--glass-weak);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(0,0,0,0.04);
+      color: var(--muted-text); font-size:0.92rem;
+    }
+
+    /* Page wrapper */
+    .page-wrap {
+      width: min(var(--max-width), 96vw);
+      margin: 140px auto 160px;
+      padding: 2.6rem 1.25rem;
+      display:flex; flex-direction:column; align-items:center; gap:1.1rem; z-index:5;
+    }
+
+    /* Title with proper gradient text cross-browser */
+    h1.page-title {
+      margin: 0;
+      font-weight: 800;
+      font-size: clamp(30px, 6.5vw, 56px);
+      line-height: 1;
+      letter-spacing: .6px;
+
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+
+      text-align:center;
+      padding-bottom:.6rem;
+      text-shadow: 0 12px 36px rgba(16,16,20,0.05);
+    }
+    h1.page-title::after { content:""; display:block; margin:8px auto 0; width:130px; height:6px; border-radius:999px; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); filter: blur(6px); opacity:.98; }
+
+    .subtitle { color: var(--muted-text); font-size:0.98rem; margin-top:-.2rem; margin-bottom:.6rem; text-align:center; }
+
+    /* Carousel container: JS updates --carousel-side-padding to match arrow widths */
+    .carousel-outer { width:100%; display:flex; flex-direction:column; align-items:center; gap:.9rem; position:relative; }
+    .events-carousel {
+      display:flex; gap:var(--card-gap); overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+      padding:1rem var(--carousel-side-padding); width:100%; justify-content:flex-start; scroll-behavior:smooth; -ms-overflow-style:none; scrollbar-width:none;
+      background: transparent;
+    }
+    @media (max-width:1200px) { .events-carousel { padding:1rem calc(var(--carousel-side-padding) * 0.7); } }
+    @media (max-width:900px)  { .events-carousel { padding:1rem calc(var(--carousel-side-padding) * 0.45); } }
+    @media (max-width:600px)  { .events-carousel { padding:1rem 14px; } }
+    .events-carousel::-webkit-scrollbar{ display:none; }
+
+    /* Event slide */
+    .event-slide {
+      flex:0 0 calc(100% - 2rem);
+      scroll-snap-align:center;
+      border-radius:var(--card-radius);
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height:380px;
+      display:flex;
+      flex-direction:column;
+      transition: transform .28s ease, box-shadow .28s ease;
+      max-width:860px;
+      margin:0;
+    }
+    @media(min-width:1100px){ .event-slide{ flex:0 0 820px; min-height:420px; } .event-slide:hover{ transform:translateY(-8px); box-shadow: 0 20px 50px rgba(16,16,20,0.12); } }
+
+    .slide-hero { height:240px; background-size:cover; background-position:center; position:relative; display:flex; align-items:flex-end; padding:1rem; }
+    .hero-overlay { position:absolute; inset:0; background: var(--hero-overlay); pointer-events:none; mix-blend-mode:multiply; }
+    .hero-content { position:relative; z-index:2; color: white; text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+    .hero-content h3 { margin:0; font-size:1.5rem; font-weight:700; }
+    .hero-content .meta { font-size:.92rem; opacity:.95; margin-top:.18rem; }
+
+    .card-body { padding:1rem 1.15rem; display:flex; align-items:center; justify-content:center; background: transparent; color: var(--text-primary); min-height: 170px; }
+    .row-info { display:flex; gap:1rem; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; width:100%; max-width:760px; padding:0.1rem 0.3rem; }
+    .row-info > .left { flex:1; min-width:200px; text-align:left; }
+    .row-info > .right { min-width:220px; max-width:300px; }
+    .transport, .hotels { margin-top:.5rem; font-size:.95rem; background: linear-gradient(90deg, rgba(107,47,106,0.04), rgba(155,109,69,0.02)); padding:.6rem; border-radius:10px; color:var(--muted-text); }
+    body[data-theme="dark"] .transport, body[data-theme="dark"] .hotels { background: rgba(255,255,255,0.02); color:var(--muted-text); }
+
+    /* hide bottom brackets/pagination/dots visually (we use side arrows) */
+    .dots, .slide-pagination { display:none !important; }
+
+    /* Side arrows styling that respects theme variables */
+    .side-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: var(--side-arrow-bg);
+      box-shadow: 0 10px 26px rgba(16,16,20,0.08);
+      border: 1px solid var(--side-arrow-border);
+      cursor: pointer;
+      z-index:50;
+      color: var(--side-arrow-color);
+    }
+    .side-arrow.left { left: calc( (100% - min(var(--max-width), 96vw)) / 2 + 6px ); }
+    .side-arrow.right{ right: calc( (100% - min(var(--max-width), 96vw)) / 2 + 6px ); }
+    .side-arrow svg{ width:22px; height:22px; fill:currentColor; }
+    .side-arrow:active{ transform: translateY(-50%) scale(.98); }
+    @media (max-width:600px){ .side-arrow{ width:48px; height:48px; } .side-arrow.left{ left:10px } .side-arrow.right{ right:10px } }
+
+    /* Floating accent — theme-aware */
+    .floating-accent {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 18px;
+      border-radius:999px;
+      margin-top:18px;
+      margin-bottom:8px;
+      font-weight:700;
+      background: var(--floating-bg);
+      box-shadow: 0 14px 32px rgba(16,16,20,0.08);
+      border: 1px solid var(--floating-border);
+      color: var(--floating-text);
+      backdrop-filter: blur(6px) saturate(120%);
+      transition: transform .22s ease, box-shadow .22s ease;
+      z-index: 40;
+    }
+    .floating-accent:hover { transform: translateY(-4px); box-shadow: 0 20px 46px rgba(16,16,20,0.12); }
+    .floating-accent .icon {
+      width:34px; height:34px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: white; font-weight:800; box-shadow: 0 6px 18px rgba(16,16,20,0.08);
+    }
+    @media (max-width:900px) { .floating-accent { width:85%; justify-content:center; gap:8px; padding:8px 14px; } .floating-accent .icon { width:30px; height:30px; } }
+
+    /* focus styles for accessibility */
+    :focus { outline: 3px solid rgba(107,47,106,0.12); outline-offset: 3px; border-radius:6px; }
+    img{ max-width:100%; height:auto; display:block; }
+  </style>
+</head>
+<body>
+  <!-- top micro-navbar -->
+  <div class="top-strip" role="banner" aria-hidden="false">
+    <div style="display:flex;align-items:center;gap:.6rem">
+      <div class="logo" aria-hidden="false">
+        <span class="mark">E</span>
+        <span style="font-weight:700; color:var(--accent-1)">Evently</span>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <div class="top-links" aria-hidden="false">Discover • About • Contact</div>
+
+      <!-- Theme toggle -->
+      <button id="themeToggle" class="theme-btn" aria-pressed="false" title="Toggle dark mode" style="border-radius:10px;padding:.35rem .6rem;background:transparent;border:1px solid rgba(0,0,0,0.06);">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- main content -->
+  <div class="page-wrap" role="main">
+    <h1 class="page-title">Events</h1>
+    <div class="subtitle">Use the left/right arrows, swipe, or drag to browse events</div>
+
+    <div class="carousel-outer" aria-label="Events carousel area">
+      <!-- left side arrow -->
+      <button id="prevBtn" class="side-arrow left" aria-label="Previous event">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+
+      <!-- Carousel -->
+      <div id="carousel" class="events-carousel" aria-live="polite" tabindex="0"></div>
+
+      <!-- right side arrow -->
+      <button id="nextBtn" class="side-arrow right" aria-label="Next event">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+      </button>
+
+      <!-- floating accent -->
+      <div class="floating-accent" role="note" aria-hidden="false">
+        <span class="icon" aria-hidden="true">★</span>
+        <span>Featured • Local • Curated</span>
+      </div>
+
+      <!-- hidden but present for logic/accessibility -->
+      <div id="dots" class="dots" aria-hidden="true"></div>
+      <div id="slidePagination" class="slide-pagination" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- footer band -->
+  <div class="footer-band" role="contentinfo" aria-hidden="false">
+    <div>Made with ♥ • Evently</div>
+    <div class="footer-right">© <span id="yr"></span> — Built for demo</div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // small helpers
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    function escapeHtml(text) {
+      if (text === null || text === undefined) return '';
+      return String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'", '&#39;');
+    }
+    function escapeAttr(text) {
+      if (text === null || text === undefined) return '#';
+      return String(text).replaceAll('"','%22').replaceAll("'", '%27').replaceAll(' ','%20');
+    }
+
+    // THEME: initialize and toggle (updates data-theme on body)
+    (function themeInit(){
+      const body = document.body;
+      const btn = document.getElementById('themeToggle');
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+
+      const saved = localStorage.getItem('site-theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = saved ? saved : (prefersDark ? 'dark' : 'light');
+
+      setTheme(initial, false);
+
+      btn.addEventListener('click', () => {
+        const newTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+        // re-apply side padding after theme switch (in case arrow sizes change)
+        setTimeout(() => applySidePadding(), 60);
+      });
+
+      function setTheme(theme, withTransition) {
+        if (withTransition) {
+          document.documentElement.classList.add('theme-transition');
+          window.setTimeout(()=> document.documentElement.classList.remove('theme-transition'), 330);
+        }
+        if (theme === 'dark') {
+          body.setAttribute('data-theme','dark');
+          btn.setAttribute('aria-pressed','true');
+          icon.textContent = '☀️';
+          label.textContent = 'Light';
+        } else {
+          body.removeAttribute('data-theme');
+          btn.setAttribute('aria-pressed','false');
+          icon.textContent = '🌙';
+          label.textContent = 'Dark';
+        }
+        try { localStorage.setItem('site-theme', theme); } catch(e){ }
+      }
+    })();
+
+    // APP: elements & state
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsWrap = document.getElementById('dots');
+    const slidePagination = document.getElementById('slidePagination');
+
+    let currentPage = 1, pageSize = 10, totalPages = 1, slides = [], activeIndex = 0, pointerOverCarousel = false;
+
+    carousel.addEventListener('pointerenter', () => pointerOverCarousel = true);
+    carousel.addEventListener('pointerleave', () => pointerOverCarousel = false);
+
+    function buildThresholdList() { const t=[]; for(let i=0;i<=100;i++) t.push(i/100); return t; }
+
+    // IntersectionObserver to keep active index in sync
+    function attachIO() {
+      if (window._io) { window._io.disconnect(); window._io = null; }
+      const items = Array.from(carousel.children);
+      if (!items.length) return;
+      const ioLocal = new IntersectionObserver((entries) => {
+        let best = null;
+        entries.forEach(e => { if (!best || e.intersectionRatio > best.intersectionRatio) best = e; });
+        if (best) {
+          const idx = items.indexOf(best.target);
+          if (idx >= 0 && idx !== activeIndex) {
+            activeIndex = idx; updateDots(); updateSlidePagination(); updateControls();
+          }
+        }
+      }, { root: carousel, threshold: buildThresholdList() });
+      items.forEach(el => ioLocal.observe(el));
+      window._io = ioLocal;
+    }
+
+    // compute and apply carousel internal side padding so first/last slides are fully visible
+    function applySidePadding() {
+      const arrowLeft = prevBtn.getBoundingClientRect();
+      const arrowRight = nextBtn.getBoundingClientRect();
+      const gap = 12;
+      const arrowWidth = Math.max(arrowLeft.width || 56, arrowRight.width || 56);
+      const sidePad = Math.max(arrowWidth + gap, 24);
+      document.documentElement.style.setProperty('--carousel-side-padding', sidePad + 'px');
+
+      setTimeout(()=>{
+        if (!carousel.children.length) return;
+        scrollToSlide(activeIndex, false);
+      }, 40);
+    }
+
+    // load server page and render up to 10 slides
+    async function loadPage(page = 1, size = 10) {
+      try {
+        const res = await fetch(`/events?page=${page}&size=${size}`);
+        const data = await res.json();
+
+        currentPage = data.page || page;
+        totalPages = data.pages || (data.totalPages || 1);
+        slides = (data.events || []).slice(0, size);
+        activeIndex = 0;
+
+        renderSlides();
+        updateControls();
+        renderSlidePagination();
+        applySidePadding();
+      } catch (err) {
+        console.error('Failed to load events', err);
+        carousel.innerHTML = '<div class="event-slide p-3"><div class="card-body"><p>Failed to load events.</p></div></div>';
+        slidePagination.innerHTML = '';
+        dotsWrap.innerHTML = '';
+      }
+    }
+
+    function renderSlides() {
+      carousel.innerHTML = '';
+      dotsWrap.innerHTML = '';
+
+      if (!slides.length) {
+        carousel.innerHTML = '<div class="event-slide p-3"><div class="card-body"><p>No events found.</p></div></div>';
+        return;
+      }
+
+      slides.forEach((ev, idx) => {
+        const slide = document.createElement('article');
+        slide.className = 'event-slide';
+        const heroImage = ev.image || ev.imageUrl || 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=60';
+
+        slide.innerHTML = `
+          <div class="slide-hero" style="background-image:url('${escapeHtml(heroImage)}')">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <div style="display:flex; gap:.6rem; align-items:center;">
+                <span style="background: rgba(255,255,255,0.18); padding:.22rem .5rem; border-radius:999px; font-size:.82rem; color:white;">${escapeHtml(ev.location || 'Unknown')}</span>
+              </div>
+              <h3>${escapeHtml(ev.name || 'Untitled event')}</h3>
+              <div class="meta">${escapeHtml(ev.date?.startAt || ev.date?.customDate || ev.date || '')}</div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="row-info">
+              <div class="left">
+                <p class="desc">${escapeHtml(ev.description || '').slice(0, 600)}${(ev.description && ev.description.length > 600) ? '…' : ''}</p>
+                <a href="${escapeAttr(ev.url || '#')}" class="btn btn-sm btn-outline-primary btn-more" target="_blank" rel="noopener">More info</a>
+              </div>
+
+              <div class="right">
+                <div class="transport">
+                  <h6>🚦 Possible transport</h6>
+                  <ul>
+                    <li>🚋 Tramway: Nearby stop for ${escapeHtml(ev.location || 'the area')}</li>
+                    <li>🚕 Taxi: Available around ${escapeHtml(ev.location || 'the area')}</li>
+                    <li>🚌 Bus: Lines passing close to ${escapeHtml(ev.location || 'the venue')}</li>
+                  </ul>
+                </div>
+
+                <div class="hotels" style="margin-top:.6rem;">
+                  <h6>🏨 Hotels nearby</h6>
+                  <ul>
+                    <li>${escapeHtml(ev.hotels?.[0] || 'Hotel A (500m)')}</li>
+                    <li>${escapeHtml(ev.hotels?.[1] || 'Hotel B (1km)')}</li>
+                    <li>${escapeHtml(ev.hotels?.[2] || 'Hotel C (1.5km)')}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        carousel.appendChild(slide);
+
+        const dot = document.createElement('button');
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+        dot.addEventListener('click', () => scrollToSlide(idx, true));
+        dotsWrap.appendChild(dot);
+      });
+
+      attachIO();
+      updateDots();
+      updateSlidePagination();
+    }
+
+    // Render slide-number pagination (logical)
+    function renderSlidePagination() {
+      slidePagination.innerHTML = '';
+      if (!slides.length) return;
+      for (let i = 0; i < slides.length; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'page-num';
+        btn.textContent = String(i + 1);
+        btn.dataset.idx = String(i);
+        btn.addEventListener('click', () => { scrollToSlide(i, true); });
+        slidePagination.appendChild(btn);
+      }
+
+      const nextBtnEl = document.createElement('button');
+      nextBtnEl.className = 'page-next';
+      nextBtnEl.textContent = 'Next';
+      nextBtnEl.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          loadPage(currentPage + 1, pageSize).then(() => scrollToSlide(0, true));
+        }
+      });
+      if (typeof totalPages === 'number' && currentPage >= totalPages) nextBtnEl.disabled = true;
+      slidePagination.appendChild(nextBtnEl);
+
+      updateSlidePagination();
+    }
+
+    function updateSlidePagination() {
+      const nums = Array.from(slidePagination.querySelectorAll('.page-num'));
+      nums.forEach((b, i) => b.classList.toggle('active', i === activeIndex));
+      const nextEl = slidePagination.querySelector('.page-next');
+      if (nextEl) nextEl.disabled = (typeof totalPages === 'number') ? (currentPage >= totalPages) : false;
+    }
+
+    function scrollToSlide(index, smooth = true) {
+      const items = Array.from(carousel.children);
+      if (!items.length) return;
+      index = Math.max(0, Math.min(index, items.length - 1));
+      const node = items[index];
+      node.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', inline: 'center', block: 'nearest' });
+      activeIndex = index;
+      updateDots(); updateSlidePagination(); updateControls();
+    }
+
+    function updateDots() { const dots = Array.from(dotsWrap.children); dots.forEach((d,i) => d.classList.toggle('active', i === activeIndex)); }
+    function updateControls() { prevBtn.disabled = activeIndex === 0 && currentPage === 1; nextBtn.disabled = activeIndex === (slides.length - 1) && currentPage >= totalPages; }
+
+    // prev/next arrow handlers
+    prevBtn.addEventListener('click', () => {
+      if (activeIndex > 0) scrollToSlide(activeIndex - 1, true);
+      else if (currentPage > 1) loadPage(currentPage - 1, pageSize);
+    });
+    nextBtn.addEventListener('click', () => {
+      if (activeIndex < slides.length - 1) scrollToSlide(activeIndex + 1, true);
+      else if (currentPage < totalPages) loadPage(currentPage + 1, pageSize);
+    });
+
+    // pointer drag: same behavior, snap to nearest
+    (function addDragToScroll(el){
+      let isDown=false, startX=0, startScrollLeft=0;
+      el.addEventListener('pointerdown', (e)=>{ isDown=true; el.setPointerCapture(e.pointerId); startX=e.clientX; startScrollLeft=el.scrollLeft; el.style.scrollBehavior='auto'; });
+      el.addEventListener('pointermove', (e)=>{ if(!isDown) return; const dx=e.clientX-startX; el.scrollLeft=startScrollLeft-dx; });
+      el.addEventListener('pointerup', (e)=>{ if(!isDown) return; isDown=false; try{el.releasePointerCapture(e.pointerId)}catch{} snapToNearest(el); el.style.scrollBehavior='smooth'; });
+      el.addEventListener('pointercancel', ()=>{ isDown=false; el.style.scrollBehavior='smooth'; snapToNearest(el); });
+      el.addEventListener('keydown', (e)=>{ if(e.key==='ArrowLeft'){ prevBtn.click(); e.preventDefault(); } if(e.key==='ArrowRight'){ nextBtn.click(); e.preventDefault(); } });
+
+      function snapToNearest(container){
+        const children = Array.from(container.children);
+        if(!children.length) return;
+        const center = container.scrollLeft + container.clientWidth/2;
+        let closestIdx = 0, minDist = Infinity;
+        children.forEach((c, idx)=>{ const cCenter = c.offsetLeft + c.offsetWidth/2; const dist = Math.abs(center - cCenter); if(dist < minDist){ minDist = dist; closestIdx = idx; } });
+        scrollToSlide(closestIdx, true);
+      }
+    })(carousel);
+
+    // wheel/trackpad only while hovering carousel, maps vertical scroll to slide-jump (throttled)
+    let wheelLock = false, wheelTimer = null;
+    carousel.addEventListener('wheel', (e) => {
+      if (!pointerOverCarousel) return;
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      if (wheelLock) return;
+      if (e.deltaY > 6) {
+        if (activeIndex < slides.length - 1) scrollToSlide(activeIndex + 1, true);
+        else if (currentPage < totalPages) loadPage(currentPage + 1, pageSize);
+      } else if (e.deltaY < -6) {
+        if (activeIndex > 0) scrollToSlide(activeIndex - 1, true);
+        else if (currentPage > 1) loadPage(currentPage - 1, pageSize);
+      }
+      wheelLock = true; clearTimeout(wheelTimer); wheelTimer = setTimeout(()=> wheelLock = false, 220);
+    }, { passive: false });
+
+    // scroll debounce for dot sync
+    let scrollDebounce = null;
+    carousel.addEventListener('scroll', () => {
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(() => {
+        const children = Array.from(carousel.children);
+        if (!children.length) return;
+        const center = carousel.scrollLeft + carousel.clientWidth / 2;
+        let closestIdx = 0, minDist = Infinity;
+        children.forEach((c, idx) => {
+          const cCenter = c.offsetLeft + c.offsetWidth / 2;
+          const dist = Math.abs(center - cCenter);
+          if (dist < minDist) { minDist = dist; closestIdx = idx; }
+        });
+        if (closestIdx !== activeIndex) { activeIndex = closestIdx; updateDots(); updateSlidePagination(); updateControls(); }
+      }, 60);
+    });
+
+    // helpers to sanitize content
+    function escapeHtml(text) {
+      if (text === null || text === undefined) return '';
+      return String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'", '&#39;');
+    }
+    function escapeAttr(text) {
+      if (text === null || text === undefined) return '#';
+      return String(text).replaceAll('"','%22').replaceAll("'", '%27').replaceAll(' ','%20');
+    }
+
+    // on window resize reapply padding
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => applySidePadding(), 120);
+    });
+
+    // initial load - page 1, pageSize 10
+    loadPage(1, pageSize);
+    window.loadPage = loadPage;
+    // ensure side padding is applied if buttons are loaded before slides
+    window.addEventListener('load', ()=> setTimeout(()=> applySidePadding(), 80));
+  </script>
+</body>
+</html>
