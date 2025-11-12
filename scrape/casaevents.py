@@ -12,7 +12,7 @@ def get_casa_events():
 
         items = soup.select_one("html > body > div:nth-of-type(3) > srcipt > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div").find_all("div")
         for item in items:
-            if len(item.find_all("div"))>1:
+            if len(item.find_all("div")) > 1:
                 link = item.find("a")['href']
                 title = item.find_all("div")[0].text.strip()
                 date = item.find_all("div")[1].text.strip()

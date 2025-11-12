@@ -30,8 +30,8 @@ def get_event(data):
             results.append(send_event)
     return results
 
-def get_events_ma():
 
+def get_events_ma():
     results = []
     session = requests.Session()
     try:
