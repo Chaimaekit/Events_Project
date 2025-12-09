@@ -18,7 +18,7 @@ INDEX_NAME = "events_index"
 
 def create_es_client():
     return Elasticsearch(
-        f"{ELASTIC_URL}",
+        ELASTIC_URL,
         api_key=ELASTIC_KEY
     )
 
