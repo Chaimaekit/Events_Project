@@ -22,7 +22,6 @@ def insert_event_brit():
 @task
 def insert_events_ma():
     return get_events_ma()
-
 @task
 def insert_guichet():
     return get_guichet()
