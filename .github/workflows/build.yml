@@ -56,8 +56,8 @@ jobs:
 
       - name: Index events to Elastic Cloud
         env:
-          ELASTIC_CLOUD_ID: ${{ secrets.ELASTIC_CLOUD_ID }}
-          ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
+          CLOUD_ID: ${{ secrets.CLOUD_ID }}
+          ELASTIC_PASSWORD: ${{ secrets.ELASTIC_PASSWORD }}
         run: python elastic_script.py
 
 
