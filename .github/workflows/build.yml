@@ -59,12 +59,10 @@ jobs:
           # Run workflow.py directly (Prefect Core)
           python workflow.py
 
-      - name: Run FastAPI
+      - name: Run FastAPI and test endpoint
         run: |
-          uvicorn main:app --host 0.0.0.0 --port 8000 & 
-          sleep 5  # wait a few seconds for server to start
+          pip install uvicorn  # ensure installed
+          uvicorn main:app --host 0.0.0.0 --port 8000 &
+          sleep 10  # give server time to start
+          curl -v http://127.0.0.1:8000/events
 
-      - name: Test streaming endpoint
-        run: |
-          curl -v http://localhost:8000/events
-          echo "Streaming endpoint tested successfully."
