@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request, Query
+import uvicorn
 from fastapi.responses import StreamingResponse, JSONResponse
 import asyncio
 from scrape.casaevents import get_casa_events
@@ -166,3 +167,7 @@ def get_events(page: int = Query(1, ge=1), size: int = Query(10, ge=1, le=50)):
         }
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+

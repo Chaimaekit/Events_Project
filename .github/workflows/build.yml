@@ -63,8 +63,7 @@ jobs:
 
       - name: Run FastAPI and test endpoint
         run: |
-          pip install uvicorn 
-          uvicorn main:app --host 0.0.0.0 --port 8000 &
-          sleep 10
+          python main.py &
+          sleep 10 
           curl -v http://127.0.0.1:8000/events
 
