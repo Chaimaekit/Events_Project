@@ -39,7 +39,7 @@ def indexing():
     actions = []
     for event in events:
         doc_id = hashlib.md5(
-            (event.get("name", "") + event.get("date", "") + event.get("city", "")).encode()
+            (event.get("name", "") +""+ event.get("date", "") +""+ event.get("city", "")).encode()
         ).hexdigest()
 
         doc = {
