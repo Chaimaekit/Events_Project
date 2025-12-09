@@ -15,10 +15,9 @@ import time
 from fastapi.responses import FileResponse
 
 
-load_dotenv()
-ELASTIC_KEY = os.getenv("ELASTIC_KEY")
-ELASTIC_URL = os.getenv("ELASTIC_URL")
-
+load_dotenv() 
+ELASTIC_PASSWORD = os.getenv("ELASTIC_PASSWORD")
+CLOUD_ID = os.getenv("CLOUD_ID")
 app = FastAPI()
 
 
@@ -94,8 +93,8 @@ app = FastAPI()
 
 
 es = Elasticsearch(
-        ELASTIC_URL,
-        api_key=ELASTIC_KEY
+        cloud_id=CLOUD_ID,
+        basic_auth=("elastic", f"{ELASTIC_PASSWORD}")
     )
 
 def event_stream():
