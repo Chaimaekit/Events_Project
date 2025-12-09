@@ -16,7 +16,8 @@ from fastapi.responses import FileResponse
 
 
 load_dotenv()
-elastic_password = os.getenv("ELASTIC_PASSWORD")
+ELASTIC_KEY = os.getenv("ELASTIC_KEY")
+CLOUD_ID = os.getenv("CLOUD_ID")
 
 app = FastAPI()
 
@@ -93,9 +94,9 @@ app = FastAPI()
 
 
 es = Elasticsearch(
-    "http://elasticsearch:9200",
-    basic_auth=("elastic", f"{elastic_password}")
-)
+        cloud_id=CLOUD_ID,
+        api_key=ELASTIC_KEY
+    )
 
 def event_stream():
    

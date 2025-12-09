@@ -29,14 +29,10 @@ def insert_guichet():
 
 @flow
 def print_events():
-    first_event = insert_casa_events()
-    time.sleep(5)
-    second_event = insert_event_brit()
-    time.sleep(5)
-    third_event = insert_events_ma()
-    time.sleep(5)
-    forth_event = insert_guichet()
-    print(forth_event)
+    insert_casa_events()
+    insert_event_brit()
+    insert_events_ma()
+    insert_guichet()
 
 if __name__ == "__main__":
      print_events.deploy(
