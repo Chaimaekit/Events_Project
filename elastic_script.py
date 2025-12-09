@@ -23,6 +23,8 @@ def create_es_client():
     )
 
 
+
+
 def indexing():
     es = create_es_client()
 
