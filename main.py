@@ -94,8 +94,8 @@ app = FastAPI()
 
 
 es = Elasticsearch(
-        f"{ELASTIC_URL}",
-        basic_auth=("elastic",f"{ELASTIC_KEY}")
+        ELASTIC_URL,
+        api_key=ELASTIC_KEY
     )
 
 def event_stream():
