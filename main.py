@@ -94,7 +94,7 @@ app = FastAPI()
 
 
 es = Elasticsearch(
-        f"{ELASTIC_URL}",
+        hosts=[ELASTIC_URL],
         api_key=ELASTIC_KEY
     )
 
