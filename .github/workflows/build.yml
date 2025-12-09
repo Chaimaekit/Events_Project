@@ -40,6 +40,21 @@ jobs:
           PREFECT_API_URL: https://api.prefect.cloud/api/accounts/${{ secrets.PREFECT_ACCOUNT }}/workspaces/${{ secrets.PREFECT_WORKSPACE }}
         run: prefect deploy --prefect-file deployment.yaml
 
+      - name: Test Elastic Cloud connection
+        env:
+          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
+          ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: ApiKey $ELASTIC_API_KEY" \
+            "$ELASTIC_URL")
+          echo "HTTP status: $HTTP_CODE"
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "Elastic Cloud connection failed!"
+            exit 1
+          fi
+
+
       - name: Elastic indexing
         env:
           ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
