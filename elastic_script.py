@@ -12,13 +12,13 @@ import hashlib
 
 load_dotenv()
 ELASTIC_KEY = os.getenv("ELASTIC_KEY")
-CLOUD_ID = os.getenv("CLOUD_ID")
+ELASTIC_URL = os.getenv("ELASTIC_URL")
 INDEX_NAME = "events_index"
 
 
 def create_es_client():
     return Elasticsearch(
-        cloud_id=CLOUD_ID,
+        f"{ELASTIC_URL}",
         api_key=ELASTIC_KEY
     )
 

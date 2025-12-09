@@ -42,7 +42,7 @@ jobs:
 
       - name: Elastic indexing
         env:
-          ELASTIC_CLOUD_ID: ${{ secrets.ELASTIC_CLOUD_ID }}
+          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
           ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
         run: |
           python elastic_script.py
@@ -55,10 +55,10 @@ jobs:
 
       - name: All indexed (test query)
         env:
-          ELASTIC_CLOUD_ID: ${{ secrets.ELASTIC_CLOUD_ID }}
+          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
           ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
         run: |
-          curl -X GET "https://$ELASTIC_CLOUD_ID/_search?pretty" \
+          curl -X GET "https://$ELASTIC_URL/_search?pretty" \
           -H "Authorization: ApiKey $ELASTIC_API_KEY" \
           -H 'Content-Type: application/json' \
           -d '{

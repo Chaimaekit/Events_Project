@@ -17,7 +17,7 @@ from fastapi.responses import FileResponse
 
 load_dotenv()
 ELASTIC_KEY = os.getenv("ELASTIC_KEY")
-CLOUD_ID = os.getenv("CLOUD_ID")
+ELASTIC_URL = os.getenv("ELASTIC_URL")
 
 app = FastAPI()
 
@@ -94,7 +94,7 @@ app = FastAPI()
 
 
 es = Elasticsearch(
-        cloud_id=CLOUD_ID,
+        f"{ELASTIC_URL}",
         api_key=ELASTIC_KEY
     )
 
