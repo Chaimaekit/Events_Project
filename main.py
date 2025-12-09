@@ -14,12 +14,13 @@ import os
 from elasticsearch import Elasticsearch
 import time
 from fastapi.responses import FileResponse
+from elastic_script import create_es_client
 
 
-load_dotenv() 
-ELASTIC_PASSWORD = os.getenv("ELASTIC_PASSWORD")
-CLOUD_ID = os.getenv("CLOUD_ID")
+
 app = FastAPI()
+
+es = create_es_client()
 
 
 # async def casa_events_generator():
@@ -93,10 +94,6 @@ app = FastAPI()
 #     return JSONResponse(content=get_casa_events(), status_code=200)
 
 
-es = Elasticsearch(
-        cloud_id=CLOUD_ID,
-        basic_auth=("elastic", f"{ELASTIC_PASSWORD}")
-    )
 
 def event_stream():
    
