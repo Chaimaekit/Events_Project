@@ -1,9 +1,11 @@
-name: Deploy Scraper to Prefect
+name: Deploy Scraper Locally with Prefect
 
 on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '*/10 * * * *'
 
 jobs:
   deploy:
@@ -21,6 +23,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
+          pip install prefect  # Prefect Core
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -33,12 +36,6 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/scraping-image:latest
-
-      - name: Deploy flow to Prefect
-        env:
-          PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
-          PREFECT_API_URL: https://api.prefect.cloud/api/accounts/${{ secrets.PREFECT_ACCOUNT }}/workspaces/${{ secrets.PREFECT_WORKSPACE }}
-        run: prefect deploy --prefect-file deployment.yaml
 
       - name: Test Elastic Cloud connection
         env:
@@ -54,36 +51,17 @@ jobs:
             exit 1
           fi
 
-
-      - name: Elastic indexing
+      - name: Run Prefect flow locally
         env:
           ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
           ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
         run: |
-          python elastic_script.py
-          echo "Events indexed to Elastic Cloud successfully."
-
-      - name: Wait for indexing
-        run: |
-          echo "Waiting for events to be indexed..."
-          sleep 100  # Adjust as needed
-
-      - name: All indexed (test query)
-        env:
-          ELASTIC_URL: ${{ secrets.ELASTIC_URL }}
-          ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
-        run: |
-          curl -X GET "$ELASTIC_URL/_search?pretty" \
-          -H "Authorization: ApiKey $ELASTIC_API_KEY" \
-          -H 'Content-Type: application/json' \
-          -d '{
-            "query": { "match_all": {} },
-            "size": 10
-          }'
+          # Run workflow.py directly (Prefect Core)
+          python workflow.py
 
       - name: Run FastAPI
         run: |
-          uvicorn main:app --host 0.0.0.0 --port 8000 &
+          uvicorn main:app --host 0.0.0.0 --port 8000 & 
           sleep 5  # wait a few seconds for server to start
 
       - name: Test streaming endpoint

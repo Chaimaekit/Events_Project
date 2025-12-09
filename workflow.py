@@ -35,10 +35,4 @@ def print_events():
     insert_guichet()
 
 if __name__ == "__main__":
-     print_events.deploy(
-        name="print-events",
-        work_pool_name="my-process-pool",
-        image=f"{username}/scraping-image:latest", 
-        push=True,
-        cron="*/2 * * * *",
-    )
+    print_events()
