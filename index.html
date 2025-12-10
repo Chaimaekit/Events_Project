@@ -143,53 +143,73 @@
   <footer>© 2025 Evently. All rights reserved.</footer>
 
   <script>
-    const carousel = document.getElementById('carousel');
-    const cards = carousel.querySelectorAll('.event-card');
-    const pagination = document.getElementById('pagination');
-    let currentIndex = 0;
+  const carousel = document.getElementById("carousel");
+  const pagination = document.getElementById("pagination");
 
-    function renderPagination() {
-      pagination.innerHTML = '';
-      const total = cards.length;
-      const range = 1;
-      const start = Math.max(0, currentIndex - range);
-      const end = Math.min(total - 1, currentIndex + range);
+  let currentPage = 1;
+  const pageSize = 8;
+  let totalPages = 1;
 
-      const prevBtn = document.createElement('button');
-      prevBtn.textContent = 'Prev';
-      prevBtn.onclick = () => goToIndex(Math.max(0, currentIndex - 1));
-      pagination.appendChild(prevBtn);
+  async function loadEvents(page = 1) {
+    const res = await fetch(`/events?page=${page}&size=${pageSize}`);
+    const data = await res.json();
 
-      for (let i = start; i <= end; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i + 1;
-        if (i === currentIndex) btn.classList.add('active');
-        btn.onclick = () => goToIndex(i);
+    const events = data.events;
+    totalPages = data.pages;
+    currentPage = data.page;
+
+    renderEvents(events);
+    renderPagination();
+  }
+
+  function renderEvents(events) {
+    carousel.innerHTML = "";
+
+    events.forEach(event => {
+      const card = document.createElement("div");
+      card.className = "event-card";
+      card.innerHTML = `
+        <h2>${event.name}</h2>
+        <p><strong>Date:</strong> ${event.date || "Unknown"}</p>
+        <p><strong>Location:</strong> ${event.location || "Unknown"}</p>
+        <p>${event.description?.slice(0, 120) || ""}...</p>
+        <a href="${event.url}" target="_blank" style="color: var(--accent);">More Info</a>
+      `;
+      carousel.appendChild(card);
+    });
+  }
+
+  function renderPagination() {
+    pagination.innerHTML = "";
+
+    const prev = document.createElement("button");
+    prev.textContent = "Prev";
+    prev.onclick = () => {
+      if (currentPage > 1) loadEvents(currentPage - 1);
+    };
+    pagination.appendChild(prev);
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (Math.abs(i - currentPage) <= 2 || i === 1 || i === totalPages) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.onclick = () => loadEvents(i);
         pagination.appendChild(btn);
       }
-
-      const nextBtn = document.createElement('button');
-      nextBtn.textContent = 'Next';
-      nextBtn.onclick = () => goToIndex(Math.min(total - 1, currentIndex + 1));
-      pagination.appendChild(nextBtn);
     }
 
-    function goToIndex(i) {
-      currentIndex = i;
-      const card = cards[i];
-      carousel.scrollTo({ left: card.offsetLeft - carousel.offsetLeft, behavior: 'smooth' });
-      renderPagination();
-    }
+    const next = document.createElement("button");
+    next.textContent = "Next";
+    next.onclick = () => {
+      if (currentPage < totalPages) loadEvents(currentPage + 1);
+    };
+    pagination.appendChild(next);
+  }
 
-    carousel.addEventListener('scroll', () => {
-      let index = Math.round(carousel.scrollLeft / (cards[0].offsetWidth + 16));
-      if (index !== currentIndex) {
-        currentIndex = index;
-        renderPagination();
-      }
-    });
+  loadEvents(1);
+</script>
 
-    renderPagination();
   </script>
 </body>
 </html>

@@ -4,27 +4,15 @@ from scrape.casaevents import get_casa_events
 from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
-from dotenv import load_dotenv
 import os
 import hashlib
+from elastic import es
 
 
-
-load_dotenv()
-ELASTIC_PASSWORD = os.getenv("ELASTIC_PASSWORD")
-CLOUD_ID = os.getenv("CLOUD_ID")
 INDEX_NAME = "events_index"
 
 
-def create_es_client():
-    return Elasticsearch(
-        cloud_id=CLOUD_ID,
-        basic_auth=("elastic", f"{ELASTIC_PASSWORD}")
-    )
-
-
 def indexing():
-    es = create_es_client()
 
     if not es.indices.exists(index=INDEX_NAME):
         es.indices.create(index=INDEX_NAME)
@@ -64,7 +52,6 @@ def indexing():
 
 
 def check_doc(index_name, event_name):
-    es = create_es_client()
     result = es.search(
         index=index_name,
         query={"match": {"name": event_name}},

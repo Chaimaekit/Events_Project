@@ -10,7 +10,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -23,7 +22,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install prefect  # Prefect Core
+          pip install prefect
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -59,7 +58,6 @@ jobs:
           CLOUD_ID: ${{ secrets.CLOUD_ID }}
           ELASTIC_PASSWORD: ${{ secrets.ELASTIC_PASSWORD }}
         run: python elastic_script.py
-
 
       - name: Run FastAPI and test endpoint
         run: |

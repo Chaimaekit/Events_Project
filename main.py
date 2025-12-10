@@ -14,13 +14,12 @@ import os
 from elasticsearch import Elasticsearch
 import time
 from fastapi.responses import FileResponse
-from elastic_script import create_es_client
+from elastic import es
+
 
 
 
 app = FastAPI()
-
-es = create_es_client()
 
 
 # async def casa_events_generator():
