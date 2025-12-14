@@ -57,8 +57,12 @@ jobs:
         run: python elastic_script.py
 
       - name: Run FastAPI and test endpoint
+        env:
+          CLOUD_ID: ${{ secrets.CLOUD_ID }}
+          ELASTIC_PASSWORD: ${{ secrets.ELASTIC_PASSWORD }}
         run: |
-          python main.py
-          sleep 50
-          curl -X GET "http://127.0.0.1:8000/events"
+          uvicorn main:app --host 127.0.0.1 --port 8000 &
+          sleep 10
+          curl http://127.0.0.1:8000/events
+
 
