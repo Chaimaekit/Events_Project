@@ -1,14 +1,16 @@
 from elasticsearch import Elasticsearch
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
+def get_es_client() -> Elasticsearch:
+    cloud_id = os.getenv("CLOUD_ID")
+    elastic_password = os.getenv("ELASTIC_PASSWORD")
 
-CLOUD_ID = os.getenv("CLOUD_ID")
-ELASTIC_PASSWORD = os.getenv("ELASTIC_PASSWORD")
+    if not cloud_id:
+        raise RuntimeError("CLOUD_ID is not set")
+    if not elastic_password:
+        raise RuntimeError("ELASTIC_PASSWORD is not set")
 
-def get_es_client():
     return Elasticsearch(
-        cloud_id=CLOUD_ID,
-        basic_auth=("elastic", f"{ELASTIC_PASSWORD}")
-        )
+        cloud_id=cloud_id,
+        basic_auth=("elastic", elastic_password),
+    )

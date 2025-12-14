@@ -79,18 +79,22 @@ git clone https://github.com/Chaimaekit/Events_Project
 cd Events_Project
 ```
 ### 2️⃣ Create your .env
-ELASTIC_PASSWORD=your_password
-CLOUD_ID=your_elastic_cloud_id
+```
+ELASTIC_PASSWORD=(your elasic password)
+CLOUD_ID=(your elastic cloud id)
+```
 
 ### 3️⃣ Install dependencies
 pip install -r requirements.txt
 
 ### 4️⃣ Run FastAPI locally
+```
 uvicorn main:app --reload
 Then open:
 👉 http://localhost:8000
 🔌 Elasticsearch Connection
 Elasticsearch is initialized only once
+```
 
 
 
