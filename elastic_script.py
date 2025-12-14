@@ -6,7 +6,9 @@ from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 import os
 import hashlib
-from elastic import es
+from elastic.elastic_client import get_es_client
+
+es = get_es_client()
 
 
 INDEX_NAME = "events_index"
