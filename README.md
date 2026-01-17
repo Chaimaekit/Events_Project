@@ -73,27 +73,30 @@ Events_Project/
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone the project
+
+### 1️⃣ Pull the Docker image
 ```bash
-git clone https://github.com/Chaimaekit/Events_Project
-cd Events_Project
+docker pull chaimaaeljerrar/scraping-image:latest
 ```
-### 2️⃣ Create your .env
+
+
+### 2️⃣ Create your .env file
 ```
 ELASTIC_PASSWORD=(your elasic password)
 CLOUD_ID=(your elastic cloud id)
 ```
 
-### 3️⃣ Install dependencies
-pip install -r requirements.txt
 
-### 4️⃣ Run FastAPI locally
+### 3️⃣ Install dependencies
 ```
-uvicorn main:app --reload
-Then open:
+docker run -d -p 8000:8000 --env-file .env chaimaaeljerrar/scraping-image:latest
+```
+
+
+### 4️⃣ Access the frontend
+```
 👉 http://localhost:8000
 🔌 Elasticsearch Connection
-Elasticsearch is initialized only once
 ```
 
 

@@ -1,5 +1,8 @@
 from elasticsearch import Elasticsearch
 import os
+from dotenv import load_dotenv #for local testing + requires .env file
+
+load_dotenv()  #loads env vars from .env file for local testing
 
 def get_es_client() -> Elasticsearch:
     cloud_id = os.getenv("CLOUD_ID")

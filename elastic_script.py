@@ -4,13 +4,11 @@ from scrape.casaevents import get_casa_events
 from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
-import os
 import hashlib
 from elastic.elastic_client import get_es_client
 
+
 es = get_es_client()
-
-
 INDEX_NAME = "events_index"
 
 

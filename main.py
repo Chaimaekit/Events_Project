@@ -9,20 +9,25 @@ from scrape.guichet import get_guichet
 import uvicorn
 from elastic_script import check_doc, indexing
 import json
-from dotenv import load_dotenv
-import os
-from elasticsearch import Elasticsearch
 import time
 from fastapi.responses import FileResponse
 from elastic.elastic_client import get_es_client
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+
 
 es = get_es_client()
-
-
-
-
 app = FastAPI()
 
+
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 # async def casa_events_generator():
 #     for event in get_casa_events():
@@ -116,6 +121,9 @@ def event_stream():
     except Exception as e:
         yield f"data: {{'error': '{str(e)}'}}\n\n"
 
+
+
+
 @app.get("/indexing")
 def start_indexing():
     try:
@@ -142,16 +150,23 @@ def get_events(page: int = Query(1, ge=1), size: int = Query(10, ge=1, le=50)):
             body={
                 "query": {"match_all": {}},
                 "from": start,
-                "size": size
+                "size": size,
+                "sort": [{"date.startAt": {"order": "desc"}}]  # latest first
             }
         )
         events = [
             {
-                "name": hit["_source"].get("name", ""),
-                "date": hit["_source"].get("date", ""),
-                "location": hit["_source"].get("location", ""),
-                "description": hit["_source"].get("description", ""),
-                "url": hit["_source"].get("url", "")
+                "id": hit["_source"].get("id"),
+                "name": hit["_source"].get("name"),
+                "description": hit["_source"].get("description"),
+                "date": hit["_source"].get("date"),
+                "city": hit["_source"].get("city"),
+                "place": hit["_source"].get("place"),
+                "producer": hit["_source"].get("producer"),
+                "category": hit["_source"].get("category"),
+                "offers": hit["_source"].get("offers"),
+                "url": hit["_source"].get("url"),
+                "image": hit["_source"].get("image")  # optional
             }
             for hit in res.get("hits", {}).get("hits", [])
         ]
@@ -166,6 +181,7 @@ def get_events(page: int = Query(1, ge=1), size: int = Query(10, ge=1, le=50)):
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
-if __name__ == "__main__":
+
+if __name__ == "__main__":#only for local testing
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
 

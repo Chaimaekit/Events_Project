@@ -54,6 +54,7 @@ def get_guichet():
                     send_event = Events(
                         id=str(event.get("id", "")),
                         name=event.get("title", ""),
+                        img=event.get("meta", {}).get("image", ""),
                         description=event.get("meta", {}).get("description", ""),
                         date={
                             "customDate": event.get("customDate", ""),

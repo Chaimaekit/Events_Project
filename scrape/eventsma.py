@@ -14,6 +14,7 @@ def get_event(data):
             send_event = Events(
                 id = str(event.get("id", "")),
                 name = event.get("meta_title", ""),
+                img = event.get("main_image", ""),
                 description = event.get("meta_description", ""),
                 date = {
                     "customDate": event.get("customDate", ""),
@@ -35,7 +36,7 @@ def get_events_ma():
     results = []
     session = requests.Session()
     try:
-        resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": 0})#while len(data) > 0 limit10 offset+=10
+        resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "concerts-festivals", "limit": 10, "offset": 0})#while len(data) > 0 limit10 offset+=10
         data = resp.json().get("data", [])
         offset = 0
         
@@ -43,7 +44,7 @@ def get_events_ma():
             offset+=10
             for result in get_event(data):
                 results.append(result)
-            resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "", "limit": 10, "offset": offset})
+            resp = session.post("https://bo.events.ma/api/events-by-category",json={"category": "concerts-festivals", "limit": 10, "offset": offset})
             data = resp.json().get("data", [])
         return results
     except Exception as e:

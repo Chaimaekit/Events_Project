@@ -52,6 +52,7 @@ def get_event_brit():
             send_event = Events(
                 id = obj.get("id", ""),
                 name = obj.get("name", ""),
+                img = obj.get("image", {}).get("original", {}).get("url", ""),
                 description = obj.get("summary", ""),
                 date = {
                         "customDate": obj.get("published", ""),
