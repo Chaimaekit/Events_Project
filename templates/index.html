@@ -1,37 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evently</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23f87171' d='M12 2c1.5 0 3 1 3.5 2.5S16 8 12 8s-3.5-3.5-2.5-3.5S10.5 2 12 2z'/></svg>">
-  <link rel="stylesheet" href="static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evently — Discover Events</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
-
 <body>
-<header>
-    <div class="logo">
-        <svg viewBox="0 0 24 24"><path d="M12 2c1.5 0 3 1 3.5 2.5S16 8 12 8s-3.5-3.5-2.5-3.5S10.5 2 12 2z"/></svg>
-        <span>Evently</span>
+    <div class="background-animation"></div>
+    <div class="background-blur"></div>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" class="logo-icon" aria-hidden="true">
+                    <path class="hat-brim" d="M2 12c0 2.21 4.48 4 10 4s10-1.79 10-4-4.48-4-10-4S2 9.79 2 12z"/>
+                    <path class="hat-top" d="M6 10c0-3.31 2.69-6 6-6s6 2.69 6 6v1H6v-1z"/>
+                </svg>
+                <span class="logo-text">Evently</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn" id="view-toggle" title="Toggle view">🔲 Grid</button>
+                <button class="nav-btn" id="calendar-btn" title="Calendar view">📅 Calendar</button>
+                <button class="nav-btn" id="favorites-btn" title="My favorites">❤️ Saved</button>
+                <button class="filter-btn" id="filter-toggle">
+                    <span class="filter-icon">⚙️</span> Filters
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="text-gradient">Discover</span>
+                    <br>
+                    Amazing Events
+                </h1>
+                <p class="hero-subtitle">Find the perfect event happening near you. Music, sports, conferences, and more.</p>
+            </div>
+            <div class="hero-search">
+                <div class="search-box">
+                    <input type="text" id="quick-search" placeholder="🔍 Search events...">
+                </div>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <div class="decoration-circle circle-1"></div>
+            <div class="decoration-circle circle-2"></div>
+            <div class="decoration-circle circle-3"></div>
+        </div>
+    </section>
+
+    <aside class="filters-panel" id="filters-panel">
+        <div class="container">
+            <div class="filters-header">
+                <h2>Filter Events</h2>
+                <button class="close-filters" id="close-filters">✕</button>
+            </div>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="city-select">📍 Location</label>
+                    <select id="city-select">
+                        <option value="">All Cities</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="category-select">🎯 Category</label>
+                    <select id="category-select">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="date-input">📅 Date</label>
+                    <input type="date" id="date-input">
+                </div>
+                <div class="filter-group">
+                    <label for="sort-select">📊 Sort</label>
+                    <select id="sort-select">
+                        <option value="date_desc">Latest First</option>
+                        <option value="date_asc">Earliest First</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filters-actions">
+                <button class="btn-primary" id="apply-filters">Apply Filters</button>
+                <button class="btn-secondary" id="reset-filters">Clear All</button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="stats-bar" id="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-label">Total Events:</span>
+                    <span class="stat-value" id="stat-total">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Upcoming:</span>
+                    <span class="stat-value" id="stat-upcoming">0</span>
+                </div>
+            </div>
+
+            <div id="loading" class="loading-state">
+                <div class="loader"></div>
+                <p>Finding amazing events...</p>
+            </div>
+
+            <div id="events-grid" class="events-grid">
+            </div>
+
+            <div id="calendar-view" class="calendar-view" style="display: none;">
+                <div class="calendar-header">
+                    <button id="prev-month">&lt;</button>
+                    <h3 id="month-year"></h3>
+                    <button id="next-month">&gt;</button>
+                </div>
+                <div id="calendar-grid"></div>
+            </div>
+
+            <div id="empty-state" class="empty-state" style="display: none;">
+                <div class="empty-icon">🎪</div>
+                <h3>No Events Found</h3>
+                <p>Try adjusting your filters or search terms</p>
+            </div>
+
+            <div id="pagination" class="pagination">
+                <button class="pagination-btn pagination-prev" id="prev-page">← Previous</button>
+                <div class="pagination-numbers" id="pagination-numbers"></div>
+                <button class="pagination-btn pagination-next" id="next-page">Next →</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="event-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="" class="modal-image">
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-description"></p>
+                    <div class="modal-meta">
+                        <div class="meta-group">
+                            <label>📍 Location:</label>
+                            <p id="modal-location"></p>
+                        </div>
+                        <div class="meta-group">
+                            <label>📅 Date:</label>
+                            <p id="modal-date"></p>
+                        </div>
+                        <div class="meta-group">
+                            <label>🎯 Category:</label>
+                            <p id="modal-category"></p>
+                        </div>
+                        <div class="meta-group">
+                            <label>🎤 Producer:</label>
+                            <p id="modal-producer"></p>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" id="modal-favorite">❤️ Add to Favorites</button>
+                        <button class="btn-secondary" id="modal-share">🔗 Share</button>
+                        <a id="modal-link" href="" target="_blank" class="btn-primary">Visit Event</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</header>
 
-<section class="carousel-section">
-    <h1>Explore Events for Chilling</h1>
-    <div class="carousel" id="carousel"></div>
-</section>
+    <div id="share-modal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" id="share-close">&times;</button>
+            <h3>Share Event</h3>
+            <div class="share-buttons">
+                <button class="share-btn" onclick="shareOnSocial('twitter')">🐦 Twitter</button>
+                <button class="share-btn" onclick="shareOnSocial('facebook')">📘 Facebook</button>
+                <button class="share-btn" onclick="shareOnSocial('whatsapp')">💬 WhatsApp</button>
+                <button class="share-btn" id="copy-link">🔗 Copy Link</button>
+            </div>
+        </div>
+    </div>
 
-<section class="list-section">
-    <h2>Evently List</h2>
-    <div id="event-list"></div>
-    <div class="pagination" id="pagination"></div>
-</section>
+    <footer class="footer">
+        <div class="container">
+            <p>✨ Evently © 2026. Discover your next favorite event.</p>
+        </div>
+    </footer>
 
-<footer>
-    © 2025 Evently. All rights reserved.
-</footer>
-
-<script src="/static/script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

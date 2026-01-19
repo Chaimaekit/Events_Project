@@ -24,6 +24,8 @@ services:
       - backend
     environment:
       - ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - ELASTICSEARCH_USER=elastic
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
 
 networks:
   backend:

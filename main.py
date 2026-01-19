@@ -1,187 +1,428 @@
-from fastapi import FastAPI, Request, Query
-import uvicorn
-from fastapi.responses import StreamingResponse, JSONResponse
-import asyncio
-from scrape.casaevents import get_casa_events
-from scrape.eventbrit import get_event_brit
-from scrape.eventsma import get_events_ma
-from scrape.guichet import get_guichet
-import uvicorn
-from elastic_script import check_doc, indexing
-import json
-import time
-from fastapi.responses import FileResponse
-from elastic.elastic_client import get_es_client
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Request, Query, HTTPException
+from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+from elastic.elastic_client import get_es_client
+from elastic_script import indexing
+
 
 
 es = get_es_client()
-app = FastAPI()
+app = FastAPI(title="Evently API", version="1.0.0")
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+@app.get("/startup")
+async def startup_event():
+    try:
+        success = indexing()
+        if success:
+            print("Events indexed successfully at startup")
+        else:
+            print("No events were indexed at startup")
+    except Exception as e:
+        print(f"Error during startup indexing: {str(e)}")
+
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-# async def casa_events_generator():
-#     for event in get_casa_events():
-#         yield f"Casa Events Data: {event}\n\n"
-#         await asyncio.sleep(0.5)
 
-# async def event_brit_generator():
-#     for event in get_event_brit():
-#         yield f"Eventbrit Data: {event}\n\n"
-#         await asyncio.sleep(0.5)
-
-# async def events_ma_generator():
-#     for event in get_events_ma():
-#         yield f"Events MA Data: {event}\n\n"
-#         await asyncio.sleep(0.5)
-
-# async def guichet_generator():
-#     for event in get_guichet():
-#         yield f"Guichet Data: {event}\n\n"
-#         await asyncio.sleep(0.5)
-
-# @app.get("/stream_casa_events")
-# async def stream(request: Request):
-#     async def event_publisher():
-#         async for message in casa_events_generator():
-#             if await request.is_disconnected():
-#                 break
-#             yield message
-#     return StreamingResponse(event_publisher(), media_type="text/event-stream")
-
-
-# @app.get("/stream_event_brit")
-# async def stream(request: Request):
-#     async def event_publisher():
-#         async for message in event_brit_generator():
-#             if await request.is_disconnected():
-#                 break
-#             yield message
-#     return StreamingResponse(event_publisher(), media_type="text/event-stream")
-
-
-# @app.get("/stream_events_ma")
-# async def stream(request: Request):
-#     async def event_publisher():
-#         async for message in events_ma_generator():
-#             if await request.is_disconnected():
-#                 break
-#             if len(message) == 0:
-#                 yield{"message":"End of stream !!"}
-#                 break
-#             yield message
-#     return StreamingResponse(event_publisher(), media_type="text/event-stream")
-
-
-# @app.get("/stream_guichet")
-# async def stream(request: Request):
-#     async def event_publisher():
-#         async for message in guichet_generator():
-#             if await request.is_disconnected():
-#                 break
-#             yield message
-#     return StreamingResponse(event_publisher(), media_type="text/event-stream")
-
-# @app.get("/elastic_results")
-# def search_event(event_name: str):
-#     return JSONResponse(content=check_doc("events_index",event_name), status_code=200)
-
-# @app.get("/normal")
-# def get_normal_data():
-#     return JSONResponse(content=get_casa_events(), status_code=200)
-
-
-
-def event_stream():
-   
+@app.get("/search")
+async def search_events(
+    q: str = Query("", description="Search query"),
+    city: str = Query("", description="Filter by city"),
+    category: str = Query("", description="Filter by category"),
+    date: str = Query("", description="Filter by date (YYYY-MM-DD)"),
+    page: int = Query(1, ge=1, description="Page number"),
+    size: int = Query(12, ge=1, le=100, description="Items per page"),
+    sort: str = Query("date_asc", description="Sort order: date_asc, date_desc, popular")
+):
+    """Full-text search with filters using Elasticsearch"""
     try:
-        res = es.search(index="events_index", body={"query": {"match_all": {}}, "size": 50})
-        events = res.get("hits", {}).get("hits", [])
+        start = (page - 1) * size
+        must_clauses = []
+        filter_clauses = []
 
-        for event in events:
-            data = {
-                "name": event["_source"].get("name", ""),
-                "date": event["_source"].get("date", ""),
-                "location": event["_source"].get("place", ""),
-                "description": event["_source"].get("description", ""),
-                "url": event["_source"].get("url", "")
+        if q.strip():
+            must_clauses.append({
+                "multi_match": {
+                    "query": q,
+                    "fields": ["name^3", "description^2", "producer", "place"]
+                }
+            })
+
+        if city.strip():
+            filter_clauses.append({"term": {"city.keyword": city}})
+        
+        if category.strip():
+            filter_clauses.append({"term": {"category.keyword": category}})
+        
+        if date.strip():
+            filter_clauses.append({
+                "range": {
+                    "date.startAt": {
+                        "gte": date + " 00:00:00",
+                        "lte": date + " 23:59:59"
+                    }
+                }
+            })
+
+        query = {
+            "bool": {
+                "must": must_clauses if must_clauses else [{"match_all": {}}],
+                "filter": filter_clauses
             }
-            yield f"data: {json.dumps(data)}\n\n"
-            time.sleep(0.5) 
+        }
 
-    except Exception as e:
-        yield f"data: {{'error': '{str(e)}'}}\n\n"
-
-
-
-
-@app.get("/indexing")
-def start_indexing():
-    try:
-        indexing()
-        return JSONResponse(content={"message": "Indexing started successfully!"}, status_code=200)
-    except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=500)
-
-@app.get("/")
-def root():
-    return FileResponse("index.html") 
-
-@app.get("/stream")
-def stream():
-    return StreamingResponse(event_stream(), media_type="text/event-stream")
-
-
-@app.get("/events")
-def get_events(page: int = Query(1, ge=1), size: int = Query(10, ge=1, le=50)):
-    start = (page - 1) * size
-    try:
-        res = es.search(
+        response = es.search(
             index="events_index",
-            body={
-                "query": {"match_all": {}},
-                "from": start,
-                "size": size,
-                "sort": [{"date.startAt": {"order": "desc"}}]  # latest first
-            }
+            query=query,
+            from_=start,
+            size=size
         )
-        events = [
-            {
-                "id": hit["_source"].get("id"),
-                "name": hit["_source"].get("name"),
-                "description": hit["_source"].get("description"),
-                "date": hit["_source"].get("date"),
-                "city": hit["_source"].get("city"),
-                "place": hit["_source"].get("place"),
-                "producer": hit["_source"].get("producer"),
-                "category": hit["_source"].get("category"),
-                "offers": hit["_source"].get("offers"),
-                "url": hit["_source"].get("url"),
-                "image": hit["_source"].get("image")  # optional
-            }
-            for hit in res.get("hits", {}).get("hits", [])
-        ]
-        total = res["hits"]["total"]["value"]
+
+        events = [hit["_source"] for hit in response["hits"]["hits"]]
+        total = response["hits"]["total"]["value"]
+
         return {
+            "events": events,
+            "total": total,
             "page": page,
             "size": size,
-            "total": total,
             "pages": (total + size - 1) // size,
-            "events": events
+            "query": q,
+            "filters": {"city": city, "category": category, "date": date}
         }
+
     except Exception as e:
-        return JSONResponse(content={"error": str(e)}, status_code=500)
+        import logging
+        logging.error(f"Search error: {str(e)}")
+        return JSONResponse({"error": str(e), "events": [], "total": 0}, status_code=500)
+
+@app.get("/events")
+async def get_all_events(
+    page: int = Query(1, ge=1),
+    size: int = Query(12, ge=1, le=100),
+    sort: str = Query("date_desc")
+):
+    try:
+        start = (page - 1) * size
+        
+        sort_map = {
+            "date_asc": [{"date.startAt": {"order": "asc"}}],
+            "date_desc": [{"date.startAt": {"order": "desc"}}],
+            "popular": [{"offers": {"order": "desc"}}]
+        }
+
+        response = es.search(
+            index="events_index",
+            query={"match_all": {}},
+            from_=start,
+            size=size,
+            sort=sort_map.get(sort, sort_map["date_desc"])
+        )
+
+        events = [hit["_source"] for hit in response["hits"]["hits"]]
+        total = response["hits"]["total"]["value"]
+
+        return {
+            "events": events,
+            "total": total,
+            "page": page,
+            "size": size,
+            "pages": (total + size - 1) // size
+        }
+
+    except Exception as e:
+        return JSONResponse({"error": str(e), "events": [], "total": 0}, status_code=500)
+
+@app.get("/event/{event_id}")
+async def get_event_detail(event_id: str):
+    try:
+        response = es.search(
+            index="events_index",
+            query={"term": {"id.keyword": event_id}}
+        )
+        
+        if response["hits"]["hits"]:
+            event = response["hits"]["hits"][0]["_source"]
+            return event
+        else:
+            raise HTTPException(status_code=404, detail="Event not found")
+            
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
 
 
-if __name__ == "__main__":#only for local testing
+@app.get("/filters")
+async def get_filter_options():
+    try:
+        cities_response = es.search(
+            index="events_index",
+            aggs={"cities": {"terms": {"field": "city.keyword", "size": 100}}},
+            size=0
+        )
+        cities = sorted([bucket["key"] for bucket in cities_response["aggregations"]["cities"]["buckets"]])
+
+        categories_response = es.search(
+            index="events_index",
+            aggs={"categories": {"terms": {"field": "category.keyword", "size": 100}}},
+            size=0
+        )
+        categories = sorted([bucket["key"] for bucket in categories_response["aggregations"]["categories"]["buckets"]])
+
+        return {
+            "cities": cities,
+            "categories": categories
+        }
+
+    except Exception as e:
+        return JSONResponse({"error": str(e), "cities": [], "categories": []}, status_code=500)
+
+@app.get("/stats")
+async def get_statistics():
+    try:
+        total_response = es.search(
+            index="events_index",
+            query={"match_all": {}},
+            size=0
+        )
+        total_events = total_response["hits"]["total"]["value"]
+
+        cities_response = es.search(
+            index="events_index",
+            aggs={"cities": {"terms": {"field": "city.keyword", "size": 10}}},
+            size=0
+        )
+        cities_stats = cities_response["aggregations"]["cities"]["buckets"]
+
+        categories_response = es.search(
+            index="events_index",
+            aggs={"categories": {"terms": {"field": "category.keyword", "size": 10}}},
+            size=0
+        )
+        categories_stats = categories_response["aggregations"]["categories"]["buckets"]
+
+        upcoming_response = es.search(
+            index="events_index",
+            query={
+                "range": {
+                    "date.startAt": {
+                        "gte": "now",
+                        "lte": "now+7d"
+                    }
+                }
+            },
+            size=0
+        )
+        upcoming_count = upcoming_response["hits"]["total"]["value"]
+
+        return {
+            "total_events": total_events,
+            "upcoming_events": upcoming_count,
+            "cities": cities_stats,
+            "categories": categories_stats
+        }
+
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
+    
+
+favorites_store = {}
+
+@app.post("/favorites/{event_id}")
+async def add_favorite(event_id: str, user_id: str = Query("guest")):
+    if user_id not in favorites_store:
+        favorites_store[user_id] = set()
+    favorites_store[user_id].add(event_id)
+    return {"status": "added", "event_id": event_id}
+
+@app.delete("/favorites/{event_id}")
+async def remove_favorite(event_id: str, user_id: str = Query("guest")):
+    
+    if user_id in favorites_store:
+        favorites_store[user_id].discard(event_id)
+    return {"status": "removed", "event_id": event_id}
+
+@app.get("/favorites")
+async def get_favorites(user_id: str = Query("guest")):
+    
+    try:
+        event_ids = list(favorites_store.get(user_id, set()))
+        
+        if not event_ids:
+            return {"favorites": [], "count": 0}
+        
+        response = es.search(
+            index="events_index",
+            query={"terms": {"id.keyword": event_ids}},
+            size=100
+        )
+        
+        events = [hit["_source"] for hit in response["hits"]["hits"]]
+        return {"favorites": events, "count": len(events)}
+        
+    except Exception as e:
+        return JSONResponse({"error": str(e), "favorites": [], "count": 0}, status_code=500)
+
+
+@app.get("/calendar")
+async def get_calendar_events(month: int = Query(1), year: int = Query(2026)):
+    try:
+        start_date = f"{year}-{month:02d}-01"
+        if month == 12:
+            end_date = f"{year+1}-01-01"
+        else:
+            end_date = f"{year}-{month+1:02d}-01"
+        
+        response = es.search(
+            index="events_index",
+            query={
+                "range": {
+                    "date.startAt": {
+                        "gte": start_date,
+                        "lt": end_date
+                    }
+                }
+            },
+            size=1000
+        )
+        
+        events_by_date = {}
+        for hit in response["hits"]["hits"]:
+            event = hit["_source"]
+            date_key = event.get("date", {}).get("startAt", "").split("T")[0]
+            if date_key:
+                if date_key not in events_by_date:
+                    events_by_date[date_key] = []
+                events_by_date[date_key].append(event)
+        
+        return {
+            "month": month,
+            "year": year,
+            "events": events_by_date
+        }
+        
+    except Exception as e:
+        return JSONResponse({"error": str(e), "events": {}}, status_code=500)
+
+
+@app.get("/recommendations")
+async def get_recommendations(event_id: str = Query("")):
+    """Get recommended events based on similar events"""
+    try:
+        if event_id:
+            event_response = es.search(
+                index="events_index",
+                query={"term": {"id.keyword": event_id}},
+                size=1
+            )
+            
+            if not event_response["hits"]["hits"]:
+                raise HTTPException(status_code=404, detail="Event not found")
+            
+            event = event_response["hits"]["hits"][0]["_source"]
+            category = event.get("category", [""])[0]
+            city = event.get("city", "")
+        else:
+            category = ""
+            city = ""
+        
+        filter_clauses = []
+        if category:
+            filter_clauses.append({"term": {"category.keyword": category}})
+        if city:
+            filter_clauses.append({"term": {"city.keyword": city}})
+        
+        response = es.search(
+            index="events_index",
+            query={
+                "bool": {
+                    "filter": filter_clauses if filter_clauses else [{"match_all": {}}],
+                    "must_not": [{"term": {"id.keyword": event_id}}] if event_id else []
+                }
+            },
+            size=6
+        )
+        
+        events = [hit["_source"] for hit in response["hits"]["hits"]]
+        return {"recommendations": events}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        return JSONResponse({"error": str(e), "recommendations": []}, status_code=500)
+
+
+@app.get("/trending")
+async def get_trending_events():
+    try:
+        response = es.search(
+            index="events_index",
+            query={
+                "range": {
+                    "date.startAt": {
+                        "gte": "now"
+                    }
+                }
+            },
+            sort=[{"offers": {"order": "desc"}}],
+            size=10
+        )
+        
+        events = [hit["_source"] for hit in response["hits"]["hits"]]
+        return {"trending": events}
+        
+    except Exception as e:
+        return JSONResponse({"error": str(e), "trending": []}, status_code=500)
+
+
+@app.post("/export")
+async def export_events(format: str = Query("json")):
+    try:
+        response = es.search(
+            index="events_index",
+            query={"match_all": {}},
+            size=1000
+        )
+        
+        events = [hit["_source"] for hit in response["hits"]["hits"]]
+        
+        if format == "csv":
+            csv_data = "name,city,date,category,url\n"
+            for event in events:
+                csv_data += f"\"{event.get('name', '')}\",\"{event.get('city', '')}\",\"{event.get('date', {}).get('startAt', '')}\",\"{event.get('category', [''])[0]}\",\"{event.get('url', '')}\"\n"
+            return JSONResponse({"csv": csv_data})
+        else:
+            return {"events": events}
+            
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
+
+
+@app.get("/health")
+async def health_check():
+    try:
+        es.info()
+        return {"status": "healthy", "elasticsearch": "connected"}
+    except Exception as e:
+        return JSONResponse({"status": "unhealthy", "error": str(e)}, status_code=500)
+
+
+if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
 

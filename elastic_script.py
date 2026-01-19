@@ -6,59 +6,115 @@ from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 import hashlib
 from elastic.elastic_client import get_es_client
+import logging
+import os
 
 
-es = get_es_client()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+use_docker = os.getenv("ELASTICSEARCH_HOST") is not None
+es = get_es_client(use_docker=use_docker)
 INDEX_NAME = "events_index"
 
 
 def indexing():
+    try:
+        logger.info("starting the indexing process ------")
+        logger.info("testing Elasticsearch connection--------")
+        if not es.ping():
+            logger.error("cant connect to Elasticsearch !!!")
+            return False
+        logger.info("connected to Elasticsearch --------")
 
-    if not es.indices.exists(index=INDEX_NAME):
-        es.indices.create(index=INDEX_NAME)
-        print(f"Index '{INDEX_NAME}' created.")
+        index_exists = es.indices.exists(index=INDEX_NAME)
+        logger.info(f"'{INDEX_NAME}' exists: {index_exists}")
+        
+        if not index_exists:
+            logger.info(f"creating index '{INDEX_NAME}' !!!!")
+            es.indices.create(index=INDEX_NAME)
+            logger.info(f"index '{INDEX_NAME}' created...")
+        else:
+            logger.info(f"index '{INDEX_NAME}' already exists")
 
-    events = []
-    events.extend(get_casa_events())
-    events.extend(get_event_brit())
-    events.extend(get_events_ma())
-    events.extend(get_guichet())
+        logger.info("fetching events from all sources...")
+        events = []
+        events.extend(get_casa_events())
+        logger.info(f"Casa Events: {len(events)} events")
+        events.extend(get_event_brit())
+        logger.info(f"EventBrit: {len(events) - len(get_casa_events())} events")
+        events.extend(get_events_ma())
+        logger.info(f"EventsMa: {len(events)} total events")
+        events.extend(get_guichet())
+        logger.info(f"Total events collected: {len(events)}")
 
-    actions = []
-    for event in events:
-        doc_id = hashlib.md5(
-            (str(event.get("name", "")) + str(event.get("date", "")) + str(event.get("city", ""))).encode()
-        ).hexdigest()
+        if not events:
+            logger.warning("No events collected from any source")
+            return False
 
-        doc = {
-            "name": event.get("name", ""),
-            "date": event.get("date", ""),
-            "location": event.get("city", "") + " " + event.get("place", ""),
-            "description": event.get("description", ""),
-            "url": event.get("url", "")
-        }
+        logger.info("Preparing bulk actions...")
+        actions = []
+        for event in events:
+            doc_id = hashlib.md5(
+                (str(event.get("name", "")) + str(event.get("date", "")) + str(event.get("city", ""))).encode()
+            ).hexdigest()
 
-        actions.append({
-            "_op_type": "index",
-            "_index": INDEX_NAME,
-            "_id": doc_id,
-            "_source": doc
-        })
-    if actions:
-        helpers.bulk(es, actions)
-        print(f"{len(actions)} events indexed successfully!")
-    else:
-        print("No events to index.")
+            doc = {
+                "id": event.get("id", ""),
+                "name": event.get("name", ""),
+                "img": event.get("img", ""),
+                "description": event.get("description", ""),
+                "date": event.get("date", {}),
+                "city": event.get("city", ""),
+                "place": event.get("place", ""),
+                "location": event.get("city", "") + " " + event.get("place", ""),
+                "producer": event.get("producer", ""),
+                "category": event.get("category", []),
+                "offers": event.get("offers", []),
+                "url": event.get("url", "")
+            }
+
+            actions.append({
+                "_op_type": "index",
+                "_index": INDEX_NAME,
+                "_id": doc_id,
+                "_source": doc
+            })
+        
+        logger.info(f"Total actions prepared: {len(actions)}")
+
+        if actions:
+            logger.info("Starting bulk indexing...")
+            success, failed = helpers.bulk(es, actions, raise_on_error=False)
+            logger.info(f"{success} events indexed successfully!")
+            if failed:
+                logger.warning(f"✗ {failed} events failed to index")
+                return success > 0
+            return True
+        else:
+            logger.warning("No events to index.")
+            return False
+            
+    except Exception as e:
+        logger.error(f"Error during indexing: {str(e)}", exc_info=True)
+        return False
 
 
 def check_doc(index_name, event_name):
-    result = es.search(
-        index=index_name,
-        query={"match": {"name": event_name}},
-        size=20
-    )
-    return result["hits"]["hits"] if result else []
+    try:
+        result = es.search(
+            index=index_name,
+            query={"match": {"name": event_name}},
+            size=20
+        )
+        return result["hits"]["hits"] if result else []
+    except Exception as e:
+        logger.error(f"Error checking documents: {str(e)}", exc_info=True)
+        return []
 
 
 if __name__ == "__main__":
-    indexing()
+    success = indexing()
+    if success:
+        logger.info("indexing completed successfully")
+    else:
+        logger.error("indexing failed or found no events")

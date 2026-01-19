@@ -17,7 +17,7 @@ class EventDate(BaseModel):
             try:
                 tzinfos = {"CET": pytz.timezone("Africa/Casablanca")}
                 parsed = parser.parse(date_str, dayfirst=True, fuzzy=True, tzinfos=tzinfos)
-                return parsed.isoformat()
+                return parsed.strftime("%Y-%m-%d %H:%M:%S")
             except Exception:
                 return None
 

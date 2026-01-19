@@ -43,11 +43,8 @@ def get_casa_events():
                             url = link
                             ).model_dump()
                     results.append(send_event)
-                    print(send_event,"\n \n")
         return results
     except Exception as e:
         print("Error fetching Casa Events:", e)
         traceback.print_exc()
         return results
-    
-get_casa_events()
