@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from elastic.elastic_client import get_es_client
 from elastic_script import indexing
+from datetime import datetime
 
 
 
@@ -36,6 +37,32 @@ async def startup_event():
     except Exception as e:
         print(f"Error during startup indexing: {str(e)}")
 
+@app.get("/debug/dates")
+async def debug_dates():
+    """Debug endpoint to check dates in index"""
+    response = es.search(
+        index="events_index",
+        query={"match_all": {}},
+        size=5
+    )
+    dates = []
+    for hit in response["hits"]["hits"]:
+        if hit["_source"].get("date"):
+            dates.append(hit["_source"]["date"])
+    return {"sample_dates": dates[:3]}
+
+@app.get("/reindex")
+async def reindex_events():
+    """Clear and reindex all events"""
+    try:
+        if es.indices.exists(index="events_index"):
+            es.indices.delete(index="events_index")
+            print("Deleted existing index")
+        success = indexing()
+        return {"status": "reindexing complete", "success": success}
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -47,11 +74,11 @@ async def search_events(
     city: str = Query("", description="Filter by city"),
     category: str = Query("", description="Filter by category"),
     date: str = Query("", description="Filter by date (YYYY-MM-DD)"),
+    upcoming: bool = Query(False, description="Show only upcoming events"),
     page: int = Query(1, ge=1, description="Page number"),
     size: int = Query(12, ge=1, le=100, description="Items per page"),
     sort: str = Query("date_asc", description="Sort order: date_asc, date_desc, popular")
 ):
-    """Full-text search with filters using Elasticsearch"""
     try:
         start = (page - 1) * size
         must_clauses = []
@@ -80,13 +107,24 @@ async def search_events(
                     }
                 }
             })
-
-        query = {
+        query_body = {
             "bool": {
                 "must": must_clauses if must_clauses else [{"match_all": {}}],
                 "filter": filter_clauses
             }
         }
+        
+        if upcoming:
+            today = datetime.now().strftime("%Y-%m-%d") + " 00:00:00"
+            query_body["bool"]["must_not"] = {
+                "range": {
+                    "date.startAt": {
+                        "lt": today
+                    }
+                }
+            }
+
+        query = query_body
 
         response = es.search(
             index="events_index",
@@ -105,7 +143,7 @@ async def search_events(
             "size": size,
             "pages": (total + size - 1) // size,
             "query": q,
-            "filters": {"city": city, "category": category, "date": date}
+            "filters": {"city": city, "category": category, "date": date, "upcoming": upcoming}
         }
 
     except Exception as e:

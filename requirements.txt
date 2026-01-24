@@ -10,3 +10,4 @@ pytz
 prefect>=2.14,<3.0
 elasticsearch<9,>=8.0.0
 python-dotenv>=1.0.0,<2.0.0
+geopy>=2.3.0,<3.0.0

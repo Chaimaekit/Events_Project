@@ -10,6 +10,7 @@ const state = {
     city: '',
     category: '',
     date: '',
+    upcoming: false,
     sort: 'date_desc'
 };
 
@@ -77,6 +78,15 @@ function setupEventListeners() {
         performSearch();
     });
 
+    const upcomingCheckbox = document.getElementById('upcoming-checkbox');
+    if (upcomingCheckbox) {
+        upcomingCheckbox.addEventListener('change', (e) => {
+            state.upcoming = e.target.checked;
+            currentPage = 1;
+            performSearch();
+        });
+    }
+
     window.addEventListener('click', (e) => {
         if (e.target === eventModal) closeModal();
         if (e.target === shareModal) closeShareModal();
@@ -143,6 +153,7 @@ async function performSearch() {
             city: state.city,
             category: state.category,
             date: state.date,
+            upcoming: state.upcoming,
             page: currentPage,
             size: 12,
             sort: state.sort
@@ -177,10 +188,13 @@ function resetFilters() {
     categorySelect.value = '';
     dateInput.value = '';
     sortSelect.value = 'date_desc';
+    const upcomingCheckbox = document.getElementById('upcoming-checkbox');
+    if (upcomingCheckbox) upcomingCheckbox.checked = false;
     state.search = '';
     state.city = '';
     state.category = '';
     state.date = '';
+    state.upcoming = false;
     state.sort = 'date_desc';
     currentPage = 1;
     performSearch();

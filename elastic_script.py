@@ -51,9 +51,36 @@ def indexing():
             logger.warning("No events collected from any source")
             return False
 
+        logger.info("Fetching existing event URLs...")
+        try:
+            existing_urls = set()
+            existing_response = es.search(
+                index=INDEX_NAME,
+                query={"match_all": {}},
+                size=10000,
+                _source=["url"]
+            )
+            for hit in existing_response["hits"]["hits"]:
+                url = hit["_source"].get("url", "")
+                if url:
+                    existing_urls.add(url)
+            logger.info(f"Found {len(existing_urls)} existing event URLs")
+        except Exception as e:
+            logger.warning(f"Could not fetch existing URLs: {str(e)}")
+            existing_urls = set()
+
         logger.info("Preparing bulk actions...")
         actions = []
+        skipped = 0
+        
         for event in events:
+            event_url = event.get("url", "")
+            
+            #skip the event if its url already exists(unique)
+            if event_url in existing_urls:
+                skipped += 1
+                continue
+            
             doc_id = hashlib.md5(
                 (str(event.get("name", "")) + str(event.get("date", "")) + str(event.get("city", ""))).encode()
             ).hexdigest()
@@ -80,7 +107,7 @@ def indexing():
                 "_source": doc
             })
         
-        logger.info(f"Total actions prepared: {len(actions)}")
+        logger.info(f"Total actions prepared: {len(actions)} (skipped {skipped} duplicates)")
 
         if actions:
             logger.info("Starting bulk indexing...")

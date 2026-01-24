@@ -1,0 +1,1 @@
+# using heversine formula to calculate distance between long/lalt of event and bus/tramway in json
