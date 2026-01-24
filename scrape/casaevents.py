@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from struct_events.models import Events
 from into_db.connection import insert_events
 import traceback
+from struct_events.get_coords import get_event_coords
 
 
 def get_casa_events():
@@ -37,6 +38,7 @@ def get_casa_events():
                             },
                             city = "Casablanca",
                             place = "",
+                            coordinates = get_event_coords(send_event.place),
                             producer = "Casablanca Events & Animation",
                             category = [name.text.strip() for name in categ if name.get("rel", []) == ['category', 'tag']],
                             offers = [],

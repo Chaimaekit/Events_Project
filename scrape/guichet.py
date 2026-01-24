@@ -2,10 +2,7 @@ import requests
 from struct_events.models import Events
 from into_db.connection import insert_events
 import time
-
-import requests
-import time
-from struct_events.models import Events
+from struct_events.get_coords import get_event_coords
 
 def get_guichet():
     results = []
@@ -63,6 +60,7 @@ def get_guichet():
                         },
                         city=event.get("city", {}).get("name", ""),
                         place=event.get("place", {}).get("name", ""),
+                        coordinates = get_event_coords(send_event.place) if "Casablanca" in send_event.city else None,
                         producer=event.get("producer", {}).get("title", ""),
                         category=[event.get("category", {}).get("title", "")],
                         offers=event.get("offers", []),

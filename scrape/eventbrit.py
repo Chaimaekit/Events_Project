@@ -2,6 +2,7 @@ import requests
 import time
 from struct_events.models import Events
 from into_db.connection import insert_events
+from struct_events.get_coords import get_event_coords
 
 
 def get_event_brit():
@@ -61,6 +62,7 @@ def get_event_brit():
                         },
                 city = obj.get("primary_venue", {}).get("address", {}).get("city", ""),
                 place = obj.get("primary_venue", {}).get("address", {}).get("address_1", ""),
+                coordinates = get_event_coords(send_event.place) if "Casablanca" in send_event.city else None,
                 producer = obj.get("primary_organizer", {}).get("name", ""),
                 category = [categ.get("display_name", "") for categ in obj.get("tags", [])],
                 offers = [obj.get("ticket_availability", {}).get("maximum_ticket_price", {}),obj.get("ticket_availability", {}).get("minimum_ticket_price", {})],

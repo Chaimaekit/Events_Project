@@ -39,12 +39,17 @@ def indexing():
         logger.info("fetching events from all sources...")
         events = []
         events.extend(get_casa_events())
-        logger.info(f"Casa Events: {len(events)} events")
+        casa_events_len = len(events)
+        logger.info(f"Casa Events: {casa_events_len} events")
         events.extend(get_event_brit())
-        logger.info(f"EventBrit: {len(events) - len(get_casa_events())} events")
+        event_brit_len = len(events) - casa_events_len
+        logger.info(f"EventBrit: {event_brit_len} events")
         events.extend(get_events_ma())
-        logger.info(f"EventsMa: {len(events)} total events")
+        event_ma_len = len(events) - casa_events_len - event_brit_len
+        logger.info(f"EventsMa: {event_ma_len} events")
         events.extend(get_guichet())
+        guichet_len = len(events) - casa_events_len - event_brit_len - event_ma_len
+        logger.info(f"Guichet: {guichet_len} events")
         logger.info(f"Total events collected: {len(events)}")
 
         if not events:

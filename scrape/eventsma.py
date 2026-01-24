@@ -1,6 +1,7 @@
 import requests
 from struct_events.models import Events
 from into_db.connection import insert_events
+from struct_events.get_coords import get_event_coords
 
 
 def get_event(data):
@@ -23,6 +24,7 @@ def get_event(data):
                 },
                 city = event.get("scene", {}).get("city", {}).get("name", "") if event.get("scene", {}) else "",
                 place = str(event.get("scene", {}).get("libelle", "")) +" "+ str(event.get("scene", {}).get("address", "")) if event.get("scene", {}) else "",
+                coordinates = get_event_coords(send_event.place) if "Casablanca" in send_event.city else None,
                 producer = str(event_owner.get("event_owner", {}).get("first_name","")) + " " +str(event_owner.get("event_owner", {}).get("last_name","")),
                 category = [event.get("categories")[0].get("labelle", "") if event.get("categories") else ""],
                 offers = event.get("sieges", []),

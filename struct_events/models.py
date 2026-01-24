@@ -35,6 +35,7 @@ class Events(BaseModel):#-----need to add the img label
     date: Optional[EventDate]
     city: Optional[str]
     place: Optional[str]
+    coordinates: Optional[tuple[float, float]]
     producer: Optional[str]
     category: Optional[list[str]]
     offers: Optional[list[dict]]

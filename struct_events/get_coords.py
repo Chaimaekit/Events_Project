@@ -1,6 +1,5 @@
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
-import time
 
 
 geolocator = Nominatim(user_agent="casablanca_events_app")
@@ -17,9 +16,3 @@ def get_event_coords(address_text):
     except Exception as e:
         print(f"Error geocoding {address_text}: {e}")
         return None
-
-scraped_events = ["dahab 2 mars", "Cinema Rialto", "Morocco Mall"]
-
-for event in scraped_events:
-    coords = get_event_coords(event)
-    print(f"Event: {event} | Coords: {coords}")
