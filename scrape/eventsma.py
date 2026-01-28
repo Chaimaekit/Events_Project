@@ -12,6 +12,9 @@ def get_event(data):
             event_resp = requests.get(api_link+event.get("slug", ""))
             event_owner = event_resp.json().get("data", {})
 
+            city = event.get("scene", {}).get("city", {}).get("name", "") if event.get("scene", {}) else "",
+            place = str(event.get("scene", {}).get("libelle", "")) +" "+ str(event.get("scene", {}).get("address", "")) if event.get("scene", {}) else "",
+
             send_event = Events(
                 id = str(event.get("id", "")),
                 name = event.get("meta_title", ""),
@@ -22,9 +25,9 @@ def get_event(data):
                     "startAt": event.get("date_start", ""),
                     "endAt": event.get("date_end", ""),
                 },
-                city = event.get("scene", {}).get("city", {}).get("name", "") if event.get("scene", {}) else "",
-                place = str(event.get("scene", {}).get("libelle", "")) +" "+ str(event.get("scene", {}).get("address", "")) if event.get("scene", {}) else "",
-                coordinates = get_event_coords(send_event.place) if "Casablanca" in send_event.city else None,
+                city = city,
+                place = place,
+                coordinates = get_event_coords(place) if "casablanca" in city.lower() else None,
                 producer = str(event_owner.get("event_owner", {}).get("first_name","")) + " " +str(event_owner.get("event_owner", {}).get("last_name","")),
                 category = [event.get("categories")[0].get("labelle", "") if event.get("categories") else ""],
                 offers = event.get("sieges", []),

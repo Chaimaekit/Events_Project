@@ -6,9 +6,18 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from elastic.elastic_client import get_es_client
 from elastic_script import indexing
+from transport.bus import lignes_casabus, casabus_stops, load_casabus_stops, calculate_casabus_lignes, stations_to_lines, haversine
 from datetime import datetime
+import json
 
 
+try:
+    load_casabus_stops()
+    calculate_casabus_lignes()
+    stations_to_lines()
+    print("Transport data loaded successfully")
+except Exception as e:
+    print(f"Warning: Transport data not loaded: {e}")
 
 es = get_es_client()
 app = FastAPI(title="Evently API", version="1.0.0")
@@ -67,6 +76,65 @@ async def reindex_events():
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+def get_transport_info(event_coords, threshold_km=0.5):
+    transport_info = {
+        "bus_lines": [],
+        "tramway_info": None
+    }
+    
+    if not event_coords or len(event_coords) < 2:
+        return transport_info
+    
+    event_lon, event_lat = event_coords[0], event_coords[1]
+    
+    min_distance = float('inf')
+    nearest_lines = []
+    
+    for ligne in lignes_casabus:
+        route_coords = ligne.get("coordinates", [])
+        for route_point in route_coords:
+            route_lon, route_lat = route_point[:2]
+            dist = haversine(route_lon, route_lat, event_lon, event_lat)
+            if dist <= threshold_km:
+                nearest_lines.append({
+                    "ligne_nb": ligne["ligne_nb"],
+                    "start": ligne["start"],
+                    "end": ligne["end"],
+                    "distance_km": round(dist, 2)
+                })
+                break
+    
+    # Remove duplicates and limit to top 3
+    seen_lines = set()
+    unique_lines = []
+    for line in nearest_lines:
+        if line["ligne_nb"] not in seen_lines:
+            unique_lines.append(line)
+            seen_lines.add(line["ligne_nb"])
+            if len(unique_lines) >= 3:
+                break
+    
+    transport_info["bus_lines"] = unique_lines
+    return transport_info
+
+@app.get("/transport/{event_id}")
+async def get_event_transport(event_id: str):
+    """Get transport information for a specific event"""
+    try:
+        response = es.search(
+            index="events_index",
+            query={"term": {"id.keyword": event_id}}
+        )
+        
+        if response["hits"]["hits"]:
+            event = response["hits"]["hits"][0]["_source"]
+            coords = event.get("coordinates")
+            transport_info = get_transport_info(coords)
+            return transport_info
+        else:
+            raise HTTPException(status_code=404, detail="Event not found")
+    except Exception as e:
+        return JSONResponse({"error": str(e), "bus_lines": [], "tramway_info": None}, status_code=500)
 
 @app.get("/search")
 async def search_events(

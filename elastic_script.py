@@ -98,6 +98,7 @@ def indexing():
                 "date": event.get("date", {}),
                 "city": event.get("city", ""),
                 "place": event.get("place", ""),
+                "coordinates": event.get("coordinates", []),
                 "location": event.get("city", "") + " " + event.get("place", ""),
                 "producer": event.get("producer", ""),
                 "category": event.get("category", []),

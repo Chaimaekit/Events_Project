@@ -48,6 +48,8 @@ def get_guichet():
 
             try:
                 for event in data.get("events", []):
+                    city=event.get("city", {}).get("name", ""),
+                    place=event.get("place", {}).get("name", ""),
                     send_event = Events(
                         id=str(event.get("id", "")),
                         name=event.get("title", ""),
@@ -58,9 +60,9 @@ def get_guichet():
                             "startAt": event.get("startAt", ""),
                             "endAt": event.get("closingTime", ""),
                         },
-                        city=event.get("city", {}).get("name", ""),
-                        place=event.get("place", {}).get("name", ""),
-                        coordinates = get_event_coords(send_event.place) if "Casablanca" in send_event.city else None,
+                        city=city,
+                        place=place,
+                        coordinates = get_event_coords(place) if "casablanca" in city.lower() else None,
                         producer=event.get("producer", {}).get("title", ""),
                         category=[event.get("category", {}).get("title", "")],
                         offers=event.get("offers", []),

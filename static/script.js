@@ -281,6 +281,33 @@ async function openEventModal(eventId) {
         const response = await fetch(`/event/${eventId}`);
         const event = await response.json();
         
+        // Fetch transport information
+        let transportHTML = '';
+        try {
+            const transportResponse = await fetch(`/transport/${eventId}`);
+            const transportData = await transportResponse.json();
+            if (transportData.bus_lines && transportData.bus_lines.length > 0) {
+                transportData.bus_lines.forEach(bus => {
+                    transportHTML += `
+                        <div class="bus-line-item">
+                            <span class="bus-line-badge">L${bus.ligne_nb}</span>
+                            <div style="flex: 1;">
+                                <p style="margin: 0; font-weight: 600; color: var(--text-primary);">${bus.start} → ${bus.end}</p>
+                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">${bus.distance_km} km away</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                document.getElementById('transport-info').style.display = 'block';
+                document.getElementById('transport-content').innerHTML = transportHTML;
+            } else {
+                document.getElementById('transport-info').style.display = 'none';
+            }
+        } catch (error) {
+            console.warn('Error loading transport info:', error);
+            document.getElementById('transport-info').style.display = 'none';
+        }
+        
         let dateStr = '';
         if (event.date) {
             if (typeof event.date === 'string') {

@@ -50,6 +50,8 @@ def get_event_brit():
         data = resp.json()
 
         for obj in data.get("events", []):
+            place = obj.get("primary_venue", {}).get("address", {}).get("address_1", "")
+            city = obj.get("primary_venue", {}).get("address", {}).get("city", "")
             send_event = Events(
                 id = obj.get("id", ""),
                 name = obj.get("name", ""),
@@ -60,9 +62,9 @@ def get_event_brit():
                         "startAt": obj.get("start_date", "") + obj.get("start_time", ""),
                         "endAt": obj.get("end_date", "") + obj.get("end_time", ""),
                         },
-                city = obj.get("primary_venue", {}).get("address", {}).get("city", ""),
-                place = obj.get("primary_venue", {}).get("address", {}).get("address_1", ""),
-                coordinates = get_event_coords(send_event.place) if "Casablanca" in send_event.city else None,
+                city = city,
+                place = place,
+                coordinates = get_event_coords(place) if "casablanca" in city.lower() else None,
                 producer = obj.get("primary_organizer", {}).get("name", ""),
                 category = [categ.get("display_name", "") for categ in obj.get("tags", [])],
                 offers = [obj.get("ticket_availability", {}).get("maximum_ticket_price", {}),obj.get("ticket_availability", {}).get("minimum_ticket_price", {})],

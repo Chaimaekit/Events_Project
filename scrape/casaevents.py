@@ -38,7 +38,7 @@ def get_casa_events():
                             },
                             city = "Casablanca",
                             place = "",
-                            coordinates = get_event_coords(send_event.place),
+                            coordinates = get_event_coords(""),
                             producer = "Casablanca Events & Animation",
                             category = [name.text.strip() for name in categ if name.get("rel", []) == ['category', 'tag']],
                             offers = [],
