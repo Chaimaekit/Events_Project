@@ -1,0 +1,33 @@
+[out:json][timeout:90];
+{{geocodeArea:Casablanca}}->.searchArea;
+(
+  //find all bus stops
+  node["highway"="bus_stop"](area.searchArea);
+)->.allstops;
+
+//find the 'parent' routes for these stops
+rel(bn.allstops)["route"="bus"];
+out body;
+>;
+out skel qt;
+
+
+//for tramway lines
+[out:json][timeout:90];
+{{geocodeArea:Casablanca}}->.searchArea;
+
+(
+  node["railway"="tram_stop"](area.searchArea);
+  node["tram"="yes"](area.searchArea);
+  node["network"="Casa Tramway"](area.searchArea);
+  //busway a part too
+  node["highway"="bus_stop"]["network"~"Busway"](area.searchArea);
+) -> .stops;
+(
+  rel(bn.stops)["route"="tram"];
+  rel(bn.stops)["route"="bus"];
+);
+
+out body;
+>;
+out skel qt;

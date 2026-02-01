@@ -1,0 +1,6166 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-01-30T18:31:15Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605385",
+        "name": "Boulevard Bahmad",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "16",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5864433,
+          33.5947641
+        ]
+      },
+      "id": "node/2235605385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605392",
+        "name": "Facultés Terminus",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "35",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6571777,
+          33.5458118
+        ]
+      },
+      "id": "node/2235605392"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605394",
+        "name": "Ali Yata علي يعتة",
+        "name:ar": "علي يعتة",
+        "name:fr": "Ali Yata",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "13",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5699572,
+          33.5914733
+        ]
+      },
+      "id": "node/2235605394"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605401",
+        "name": "Zenith",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "33",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.642815,
+          33.5407369
+        ]
+      },
+      "id": "node/2235605401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605408",
+        "name": "Bachkou",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "28",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.626854,
+          33.5652367
+        ]
+      },
+      "id": "node/2235605408"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605416",
+        "name": "La Résistance",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "19",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6031621,
+          33.5934485
+        ]
+      },
+      "id": "node/2235605416"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605418",
+        "name": "Sidi Abderrahmane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "45",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6693821,
+          33.5719563
+        ]
+      },
+      "id": "node/2235605418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605421",
+        "name": "Facultés",
+        "name:ar": "الكليات",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "35",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6571703,
+          33.5458466
+        ]
+      },
+      "id": "node/2235605421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605426",
+        "name": "Gare Oasis",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "30",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6313118,
+          33.554127
+        ]
+      },
+      "id": "node/2235605426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605430",
+        "name": "Sidi Abderrahmane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "45",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6694191,
+          33.5719409
+        ]
+      },
+      "id": "node/2235605430"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605431",
+        "name": "Anciens Abattoirs",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "15",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.578581,
+          33.5909906
+        ]
+      },
+      "id": "node/2235605431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605454",
+        "name": "Hay Raja",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "9",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5484674,
+          33.5766816
+        ]
+      },
+      "id": "node/2235605454"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605472",
+        "name": "Faculté de Médecine",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "26",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.625824,
+          33.5749271
+        ]
+      },
+      "id": "node/2235605472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605474",
+        "name": "Mekka",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "29",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6298311,
+          33.5578244
+        ]
+      },
+      "id": "node/2235605474"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605477",
+        "name": "Cité de l'Air",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "44",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6641842,
+          33.5682234
+        ]
+      },
+      "id": "node/2235605477"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605483",
+        "name": "Boulevard Bahmad",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "16",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5864897,
+          33.5948302
+        ]
+      },
+      "id": "node/2235605483"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605581",
+        "name": "Littoral",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "47",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6748004,
+          33.5809428
+        ]
+      },
+      "id": "node/2235605581"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605616",
+        "name": "Marche Central",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "21",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6126113,
+          33.5946005
+        ]
+      },
+      "id": "node/2235605616"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605622",
+        "name": "Mohamed Zefzaf",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "3",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5086783,
+          33.5823627
+        ]
+      },
+      "id": "node/2235605622"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605636",
+        "name": "Bachkou",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "28",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6268049,
+          33.5652363
+        ]
+      },
+      "id": "node/2235605636"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605643",
+        "name": "Hôpital Sidi Moumen",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "5",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5177446,
+          33.5765838
+        ]
+      },
+      "id": "node/2235605643"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605648",
+        "name": "Zenith",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "33",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6428042,
+          33.5407714
+        ]
+      },
+      "id": "node/2235605648"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605651",
+        "name": "Avenue Hassan II",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "24",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6230413,
+          33.5841157
+        ]
+      },
+      "id": "node/2235605651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605654",
+        "name": "Ennassim",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "2",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5047309,
+          33.5848658
+        ]
+      },
+      "id": "node/2235605654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605660",
+        "name": "Hay Hassani",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "46",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6729263,
+          33.5765668
+        ]
+      },
+      "id": "node/2235605660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605663",
+        "name": "Hay Mohammadi",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "11",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5667291,
+          33.5856343
+        ]
+      },
+      "id": "node/2235605663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605664",
+        "name": "Cité de l'Air",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "44",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6642082,
+          33.5681675
+        ]
+      },
+      "id": "node/2235605664"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605681",
+        "name": "Littoral",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "47",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.674844,
+          33.5809366
+        ]
+      },
+      "id": "node/2235605681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605682",
+        "name": "Centre de Maintenance",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "4",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5131257,
+          33.5795318
+        ]
+      },
+      "id": "node/2235605682"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605686",
+        "name": "Hay Mohammadi",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "11",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5668241,
+          33.585596
+        ]
+      },
+      "id": "node/2235605686"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605690",
+        "name": "Attacharouk",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "6",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5243104,
+          33.5740556
+        ]
+      },
+      "id": "node/2235605690"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605694",
+        "name": "Casa Voyageurs",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "17",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5919484,
+          33.5903581
+        ]
+      },
+      "id": "node/2235605694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605718",
+        "name": "La Résistance",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "19",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6031545,
+          33.5934792
+        ]
+      },
+      "id": "node/2235605718"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605719",
+        "name": "Grande Ceinture",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "14",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5737654,
+          33.5904069
+        ]
+      },
+      "id": "node/2235605719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605753",
+        "name": "Abdelmoumen",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "27",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6259823,
+          33.5705527
+        ]
+      },
+      "id": "node/2235605753"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605755",
+        "name": "Place des Nations Unies",
+        "name:ar": "ساحة الأمم المتحدة",
+        "name:es": "Plaza de las Naciones Unidas",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "22",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6181166,
+          33.595121
+        ]
+      },
+      "id": "node/2235605755"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605765",
+        "name": "Panoramique",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "31",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6318846,
+          33.5471668
+        ]
+      },
+      "id": "node/2235605765"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605781",
+        "name": "Ghandi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "38",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6446034,
+          33.5687753
+        ]
+      },
+      "id": "node/2235605781"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605791",
+        "name": "Panoramique",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "31",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6318613,
+          33.547182
+        ]
+      },
+      "id": "node/2235605791"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605803",
+        "name": "Forces Auxilliaires",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "8",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5394513,
+          33.5747292
+        ]
+      },
+      "id": "node/2235605803"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605807",
+        "name": "Sidi Moumen Terminus",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "1",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5014958,
+          33.5869421
+        ]
+      },
+      "id": "node/2235605807"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605809",
+        "name": "Hay Hassani",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "46",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6729679,
+          33.5765515
+        ]
+      },
+      "id": "node/2235605809"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605816",
+        "name": "Ghandi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "38",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6446346,
+          33.5687969
+        ]
+      },
+      "id": "node/2235605816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605817",
+        "name": "Hay Raja",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "9",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5485123,
+          33.576635
+        ]
+      },
+      "id": "node/2235605817"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605822",
+        "name": "Avenue Hassan II",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "24",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.623075,
+          33.5841251
+        ]
+      },
+      "id": "node/2235605822"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605828",
+        "name": "Ain Diab Plage",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "48",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6808073,
+          33.5874318
+        ]
+      },
+      "id": "node/2235605828"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605835",
+        "name": "Mekka",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "29",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6297747,
+          33.557817
+        ]
+      },
+      "id": "node/2235605835"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2235605840",
+        "name": "Forces Auxilliaires",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "8",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5394614,
+          33.5746806
+        ]
+      },
+      "id": "node/2235605840"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332082",
+        "name": "Chouhada",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "12",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5677696,
+          33.5884957
+        ]
+      },
+      "id": "node/2238332082"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332146",
+        "name": "Chouhada",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "12",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5676945,
+          33.5885437
+        ]
+      },
+      "id": "node/2238332146"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332160",
+        "name": "Casa Voyageurs",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "17",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5919812,
+          33.5903184
+        ]
+      },
+      "id": "node/2238332160"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332192",
+        "name": "Place Al Yassir",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "18",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5969495,
+          33.5929091
+        ]
+      },
+      "id": "node/2238332192"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332258",
+        "name": "Ibn Tachfine",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "10",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5634191,
+          33.5807938
+        ]
+      },
+      "id": "node/2238332258"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332260",
+        "name": "Ibn Tachfine",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "10",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5633887,
+          33.5808406
+        ]
+      },
+      "id": "node/2238332260"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332263",
+        "name": "Mohamed Diouri",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "20",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6077746,
+          33.5937216
+        ]
+      },
+      "id": "node/2238332263"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332342",
+        "name": "Okba Ibn Nafii",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "7",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.532559,
+          33.5729113
+        ]
+      },
+      "id": "node/2238332342"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332361",
+        "name": "Anciens Abattoirs",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "15",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5785868,
+          33.5909456
+        ]
+      },
+      "id": "node/2238332361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332373",
+        "name": "Mohamed Diouri",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "20",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6077596,
+          33.5936875
+        ]
+      },
+      "id": "node/2238332373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332391",
+        "name": "Place Al Yassir",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "18",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5969126,
+          33.5929314
+        ]
+      },
+      "id": "node/2238332391"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332442",
+        "name": "Ali Yata علي يعتة",
+        "name:ar": "علي يعتة",
+        "name:fr": "Ali Yata",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "13",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5699506,
+          33.5914241
+        ]
+      },
+      "id": "node/2238332442"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332460",
+        "name": "Grande Ceinture",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "14",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5737549,
+          33.5903669
+        ]
+      },
+      "id": "node/2238332460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238332466",
+        "name": "Okba Ibn Nafii",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "7",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5325919,
+          33.5728584
+        ]
+      },
+      "id": "node/2238332466"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238405493",
+        "name": "Marche Central",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "21",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6126568,
+          33.5945742
+        ]
+      },
+      "id": "node/2238405493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238405596",
+        "name": "Place des Nations Unies",
+        "name:ar": "ساحة الأمم المتحدة",
+        "name:es": "Plaza de las Naciones Unidas",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "22",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6180822,
+          33.5951143
+        ]
+      },
+      "id": "node/2238405596"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238405601",
+        "name": "Place Mohammed V",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "23",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6200092,
+          33.5896378
+        ]
+      },
+      "id": "node/2238405601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238447172",
+        "name": "Faculté de Médecine",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "26",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6257729,
+          33.5749154
+        ]
+      },
+      "id": "node/2238447172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238447184",
+        "name": "Les Hôpitaux",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "25",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6248387,
+          33.5800157
+        ]
+      },
+      "id": "node/2238447184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238447186",
+        "name": "Les Hôpitaux",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "25",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6248083,
+          33.5800083
+        ]
+      },
+      "id": "node/2238447186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238483722",
+        "name": "Gare Oasis",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "30",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.631175,
+          33.5543116
+        ]
+      },
+      "id": "node/2238483722"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238483732",
+        "name": "Abdelmoumen",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "27",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6259326,
+          33.5705632
+        ]
+      },
+      "id": "node/2238483732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238568797",
+        "name": "Gare Casa Sud",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "34",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.650645,
+          33.5419773
+        ]
+      },
+      "id": "node/2238568797"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238568803",
+        "name": "Gare Casa Sud",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "34",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6506577,
+          33.5419432
+        ]
+      },
+      "id": "node/2238568803"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238613690",
+        "name": "Beauséjour",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "39",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6479197,
+          33.5643393
+        ]
+      },
+      "id": "node/2238613690"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238613698",
+        "name": "Beauséjour",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "39",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6478598,
+          33.5643196
+        ]
+      },
+      "id": "node/2238613698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238635740",
+        "name": "Riviera",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "37",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6363555,
+          33.5709439
+        ]
+      },
+      "id": "node/2238635740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2238635742",
+        "name": "Riviera",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "37",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6363524,
+          33.5709706
+        ]
+      },
+      "id": "node/2238635742"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2248652103",
+        "name": "Sidi Moumen Terminus",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "1",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5015474,
+          33.5869734
+        ]
+      },
+      "id": "node/2248652103"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2508393233",
+        "name": "Ain Diab Plage",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "48",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6808534,
+          33.5874191
+        ]
+      },
+      "id": "node/2508393233"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336100",
+        "name": "Abdellah Ben Cherif",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "43",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6602935,
+          33.5658832
+        ]
+      },
+      "id": "node/3484336100"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336101",
+        "name": "Abdellah Ben Cherif",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "43",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6603124,
+          33.565862
+        ]
+      },
+      "id": "node/3484336101"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336121",
+        "name": "Anfa Clubs",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "40",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6530017,
+          33.5612793
+        ]
+      },
+      "id": "node/3484336121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336128",
+        "name": "Place Financière",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "42",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6609173,
+          33.5623151
+        ]
+      },
+      "id": "node/3484336128"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336159",
+        "name": "Anfa Park",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "41",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6574725,
+          33.5597662
+        ]
+      },
+      "id": "node/3484336159"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336164",
+        "name": "Anfa Park",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "41",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6575044,
+          33.5597251
+        ]
+      },
+      "id": "node/3484336164"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336168",
+        "name": "Anfa Clubs",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "40",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6529722,
+          33.5612782
+        ]
+      },
+      "id": "node/3484336168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3484336170",
+        "name": "Place Financière",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "42",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6608736,
+          33.5623005
+        ]
+      },
+      "id": "node/3484336170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4244309716",
+        "name": "Derb Ghalef درب غلف",
+        "name:ar": "درب غلف",
+        "name:fr": "Derb Ghalef",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "36",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6316695,
+          33.5700369
+        ]
+      },
+      "id": "node/4244309716"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4244309717",
+        "name": "Derb Ghalef درب غلف",
+        "name:ar": "درب غلف",
+        "name:fr": "Derb Ghalef",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "ref": "36",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6316641,
+          33.5700683
+        ]
+      },
+      "id": "node/4244309717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4360005391",
+        "name": "2 Mars",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6127062,
+          33.5690979
+        ]
+      },
+      "id": "node/4360005391"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4591181359",
+        "name": "Place Mohammed V",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "23",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6199772,
+          33.5896292
+        ]
+      },
+      "id": "node/4591181359"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4591435479",
+        "name": "Attacharouk",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "6",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5243174,
+          33.5740946
+        ]
+      },
+      "id": "node/4591435479"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4592227165",
+        "name": "Centre de Maintenance",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "4",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5131017,
+          33.5795003
+        ]
+      },
+      "id": "node/4592227165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4592227166",
+        "name": "Ennassim",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "2",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5047111,
+          33.5848473
+        ]
+      },
+      "id": "node/4592227166"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4592227167",
+        "name": "Hôpital Sidi Moumen",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "5",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.517723,
+          33.5765485
+        ]
+      },
+      "id": "node/4592227167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4592227168",
+        "name": "Mohamed Zefzaf",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "3",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.508656,
+          33.5823341
+        ]
+      },
+      "id": "node/4592227168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5327871967",
+        "name": "Abou Dhar al-Ghifari",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5180446,
+          33.6066082
+        ]
+      },
+      "id": "node/5327871967"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5327872002",
+        "name": "Kissariat Hay Mohammadi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5635552,
+          33.5870986
+        ]
+      },
+      "id": "node/5327872002"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5327872136",
+        "name": "Derb Milan",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5807423,
+          33.5719662
+        ]
+      },
+      "id": "node/5327872136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986587",
+        "name": "Anoual",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.624931,
+          33.5694206
+        ]
+      },
+      "id": "node/5599986587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986588",
+        "name": "L'Hermitage",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6179068,
+          33.5691964
+        ]
+      },
+      "id": "node/5599986588"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986590",
+        "name": "El Fida",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6072591,
+          33.5664939
+        ]
+      },
+      "id": "node/5599986590"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986591",
+        "name": "Place Sraghna",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6021427,
+          33.5696125
+        ]
+      },
+      "id": "node/5599986591"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986592",
+        "name": "Derb Sultan",
+        "name:it": "derb sultan",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5958327,
+          33.5721247
+        ]
+      },
+      "id": "node/5599986592"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986593",
+        "name": "Hay el Farah",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5863452,
+          33.5716601
+        ]
+      },
+      "id": "node/5599986593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986595",
+        "name": "Cimetière Achouhada",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5744115,
+          33.5765751
+        ]
+      },
+      "id": "node/5599986595"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986596",
+        "name": "Hay Adil",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5681439,
+          33.5792387
+        ]
+      },
+      "id": "node/5599986596"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986597",
+        "name": "Mdakra",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5634043,
+          33.5811962
+        ]
+      },
+      "id": "node/5599986597"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986598",
+        "name": "Carrières Centrales",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.564447,
+          33.5927308
+        ]
+      },
+      "id": "node/5599986598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986599",
+        "name": "Dar Lamane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.557455,
+          33.5937762
+        ]
+      },
+      "id": "node/5599986599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986600",
+        "name": "Al Wifaq",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5378809,
+          33.5957085
+        ]
+      },
+      "id": "node/5599986600"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986601",
+        "name": "Al Aman",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5327628,
+          33.5991917
+        ]
+      },
+      "id": "node/5599986601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599986602",
+        "name": "Préfecture d'Aïn-Sebaâ",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5299302,
+          33.6021198
+        ]
+      },
+      "id": "node/5599986602"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599987244",
+        "name": "Gare d'Aïn-Sebaâ",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5243059,
+          33.6074235
+        ]
+      },
+      "id": "node/5599987244"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5599987245",
+        "name": "Terminus Sidi Bernoussi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5098188,
+          33.6100859
+        ]
+      },
+      "id": "node/5599987245"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5977956517",
+        "railway": "switch",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5104673,
+          33.6095358
+        ]
+      },
+      "id": "node/5977956517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5977956525",
+        "railway": "switch",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5103027,
+          33.6099404
+        ]
+      },
+      "id": "node/5977956525"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6128450133",
+        "name": "Al Laymoun",
+        "network": "Casa Tramway",
+        "operator": "Casa Tramway",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6663597,
+          33.5400945
+        ]
+      },
+      "id": "node/6128450133"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6128450134",
+        "name": "Lissasfa Terminus",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6700775,
+          33.5350512
+        ]
+      },
+      "id": "node/6128450134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6128450146",
+        "name": "Lissasfa Terminus",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6700352,
+          33.5350474
+        ]
+      },
+      "id": "node/6128450146"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6128450147",
+        "name": "Al Laymoun",
+        "network": "Casa Tramway",
+        "operator": "Casa Tramway",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6663378,
+          33.5400788
+        ]
+      },
+      "id": "node/6128450147"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440057",
+        "name": "El Fida",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6072879,
+          33.5665224
+        ]
+      },
+      "id": "node/6429440057"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440058",
+        "name": "Place Sraghna",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6021823,
+          33.5696546
+        ]
+      },
+      "id": "node/6429440058"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440059",
+        "name": "Derb Sultan",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5958496,
+          33.5721699
+        ]
+      },
+      "id": "node/6429440059"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440060",
+        "name": "Hay el Farah",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5863724,
+          33.5717093
+        ]
+      },
+      "id": "node/6429440060"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440061",
+        "name": "Cimetière Achouhada",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5744371,
+          33.5766207
+        ]
+      },
+      "id": "node/6429440061"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440062",
+        "name": "Hay Adil",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5681572,
+          33.5792851
+        ]
+      },
+      "id": "node/6429440062"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440063",
+        "name": "Mdakra",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5634521,
+          33.5812553
+        ]
+      },
+      "id": "node/6429440063"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440064",
+        "name": "Carrières Centrales",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5644624,
+          33.592771
+        ]
+      },
+      "id": "node/6429440064"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440065",
+        "name": "Préfecture d'Aïn-Sebaâ",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5299679,
+          33.6021047
+        ]
+      },
+      "id": "node/6429440065"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440066",
+        "name": "Gare d'Aïn-Sebaâ",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5243419,
+          33.6074489
+        ]
+      },
+      "id": "node/6429440066"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440586",
+        "name": "Terminus Sidi Bernoussi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5098332,
+          33.61012
+        ]
+      },
+      "id": "node/6429440586"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440587",
+        "railway": "switch",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5102948,
+          33.6099791
+        ]
+      },
+      "id": "node/6429440587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440611",
+        "name": "Abou Dhar al-Ghifari",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5180698,
+          33.6066475
+        ]
+      },
+      "id": "node/6429440611"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440694",
+        "name": "Al Aman",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5327936,
+          33.5992189
+        ]
+      },
+      "id": "node/6429440694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440707",
+        "name": "Al Wifaq",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5379072,
+          33.5957437
+        ]
+      },
+      "id": "node/6429440707"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440745",
+        "name": "Dar Lamane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5574672,
+          33.5938211
+        ]
+      },
+      "id": "node/6429440745"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440773",
+        "name": "Kissariat Hay Mohammadi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5635974,
+          33.5870891
+        ]
+      },
+      "id": "node/6429440773"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440854",
+        "name": "Derb Milan",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5807193,
+          33.5719967
+        ]
+      },
+      "id": "node/6429440854"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429440986",
+        "name": "2 Mars",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6126952,
+          33.5691439
+        ]
+      },
+      "id": "node/6429440986"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429441007",
+        "name": "L'Hermitage",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6179041,
+          33.5692378
+        ]
+      },
+      "id": "node/6429441007"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6429441024",
+        "name": "Anoual",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6249261,
+          33.5694635
+        ]
+      },
+      "id": "node/6429441024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127198114",
+        "name": "Casa Port",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6119462,
+          33.5982808
+        ]
+      },
+      "id": "node/10127198114"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127198115",
+        "name": "Casa Port",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6119625,
+          33.5982405
+        ]
+      },
+      "id": "node/10127198115"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127198116",
+        "name": "Mohamed Smiha",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6087036,
+          33.5931834
+        ]
+      },
+      "id": "node/10127198116"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222017",
+        "name": "Mohamed Smiha",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6087343,
+          33.5931626
+        ]
+      },
+      "id": "node/10127222017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222018",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Place de la Victoire",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6085431,
+          33.5883375
+        ]
+      },
+      "id": "node/10127222018"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222019",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Place de la Victoire",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6085791,
+          33.5883235
+        ]
+      },
+      "id": "node/10127222019"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222020",
+        "name": "Zerktouni",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6059461,
+          33.5849179
+        ]
+      },
+      "id": "node/10127222020"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222021",
+        "name": "Zerktouni",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.605927,
+          33.5849681
+        ]
+      },
+      "id": "node/10127222021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222022",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Habous",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6007293,
+          33.5789697
+        ]
+      },
+      "id": "node/10127222022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222023",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Habous",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6006907,
+          33.5789517
+        ]
+      },
+      "id": "node/10127222023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222024",
+        "name": "Garage Allal",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5991351,
+          33.576005
+        ]
+      },
+      "id": "node/10127222024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222025",
+        "name": "Garage Allal",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5991211,
+          33.5760573
+        ]
+      },
+      "id": "node/10127222025"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222026",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Derb Tolba",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5968214,
+          33.5712092
+        ]
+      },
+      "id": "node/10127222026"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222027",
+        "bench": "yes",
+        "check_date:bench": "2025-02-03",
+        "name": "Derb Tolba",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.596787,
+          33.5712144
+        ]
+      },
+      "id": "node/10127222027"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222028",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Abou Chouaib Doukkali",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5947489,
+          33.5617773
+        ]
+      },
+      "id": "node/10127222028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222029",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Abou Chouaib Doukkali",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5947817,
+          33.5617726
+        ]
+      },
+      "id": "node/10127222029"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222030",
+        "name": "Derb Chorfa",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.595604,
+          33.5664626
+        ]
+      },
+      "id": "node/10127222030"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222031",
+        "name": "Derb Chorfa",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5955665,
+          33.5665246
+        ]
+      },
+      "id": "node/10127222031"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222032",
+        "name": "Ifriquia",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5925944,
+          33.5549753
+        ]
+      },
+      "id": "node/10127222032"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222033",
+        "name": "Ifriquia",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5926595,
+          33.5549617
+        ]
+      },
+      "id": "node/10127222033"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222034",
+        "name": "Dar Touzani",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5864876,
+          33.5489272
+        ]
+      },
+      "id": "node/10127222034"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222035",
+        "name": "Dar Touzani",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5865628,
+          33.5489054
+        ]
+      },
+      "id": "node/10127222035"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222037",
+        "name": "Mohammed VI",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5808243,
+          33.5435771
+        ]
+      },
+      "id": "node/10127222037"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222038",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "operator": "RATP Dev",
+        "public_transport": "platform"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5766122,
+          33.5459619
+        ]
+      },
+      "id": "node/10127222038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222039",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "operator": "RATP Dev",
+        "public_transport": "platform"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5767719,
+          33.5460501
+        ]
+      },
+      "id": "node/10127222039"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222040",
+        "name": "El Allam-El Harti",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5526822,
+          33.5604195
+        ]
+      },
+      "id": "node/10127222040"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222041",
+        "name": "El Allam-El Harti",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5527202,
+          33.5604331
+        ]
+      },
+      "id": "node/10127222041"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222042",
+        "name": "Essahraoui",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5476375,
+          33.5558468
+        ]
+      },
+      "id": "node/10127222042"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222043",
+        "highway": "bus_stop",
+        "name": "Essahraoui",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5475784,
+          33.5558494
+        ]
+      },
+      "id": "node/10127222043"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222044",
+        "name": "Avenue du 10 Mars 1982",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5508633,
+          33.5518863
+        ]
+      },
+      "id": "node/10127222044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222045",
+        "highway": "bus_stop",
+        "name": "Avenue du 10 Mars 1982",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5507975,
+          33.5518872
+        ]
+      },
+      "id": "node/10127222045"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222046",
+        "name": "Hay El Wahda",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5488921,
+          33.544696
+        ]
+      },
+      "id": "node/10127222046"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222047",
+        "name": "Hay El Wahda",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.548918,
+          33.5447331
+        ]
+      },
+      "id": "node/10127222047"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222048",
+        "name": "Lalla Meriem",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5584269,
+          33.5570446
+        ]
+      },
+      "id": "node/10127222048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222049",
+        "name": "Lalla Meriem",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5583917,
+          33.5570152
+        ]
+      },
+      "id": "node/10127222049"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222050",
+        "name": "Jardin Alesco",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5688198,
+          33.5507114
+        ]
+      },
+      "id": "node/10127222050"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10127222051",
+        "name": "Jardin Alesco",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5687777,
+          33.5506976
+        ]
+      },
+      "id": "node/10127222051"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963462857",
+        "name": "Mohamed Joudar",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5362432,
+          33.5684014
+        ]
+      },
+      "id": "node/10963462857"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963462858",
+        "name": "Mohamed Joudar",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.536277,
+          33.5684312
+        ]
+      },
+      "id": "node/10963462858"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477163",
+        "bench": "yes",
+        "bin": "yes",
+        "lit": "yes",
+        "name": "Place de la Victoire",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "railway": "tram_stop",
+        "shelter": "yes",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6081983,
+          33.588867
+        ]
+      },
+      "id": "node/10963477163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477164",
+        "name": "La Gironde",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6012121,
+          33.5877705
+        ]
+      },
+      "id": "node/10963477164"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477165",
+        "name": "La Gironde",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6011649,
+          33.5877884
+        ]
+      },
+      "id": "node/10963477165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477166",
+        "name": "Ifni",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5981333,
+          33.5847669
+        ]
+      },
+      "id": "node/10963477166"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477167",
+        "name": "Ifni",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5981295,
+          33.5848047
+        ]
+      },
+      "id": "node/10963477167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477168",
+        "name": "Aïn Borja",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5919089,
+          33.5803669
+        ]
+      },
+      "id": "node/10963477168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477169",
+        "name": "Aïn Borja",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5918549,
+          33.5803751
+        ]
+      },
+      "id": "node/10963477169"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477170",
+        "name": "Gare Routière Ouled Ziane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5858925,
+          33.5761014
+        ]
+      },
+      "id": "node/10963477170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477171",
+        "name": "Gare Routière Ouled Ziane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5858602,
+          33.5761382
+        ]
+      },
+      "id": "node/10963477171"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477172",
+        "name": "Hay Tissir",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5805767,
+          33.572404
+        ]
+      },
+      "id": "node/10963477172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477173",
+        "name": "Hay Tissir",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.58058,
+          33.5724498
+        ]
+      },
+      "id": "node/10963477173"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477174",
+        "name": "Jardin Chtaiba",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5709571,
+          33.5653058
+        ]
+      },
+      "id": "node/10963477174"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477175",
+        "name": "Jardin Chtaiba",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5709283,
+          33.5653367
+        ]
+      },
+      "id": "node/10963477175"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477176",
+        "name": "Nil",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.564823,
+          33.5665552
+        ]
+      },
+      "id": "node/10963477176"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477177",
+        "name": "Nil",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5647922,
+          33.5665649
+        ]
+      },
+      "id": "node/10963477177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477178",
+        "name": "Hay Salama",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5587672,
+          33.5680572
+        ]
+      },
+      "id": "node/10963477178"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477179",
+        "name": "Hay Salama",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.558675,
+          33.5680341
+        ]
+      },
+      "id": "node/10963477179"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477180",
+        "name": "Mohamed Bouziane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5545659,
+          33.5638795
+        ]
+      },
+      "id": "node/10963477180"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477181",
+        "name": "Mohamed Bouziane",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5545394,
+          33.5639126
+        ]
+      },
+      "id": "node/10963477181"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477182",
+        "name": "Hay El Falah",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5479507,
+          33.5632396
+        ]
+      },
+      "id": "node/10963477182"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477183",
+        "name": "Hay El Falah",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5479826,
+          33.5632476
+        ]
+      },
+      "id": "node/10963477183"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477184",
+        "name": "Faculté de Ben M'Sick",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5430075,
+          33.5660792
+        ]
+      },
+      "id": "node/10963477184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477185",
+        "name": "Faculté de Ben M'Sick",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5430586,
+          33.5660893
+        ]
+      },
+      "id": "node/10963477185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477186",
+        "name": "Moulay Rachid",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5312834,
+          33.5715192
+        ]
+      },
+      "id": "node/10963477186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477187",
+        "name": "Moulay Rachid",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5312582,
+          33.5714922
+        ]
+      },
+      "id": "node/10963477187"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477188",
+        "name": "Attacharouk",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5241872,
+          33.5707943
+        ]
+      },
+      "id": "node/10963477188"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477189",
+        "name": "Attacharouk",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.524116,
+          33.5708191
+        ]
+      },
+      "id": "node/10963477189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477190",
+        "name": "Mohammed Erradi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5182281,
+          33.5692574
+        ]
+      },
+      "id": "node/10963477190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10963477191",
+        "name": "Mohammed Erradi",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5182031,
+          33.5692153
+        ]
+      },
+      "id": "node/10963477191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11050720827",
+        "name": "Abdessalam Ennaciri",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.572616,
+          33.5483742
+        ]
+      },
+      "id": "node/11050720827"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11050720828",
+        "name": "Abdessalam Ennaciri",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5726649,
+          33.5484005
+        ]
+      },
+      "id": "node/11050720828"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11050720829",
+        "name": "6 Novembre 1975",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5759409,
+          33.5464155
+        ]
+      },
+      "id": "node/11050720829"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11050720830",
+        "name": "6 Novembre 1975",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5760274,
+          33.5464144
+        ]
+      },
+      "id": "node/11050720830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11220851565",
+        "name": "نهاية طريق الترام",
+        "railway": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.4997811,
+          33.5879745
+        ]
+      },
+      "id": "node/11220851565"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11630739028",
+        "railway": "switch",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.510525,
+          33.6095448
+        ]
+      },
+      "id": "node/11630739028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11630739036",
+        "railway": "switch",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5110869,
+          33.6097274
+        ]
+      },
+      "id": "node/11630739036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374655",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Salmia 2 Terminus",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.550774,
+          33.5370055
+        ]
+      },
+      "id": "node/12175374655"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374656",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Salmia 2 Terminus",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5507129,
+          33.5370303
+        ]
+      },
+      "id": "node/12175374656"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374657",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Stade Tessima",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.558552,
+          33.5409204
+        ]
+      },
+      "id": "node/12175374657"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374658",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Stade Tessima",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5585928,
+          33.5408639
+        ]
+      },
+      "id": "node/12175374658"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374659",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Joulane",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5621219,
+          33.5437591
+        ]
+      },
+      "id": "node/12175374659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374660",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Joulane",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5621931,
+          33.543805
+        ]
+      },
+      "id": "node/12175374660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374663",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Lahrizi",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5685596,
+          33.5399998
+        ]
+      },
+      "id": "node/12175374663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374664",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Lahrizi",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.568392,
+          33.5399858
+        ]
+      },
+      "id": "node/12175374664"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374665",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Jardin Sunday",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5743985,
+          33.536493
+        ]
+      },
+      "id": "node/12175374665"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374666",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Jardin Sunday",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5743497,
+          33.5364422
+        ]
+      },
+      "id": "node/12175374666"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374667",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Amgala",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5787872,
+          33.5399856
+        ]
+      },
+      "id": "node/12175374667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374668",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Amgala",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5788981,
+          33.5399565
+        ]
+      },
+      "id": "node/12175374668"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374669",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Qods",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5818939,
+          33.5437312
+        ]
+      },
+      "id": "node/12175374669"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374670",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Qods",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5819537,
+          33.5436704
+        ]
+      },
+      "id": "node/12175374670"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374671",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Sefrou",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5886545,
+          33.5423156
+        ]
+      },
+      "id": "node/12175374671"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374672",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Sefrou",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5886256,
+          33.5422458
+        ]
+      },
+      "id": "node/12175374672"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374673",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Taza",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5932325,
+          33.5413602
+        ]
+      },
+      "id": "node/12175374673"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374674",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Taza",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5932047,
+          33.5412842
+        ]
+      },
+      "id": "node/12175374674"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374675",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Inara",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5989358,
+          33.5396141
+        ]
+      },
+      "id": "node/12175374675"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374676",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Inara",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5990226,
+          33.5396611
+        ]
+      },
+      "id": "node/12175374676"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374677",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oulad Haddou",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6053639,
+          33.5370847
+        ]
+      },
+      "id": "node/12175374677"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374678",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oulad Haddou",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6053398,
+          33.5370282
+        ]
+      },
+      "id": "node/12175374678"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374679",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Hay Chrifa",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.609844,
+          33.5349779
+        ]
+      },
+      "id": "node/12175374679"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374680",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Hay Chrifa",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6099651,
+          33.535032
+        ]
+      },
+      "id": "node/12175374680"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374681",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Taddart",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6167424,
+          33.5321138
+        ]
+      },
+      "id": "node/12175374681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374682",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Taddart",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6166909,
+          33.5320443
+        ]
+      },
+      "id": "node/12175374682"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374684",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Azzohour",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6234535,
+          33.5304204
+        ]
+      },
+      "id": "node/12175374684"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374685",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Azzohour",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6234845,
+          33.5304874
+        ]
+      },
+      "id": "node/12175374685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374686",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Californie",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6305903,
+          33.5311037
+        ]
+      },
+      "id": "node/12175374686"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374687",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Californie",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6306162,
+          33.5311926
+        ]
+      },
+      "id": "node/12175374687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374688",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Casa Nearshore",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6387077,
+          33.5301715
+        ]
+      },
+      "id": "node/12175374688"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374689",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Casa Nearshore",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6387427,
+          33.5302528
+        ]
+      },
+      "id": "node/12175374689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374690",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Moustakbal",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.646775,
+          33.5315627
+        ]
+      },
+      "id": "node/12175374690"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374691",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Al Moustakbal",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6467407,
+          33.5316604
+        ]
+      },
+      "id": "node/12175374691"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374692",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Sidi Maarouf",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6513062,
+          33.5328285
+        ]
+      },
+      "id": "node/12175374692"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175374693",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Sidi Maarouf",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6512693,
+          33.5329119
+        ]
+      },
+      "id": "node/12175374693"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175375114",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Omar El Khayam Terminus",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6668772,
+          33.5400487
+        ]
+      },
+      "id": "node/12175375114"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175375115",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Omar El Khayam Terminus",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6663809,
+          33.5396774
+        ]
+      },
+      "id": "node/12175375115"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175375116",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Sbata",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5547062,
+          33.5384831
+        ]
+      },
+      "id": "node/12175375116"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12175375117",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Sbata",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5547329,
+          33.5384193
+        ]
+      },
+      "id": "node/12175375117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135856",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oulmès Terminus",
+        "network": "CasaBusway",
+        "operator": "RATP Dev",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6485714,
+          33.5715969
+        ]
+      },
+      "id": "node/12182135856"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135857",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oulmès Terminus",
+        "network": "CasaBusway",
+        "operator": "RATP Dev",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6485121,
+          33.5715362
+        ]
+      },
+      "id": "node/12182135857"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135860",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "C.I.L.",
+        "network": "CasaBusway",
+        "operator": "RATP Dev",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6562059,
+          33.5673558
+        ]
+      },
+      "id": "node/12182135860"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135861",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "C.I.L.",
+        "network": "CasaBusway",
+        "operator": "RATP Dev",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6561487,
+          33.5672889
+        ]
+      },
+      "id": "node/12182135861"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135871",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Les Musees",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6604561,
+          33.5650096
+        ]
+      },
+      "id": "node/12182135871"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135872",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Les Musees",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6605555,
+          33.5650847
+        ]
+      },
+      "id": "node/12182135872"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135873",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oued Oum Rabia",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6650018,
+          33.5632626
+        ]
+      },
+      "id": "node/12182135873"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135874",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oued Oum Rabia",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6650721,
+          33.5633309
+        ]
+      },
+      "id": "node/12182135874"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135875",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oued Beht",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6794315,
+          33.5583761
+        ]
+      },
+      "id": "node/12182135875"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135876",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oued Beht",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6793888,
+          33.5583094
+        ]
+      },
+      "id": "node/12182135876"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135877",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oued Laou",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6697997,
+          33.5613492
+        ]
+      },
+      "id": "node/12182135877"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135878",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Oued Laou",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6698105,
+          33.5614368
+        ]
+      },
+      "id": "node/12182135878"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135886",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Moulouya",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6835236,
+          33.5563544
+        ]
+      },
+      "id": "node/12182135886"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135887",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Moulouya",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6834727,
+          33.5562728
+        ]
+      },
+      "id": "node/12182135887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135888",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Haj Fateh",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6898901,
+          33.5533094
+        ]
+      },
+      "id": "node/12182135888"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135889",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Haj Fateh",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6898332,
+          33.5532501
+        ]
+      },
+      "id": "node/12182135889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135890",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Essafa",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6960686,
+          33.5508772
+        ]
+      },
+      "id": "node/12182135890"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135891",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Essafa",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6961115,
+          33.5509644
+        ]
+      },
+      "id": "node/12182135891"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135892",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Moulay Thami",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.7010135,
+          33.5484331
+        ]
+      },
+      "id": "node/12182135892"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182135893",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Moulay Thami",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.7011037,
+          33.5484912
+        ]
+      },
+      "id": "node/12182135893"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182138406",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Riad Al Oulfa",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.7048173,
+          33.5462471
+        ]
+      },
+      "id": "node/12182138406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182138407",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "Riad Al Oulfa",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.704893,
+          33.5462995
+        ]
+      },
+      "id": "node/12182138407"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182138408",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "La Rocade",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.709079,
+          33.5438142
+        ]
+      },
+      "id": "node/12182138408"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12182138409",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "name": "La Rocade",
+        "network": "CasaBusway",
+        "public_transport": "platform",
+        "public_transport:version": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.7091522,
+          33.5438713
+        ]
+      },
+      "id": "node/12182138409"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12197144355",
+        "name": "Technopark",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "32",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6380962,
+          33.5446113
+        ]
+      },
+      "id": "node/12197144355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12197144356",
+        "name": "Technopark",
+        "public_transport": "stop_position",
+        "railway": "tram_stop",
+        "ref": "32",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6380695,
+          33.5445966
+        ]
+      },
+      "id": "node/12197144356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212880493",
+        "name": "Mohammed VI",
+        "network": "Casa Tramway",
+        "network:wikidata": "Q1522904",
+        "operator": "RATP Dev",
+        "operator:wikidata": "Q16040901",
+        "public_transport": "platform",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5808093,
+          33.5435379
+        ]
+      },
+      "id": "node/12212880493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212952901",
+        "name": "Parc de la Ligue Arabe",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6220502,
+          33.5881299
+        ]
+      },
+      "id": "node/12212952901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212952902",
+        "name": "Parc de la Ligue Arabe",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6220671,
+          33.5880813
+        ]
+      },
+      "id": "node/12212952902"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212952903",
+        "name": "Mers Sultan",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6170665,
+          33.587842
+        ]
+      },
+      "id": "node/12212952903"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212952904",
+        "name": "Mers Sultan",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6171071,
+          33.587872
+        ]
+      },
+      "id": "node/12212952904"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212952905",
+        "name": "Jabar Ibn Hayane",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.60771,
+          33.5888244
+        ]
+      },
+      "id": "node/12212952905"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12212952906",
+        "name": "Jabar Ibn Hayane",
+        "public_transport": "stop_position",
+        "public_transport:version": "2",
+        "railway": "tram_stop",
+        "tram": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6077396,
+          33.588768
+        ]
+      },
+      "id": "node/12212952906"
+    }
+  ]
+}

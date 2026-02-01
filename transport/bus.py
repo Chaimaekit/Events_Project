@@ -58,7 +58,7 @@ lignes_casabus = []
 casabus_stops = []
 
 def load_casabus_stops():
-    with open('transport/casabus.json', 'r', encoding='utf-8') as f:
+    with open('transport/tramway.json', 'r', encoding='utf-8') as f:
         stops_data = json.load(f)
         seen_names = set()
         for stop in stops_data.get("features", []):
@@ -80,7 +80,7 @@ def load_casabus_stops():
 
 def calculate_casabus_lignes():
     cmp = 0
-    with open('transport/lignes_casabus.json', 'r', encoding='utf-8') as f:
+    with open('transport/lignes_tramway.json', 'r', encoding='utf-8') as f:
         casabus_lignes = json.load(f)
         for ligne in casabus_lignes.get("features", []):
             ligne_nb = ligne.get("properties", {}).get("ref", "")
@@ -180,7 +180,7 @@ stations_to_lines()
 
 bus_network = build_bus_network()
 
-with open('transport/bus_lines_with_stations.json', 'w', encoding='utf-8') as f:
+with open('transport/tram_lines_with_stations.json', 'w', encoding='utf-8') as f:
     json.dump(lignes_casabus, f, ensure_ascii=False, indent=4)
 
 print("\n=== Bus Lines Summary ===")
