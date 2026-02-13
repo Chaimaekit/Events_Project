@@ -48,23 +48,29 @@ def get_guichet():
 
             try:
                 for event in data.get("events", []):
-                    city=event.get("city", {}).get("name", ""),
-                    place=event.get("place", {}).get("name", ""),
+                    city=event.get("city", {}).get("name", "")
+                    place=event.get("place", {}).get("name", "")
+                    
+                    # Only geocode for Casablanca with valid place
+                    coords = None
+                    if city and "casablanca" in city.lower():
+                        coords = get_event_coords(place) if place else get_event_coords(city)
+                    
                     send_event = Events(
                         id=str(event.get("id", "")),
-                        name=event.get("title", ""),
+                        name=event.get("title", "") or "Unnamed Event",
                         img=event.get("meta", {}).get("image", ""),
-                        description=event.get("meta", {}).get("description", ""),
+                        description=event.get("meta", {}).get("description", "") or "No description available",
                         date={
                             "customDate": event.get("customDate", ""),
                             "startAt": event.get("startAt", ""),
                             "endAt": event.get("closingTime", ""),
                         },
-                        city=city,
-                        place=place,
-                        coordinates = get_event_coords(place) if "casablanca" in city.lower() else None,
-                        producer=event.get("producer", {}).get("title", ""),
-                        category=[event.get("category", {}).get("title", "")],
+                        city=city or "Unknown",
+                        place=place or "Unknown",
+                        coordinates = coords,
+                        producer=event.get("producer", {}).get("title", "") or "Unknown Producer",
+                        category=[event.get("category", {}).get("title", "") or "Event"],
                         offers=event.get("offers", []),
                         url=link + event.get("slug", "")
                     ).model_dump()

@@ -17,18 +17,40 @@ def haversine(lon1, lat1, lon2, lat2):
 def nearest_transport(event_coords, transport_data):
     nearest_transport = None
     min_distance = float('inf')
+    if not event_coords or len(event_coords) < 2:
+        return None, min_distance
 
-    event_lat, event_lon = event_coords
-
+    # event_coords expected as [lon, lat]
+    event_lon, event_lat = event_coords[0], event_coords[1]
     for transport in transport_data:
-        transport_lat = transport.get('geometry', {}).get('coordinates', [])[1]
-        transport_lon = transport.get('geometry', {}).get('coordinates', [])[0]
+        # support multiple formats: GeoJSON feature with geometry.coordinates
+        # or custom line dict with 'coordinates' as list of [lon,lat]
+        route_coords = []
+        if isinstance(transport, dict):
+            if transport.get('geometry') and isinstance(transport.get('geometry').get('coordinates', None), list):
+                route_coords = transport.get('geometry').get('coordinates', [])
+            elif transport.get('coordinates') and isinstance(transport.get('coordinates'), list):
+                route_coords = transport.get('coordinates')
+        # if route_coords is nested (MultiLineString), flatten
+        flat = []
+        for rc in route_coords:
+            if isinstance(rc, list) and len(rc) and isinstance(rc[0], list):
+                flat.extend(rc)
+            else:
+                flat.append(rc)
 
-        distance = haversine(event_lon, event_lat, transport_lon, transport_lat)
-
-        if distance < min_distance:
-            min_distance = distance
-            nearest_transport = transport
+        # compute minimal distance to any point in route
+        for point in flat:
+            if not point or len(point) < 2:
+                continue
+            try:
+                route_lon, route_lat = point[0], point[1]
+            except Exception:
+                continue
+            distance = haversine(event_lon, event_lat, route_lon, route_lat)
+            if distance < min_distance:
+                min_distance = distance
+                nearest_transport = transport
     return nearest_transport, min_distance
 
 def events_with_transport(events, bus_data, tramway_data, threshold_km=1.0):
@@ -58,7 +80,7 @@ lignes_casabus = []
 casabus_stops = []
 
 def load_casabus_stops():
-    with open('transport/tramway.json', 'r', encoding='utf-8') as f:
+    with open('transport/overpass/tramway.json', 'r', encoding='utf-8') as f:
         stops_data = json.load(f)
         seen_names = set()
         for stop in stops_data.get("features", []):
@@ -80,7 +102,7 @@ def load_casabus_stops():
 
 def calculate_casabus_lignes():
     cmp = 0
-    with open('transport/lignes_tramway.json', 'r', encoding='utf-8') as f:
+    with open('transport/overpass/lignes_tramway.json', 'r', encoding='utf-8') as f:
         casabus_lignes = json.load(f)
         for ligne in casabus_lignes.get("features", []):
             ligne_nb = ligne.get("properties", {}).get("ref", "")

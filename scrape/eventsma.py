@@ -9,31 +9,40 @@ def get_event(data):
     api_link = "https://bo.events.ma/api/event-details/"#+slug gives the event owner
     results = []
     for event in data:
-            event_resp = requests.get(api_link+event.get("slug", ""))
-            event_owner = event_resp.json().get("data", {})
+            try:
+                event_resp = requests.get(api_link+event.get("slug", ""))
+                event_owner = event_resp.json().get("data", {})
 
-            city = event.get("scene", {}).get("city", {}).get("name", "") if event.get("scene", {}) else "",
-            place = str(event.get("scene", {}).get("libelle", "")) +" "+ str(event.get("scene", {}).get("address", "")) if event.get("scene", {}) else "",
+                city = event.get("scene", {}).get("city", {}).get("name", "") if event.get("scene", {}) else ""
+                place = str(event.get("scene", {}).get("libelle", "")) +" "+ str(event.get("scene", {}).get("address", "")) if event.get("scene", {}) else ""
 
-            send_event = Events(
-                id = str(event.get("id", "")),
-                name = event.get("meta_title", ""),
-                img = event.get("main_image", ""),
-                description = event.get("meta_description", ""),
-                date = {
-                    "customDate": event.get("customDate", ""),
-                    "startAt": event.get("date_start", ""),
-                    "endAt": event.get("date_end", ""),
-                },
-                city = city,
-                place = place,
-                coordinates = get_event_coords(place) if "casablanca" in city.lower() else None,
-                producer = str(event_owner.get("event_owner", {}).get("first_name","")) + " " +str(event_owner.get("event_owner", {}).get("last_name","")),
-                category = [event.get("categories")[0].get("labelle", "") if event.get("categories") else ""],
-                offers = event.get("sieges", []),
-                url = link + event.get("slug", "")
-            ).model_dump()
-            results.append(send_event)
+                # Only geocode for Casablanca with valid place info
+                coords = None
+                if city and "casablanca" in city.lower():
+                    coords = get_event_coords(place) if place and place.strip() else get_event_coords(city)
+
+                send_event = Events(
+                    id = str(event.get("id", "")),
+                    name = event.get("meta_title", "") or "Unnamed Event",
+                    img = event.get("main_image", ""),
+                    description = event.get("meta_description", "") or "No description available",
+                    date = {
+                        "customDate": event.get("customDate", ""),
+                        "startAt": event.get("date_start", ""),
+                        "endAt": event.get("date_end", ""),
+                    },
+                    city = city or "Unknown",
+                    place = place or "Unknown",
+                    coordinates = coords,
+                    producer = str(event_owner.get("event_owner", {}).get("first_name","")) + " " +str(event_owner.get("event_owner", {}).get("last_name","")) or "Unknown Producer",
+                    category = [event.get("categories")[0].get("labelle", "") if event.get("categories") else "Event"],
+                    offers = event.get("sieges", []),
+                    url = link + event.get("slug", "")
+                ).model_dump()
+                results.append(send_event)
+            except Exception as e:
+                print(f"Error processing events.ma event: {e}")
+                continue
     return results
 
 

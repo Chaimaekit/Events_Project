@@ -12,39 +12,50 @@ def get_casa_events():
         soup = BeautifulSoup(response.text, "html.parser")
         results = []
 
-        items = soup.select_one("html > body > div:nth-of-type(3) > srcipt > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div").find_all("div")
+        # Fixed: changed "srcipt" to "script"
+        items = soup.select_one("html > body > div:nth-of-type(3) > script > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div")
+        if not items:
+            print("Warning: Could not find events container in casaevents.ma")
+            return results
+        
+        items = items.find_all("div")
         for item in items:
-            if len(item.find_all("div")) > 1:
-                link = item.find("a")['href']
-                title = item.find("a")['title']
-                img = item.find("img")['src'] if item.find("img") else ""
-                date = item.find_all("div")[1].find_all("div")[1].text.strip() if len(item.find_all("div")[1].find_all("div")) > 1 else ""
+            try:
+                if len(item.find_all("div")) > 1:
+                    link = item.find("a")['href']
+                    title = item.find("a")['title']
+                    img = item.find("img")['src'] if item.find("img") else ""
+                    date = item.find_all("div")[1].find_all("div")[1].text.strip() if len(item.find_all("div")[1].find_all("div")) > 1 else ""
 
-                resp = requests.get(link)
-                inside_soup = BeautifulSoup(resp.text, "html.parser")
-                desc = inside_soup.select_one("div.post_ctn.clearfix div.entry")
-                categ = inside_soup.select("div.post_ctn.clearfix div.post-info a")
+                    resp = requests.get(link)
+                    inside_soup = BeautifulSoup(resp.text, "html.parser")
+                    desc = inside_soup.select_one("div.post_ctn.clearfix div.entry")
+                    categ = inside_soup.select("div.post_ctn.clearfix div.post-info a")
 
-                if title != "" and date != "":
-                    send_event = Events(
-                            id = "",
-                            name = title,
-                            img = img,
-                            description = desc.text.strip() if desc.text else "",
-                            date = {
-                                "customDate": "",
-                                "startAt": date,
-                                "endAt": "",
-                            },
-                            city = "Casablanca",
-                            place = "",
-                            coordinates = get_event_coords(""),
-                            producer = "Casablanca Events & Animation",
-                            category = [name.text.strip() for name in categ if name.get("rel", []) == ['category', 'tag']],
-                            offers = [],
-                            url = link
-                            ).model_dump()
-                    results.append(send_event)
+                    if title != "" and date != "":
+                        send_event = Events(
+                                id = "",
+                                name = title,
+                                img = img,
+                                description = desc.text.strip() if desc and desc.text else "No description available",
+                                date = {
+                                    "customDate": "",
+                                    "startAt": date,
+                                    "endAt": "",
+                                },
+                                city = "Casablanca",
+                                place = "Casablanca",
+                                # Don't geocode with empty string; use city name instead
+                                coordinates = get_event_coords("Casablanca"),
+                                producer = "Casablanca Events & Animation",
+                                category = [name.text.strip() for name in categ if name.get("rel", []) == ['category', 'tag']] or ["Event"],
+                                offers = [],
+                                url = link
+                                ).model_dump()
+                        results.append(send_event)
+            except Exception as item_err:
+                print(f"Error processing individual event from casaevents: {item_err}")
+                continue
         return results
     except Exception as e:
         print("Error fetching Casa Events:", e)

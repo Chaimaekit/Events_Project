@@ -10,7 +10,7 @@ def get_event_coords(address_text):
     try:
         location = geocode(full_address)
         if location:
-            return (location.latitude, location.longitude)
+            return [location.longitude, location.latitude]
         else:
             return None
     except Exception as e:

@@ -5,10 +5,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from elastic.elastic_client import get_es_client
-from elastic_script import indexing
-from transport.bus import lignes_casabus, casabus_stops, load_casabus_stops, calculate_casabus_lignes, stations_to_lines, haversine
+from transport.bus import lignes_casabus, load_casabus_stops, calculate_casabus_lignes, stations_to_lines, haversine
 from datetime import datetime
-import json
 
 
 try:
@@ -19,7 +17,11 @@ try:
 except Exception as e:
     print(f"Warning: Transport data not loaded: {e}")
 
-es = get_es_client()
+try:
+    es = get_es_client()
+except Exception as e:
+    print(f"Warning: Elasticsearch client not created at startup: {e}")
+    es = None
 app = FastAPI(title="Evently API", version="1.0.0")
 
 
@@ -38,6 +40,7 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/startup")
 async def startup_event():
     try:
+        from elastic_script import indexing
         success = indexing()
         if success:
             print("Events indexed successfully at startup")
@@ -64,9 +67,12 @@ async def debug_dates():
 async def reindex_events():
     """Clear and reindex all events"""
     try:
+        if not es:
+            raise RuntimeError("Elasticsearch client is not initialized")
         if es.indices.exists(index="events_index"):
             es.indices.delete(index="events_index")
             print("Deleted existing index")
+        from elastic_script import indexing
         success = indexing()
         return {"status": "reindexing complete", "success": success}
     except Exception as e:

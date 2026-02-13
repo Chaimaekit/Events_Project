@@ -17,6 +17,19 @@ es = get_es_client(use_docker=use_docker)
 INDEX_NAME = "events_index"
 
 
+def normalize_coordinates(coords):
+    """Safely normalize coordinates to [lon, lat] list or return empty list."""
+    if coords is None:
+        return []
+    if isinstance(coords, list):
+        if len(coords) >= 2 and all(isinstance(c, (int, float)) for c in coords[:2]):
+            return list(coords[:2])  # return as list [lon, lat]
+    if isinstance(coords, tuple):
+        if len(coords) >= 2 and all(isinstance(c, (int, float)) for c in coords[:2]):
+            return list(coords)  # convert tuple to list
+    return []
+
+
 def indexing():
     try:
         logger.info("starting the indexing process ------")
@@ -94,11 +107,13 @@ def indexing():
                 "id": event.get("id", ""),
                 "name": event.get("name", ""),
                 "img": event.get("img", ""),
-                "description": event.get("description", ""),
+                # ensure description is a plain string
+                "description": (event.get("description") or "") if isinstance(event.get("description"), str) else str(event.get("description") or ""),
                 "date": event.get("date", {}),
                 "city": event.get("city", ""),
                 "place": event.get("place", ""),
-                "coordinates": event.get("coordinates", []),
+                # normalize coordinates to [lon, lat] or empty list
+                "coordinates": normalize_coordinates(event.get("coordinates")),
                 "location": event.get("city", "") + " " + event.get("place", ""),
                 "producer": event.get("producer", ""),
                 "category": event.get("category", []),
