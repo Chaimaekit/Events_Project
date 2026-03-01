@@ -12,14 +12,20 @@ services:
       - "9200:9200"
     networks:
       - backend
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   fastapi:
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
     build: .
     container_name: fastapi_app
     ports:
-      - "8000:8000"
-    depends_on:
-      - elasticsearch
+      - "8000:8000" 
     networks:
       - backend
     environment:

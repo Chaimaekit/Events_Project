@@ -8,6 +8,9 @@ import hashlib
 from elastic.elastic_client import get_es_client
 import logging
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+
 
 
 logging.basicConfig(level=logging.INFO)
@@ -23,10 +26,10 @@ def normalize_coordinates(coords):
         return []
     if isinstance(coords, list):
         if len(coords) >= 2 and all(isinstance(c, (int, float)) for c in coords[:2]):
-            return list(coords[:2])  # return as list [lon, lat]
+            return list(coords[:2])
     if isinstance(coords, tuple):
         if len(coords) >= 2 and all(isinstance(c, (int, float)) for c in coords[:2]):
-            return list(coords)  # convert tuple to list
+            return list(coords)
     return []
 
 
@@ -51,54 +54,26 @@ def indexing():
 
         logger.info("fetching events from all sources...")
         events = []
-        events.extend(get_casa_events())
-        casa_events_len = len(events)
-        logger.info(f"Casa Events: {casa_events_len} events")
-        events.extend(get_event_brit())
-        event_brit_len = len(events) - casa_events_len
-        logger.info(f"EventBrit: {event_brit_len} events")
-        events.extend(get_events_ma())
-        event_ma_len = len(events) - casa_events_len - event_brit_len
-        logger.info(f"EventsMa: {event_ma_len} events")
-        events.extend(get_guichet())
-        guichet_len = len(events) - casa_events_len - event_brit_len - event_ma_len
-        logger.info(f"Guichet: {guichet_len} events")
-        logger.info(f"Total events collected: {len(events)}")
+        scrapers = [get_casa_events, get_event_brit, get_events_ma, get_guichet]
+
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            futures = {executor.submit(scraper): scraper.__name__ for scraper in scrapers}
+            for future in as_completed(futures):
+                try:
+                    result = future.result()
+                    events.extend(result)
+                    logger.info(f"{futures[future]}: {len(result)} events")
+                except Exception as e:
+                    logger.warning(f"{futures[future]} failed: {e}")
 
         if not events:
             logger.warning("No events collected from any source")
             return False
 
-        logger.info("Fetching existing event URLs...")
-        try:
-            existing_urls = set()
-            existing_response = es.search(
-                index=INDEX_NAME,
-                query={"match_all": {}},
-                size=10000,
-                _source=["url"]
-            )
-            for hit in existing_response["hits"]["hits"]:
-                url = hit["_source"].get("url", "")
-                if url:
-                    existing_urls.add(url)
-            logger.info(f"Found {len(existing_urls)} existing event URLs")
-        except Exception as e:
-            logger.warning(f"Could not fetch existing URLs: {str(e)}")
-            existing_urls = set()
-
         logger.info("Preparing bulk actions...")
         actions = []
-        skipped = 0
         
         for event in events:
-            event_url = event.get("url", "")
-            
-            #skip the event if its url already exists(unique)
-            if event_url in existing_urls:
-                skipped += 1
-                continue
-            
             doc_id = hashlib.md5(
                 (str(event.get("name", "")) + str(event.get("date", "")) + str(event.get("city", ""))).encode()
             ).hexdigest()
@@ -107,12 +82,10 @@ def indexing():
                 "id": event.get("id", ""),
                 "name": event.get("name", ""),
                 "img": event.get("img", ""),
-                # ensure description is a plain string
                 "description": (event.get("description") or "") if isinstance(event.get("description"), str) else str(event.get("description") or ""),
                 "date": event.get("date", {}),
                 "city": event.get("city", ""),
                 "place": event.get("place", ""),
-                # normalize coordinates to [lon, lat] or empty list
                 "coordinates": normalize_coordinates(event.get("coordinates")),
                 "location": event.get("city", "") + " " + event.get("place", ""),
                 "producer": event.get("producer", ""),
@@ -128,7 +101,7 @@ def indexing():
                 "_source": doc
             })
         
-        logger.info(f"Total actions prepared: {len(actions)} (skipped {skipped} duplicates)")
+        logger.info(f"Total actions prepared: {len(actions)}")
 
         if actions:
             logger.info("Starting bulk indexing...")

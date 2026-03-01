@@ -7,6 +7,18 @@ import uvicorn
 from elastic.elastic_client import get_es_client
 from transport.bus import lignes_casabus, load_casabus_stops, calculate_casabus_lignes, stations_to_lines, haversine
 from datetime import datetime
+from contextlib import asynccontextmanager
+from elastic_script import indexing
+import asyncio
+from scipy.spatial import KDTree
+import numpy as np
+
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    asyncio.create_task(asyncio.to_thread(indexing))
+    yield
 
 
 try:
@@ -22,7 +34,7 @@ try:
 except Exception as e:
     print(f"Warning: Elasticsearch client not created at startup: {e}")
     es = None
-app = FastAPI(title="Evently API", version="1.0.0")
+app = FastAPI(title="Evently API", version="1.0.0", lifespan=lifespan)
 
 
 app.add_middleware(
@@ -33,21 +45,38 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/startup")
-async def startup_event():
-    try:
-        from elastic_script import indexing
-        success = indexing()
-        if success:
-            print("Events indexed successfully at startup")
-        else:
-            print("No events were indexed at startup")
-    except Exception as e:
-        print(f"Error during startup indexing: {str(e)}")
+
+all_stop_coords = []
+all_stop_lines = []
+
+for ligne in lignes_casabus:
+    for point in ligne["coordinates"]:
+        all_stop_coords.append([point[0], point[1]])
+        all_stop_lines.append(ligne)
+stop_tree = KDTree(np.array(all_stop_coords))
+
+
+
+# @app.get("/startup")
+# async def startup_event():
+#     try:
+#         from elastic_script import indexing
+#         success = indexing()
+#         if success:
+#             print("Events indexed successfully at startup")
+#         else:
+#             print("No events were indexed at startup")
+#     except Exception as e:
+#         print(f"Error during startup indexing: {str(e)}")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
 
 @app.get("/debug/dates")
 async def debug_dates():
@@ -78,48 +107,35 @@ async def reindex_events():
     except Exception as e:
         return {"status": "error", "error": str(e)}
 
-@app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
 
 def get_transport_info(event_coords, threshold_km=0.5):
     transport_info = {
         "bus_lines": [],
         "tramway_info": None
     }
-    
+
     if not event_coords or len(event_coords) < 2:
         return transport_info
-    
+
     event_lon, event_lat = event_coords[0], event_coords[1]
-    
-    min_distance = float('inf')
-    nearest_lines = []
-    
-    for ligne in lignes_casabus:
-        route_coords = ligne.get("coordinates", [])
-        for route_point in route_coords:
-            route_lon, route_lat = route_point[:2]
-            dist = haversine(route_lon, route_lat, event_lon, event_lat)
-            if dist <= threshold_km:
-                nearest_lines.append({
-                    "ligne_nb": ligne["ligne_nb"],
-                    "start": ligne["start"],
-                    "end": ligne["end"],
-                    "distance_km": round(dist, 2)
-                })
-                break
-    
-    # Remove duplicates and limit to top 3
+    indices = stop_tree.query_ball_point([event_lon, event_lat], r=threshold_km / 111)
+
     seen_lines = set()
     unique_lines = []
-    for line in nearest_lines:
-        if line["ligne_nb"] not in seen_lines:
-            unique_lines.append(line)
-            seen_lines.add(line["ligne_nb"])
+
+    for i in indices:
+        ligne = all_stop_lines[i]
+        ligne_nb = ligne["ligne_nb"]
+        if ligne_nb not in seen_lines:
+            unique_lines.append({
+                "ligne_nb": ligne_nb,
+                "start": ligne["start"],
+                "end": ligne["end"],
+            })
+            seen_lines.add(ligne_nb)
             if len(unique_lines) >= 3:
                 break
-    
+
     transport_info["bus_lines"] = unique_lines
     return transport_info
 
@@ -308,41 +324,20 @@ async def get_filter_options():
 @app.get("/stats")
 async def get_statistics():
     try:
-        total_response = es.search(
-            index="events_index",
-            query={"match_all": {}},
-            size=0
-        )
-        total_events = total_response["hits"]["total"]["value"]
-
-        cities_response = es.search(
-            index="events_index",
-            aggs={"cities": {"terms": {"field": "city.keyword", "size": 10}}},
-            size=0
-        )
-        cities_stats = cities_response["aggregations"]["cities"]["buckets"]
-
-        categories_response = es.search(
-            index="events_index",
-            aggs={"categories": {"terms": {"field": "category.keyword", "size": 10}}},
-            size=0
-        )
-        categories_stats = categories_response["aggregations"]["categories"]["buckets"]
-
-        upcoming_response = es.search(
-            index="events_index",
-            query={
-                "range": {
-                    "date.startAt": {
-                        "gte": "now",
-                        "lte": "now+7d"
-                    }
-                }
+        response = es.search(
+        index="events_index",
+        query={"match_all": {}},
+        aggs={
+                "cities": {"terms": {"field": "city.keyword", "size": 10}},
+                "categories": {"terms": {"field": "category.keyword", "size": 10}},
+                "upcoming": {"filter": {"range": {"date.startAt": {"gte": "now", "lte": "now+7d"}}}}
             },
-            size=0
+        size=0
         )
-        upcoming_count = upcoming_response["hits"]["total"]["value"]
-
+        total_events = response["hits"]["total"]["value"]
+        upcoming_count = response["aggregations"]["upcoming"]["doc_count"]
+        cities_stats = response["aggregations"]["cities"]["buckets"]
+        categories_stats = response["aggregations"]["categories"]["buckets"]
         return {
             "total_events": total_events,
             "upcoming_events": upcoming_count,
