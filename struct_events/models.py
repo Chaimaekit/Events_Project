@@ -27,7 +27,7 @@ class EventDate(BaseModel):
             "endAt": parse_date(values.get("endAt"))
         }
     
-class Events(BaseModel):#-----need to add the img label
+class Events(BaseModel):#rating
     id: Optional[str]
     name: Optional[str]
     img: Optional[str]
@@ -36,6 +36,8 @@ class Events(BaseModel):#-----need to add the img label
     city: Optional[str]
     place: Optional[str]
     coordinates: Optional[list[float]]
+    bus_lines: Optional[list[dict]]
+    tramway_lines: Optional[list[dict]]
     producer: Optional[str]
     category: Optional[list[str]]
     offers: Optional[list[dict]]

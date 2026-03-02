@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - build
-  # schedule:
-  #   - cron: '*/10 * * * *'
+  schedule:
+    - cron: '*/10 * * * *'
 
 jobs:
   deploy:
@@ -54,7 +54,7 @@ jobs:
         env:
           CLOUD_ID: ${{ secrets.CLOUD_ID }}
           ELASTIC_PASSWORD: ${{ secrets.ELASTIC_PASSWORD }}
-        run: python elastic_script.py
+        run: python elastic/elastic_script.py
 
       - name: Run FastAPI and test endpoint
         env:

@@ -5,13 +5,10 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from elastic.elastic_client import get_es_client
-from transport.bus import lignes_casabus, load_casabus_stops, calculate_casabus_lignes, stations_to_lines, haversine
 from datetime import datetime
 from contextlib import asynccontextmanager
-from elastic_script import indexing
+from elastic.elastic_script import indexing
 import asyncio
-from scipy.spatial import KDTree
-import numpy as np
 
 
 
@@ -20,14 +17,6 @@ async def lifespan(app: FastAPI):
     asyncio.create_task(asyncio.to_thread(indexing))
     yield
 
-
-try:
-    load_casabus_stops()
-    calculate_casabus_lignes()
-    stations_to_lines()
-    print("Transport data loaded successfully")
-except Exception as e:
-    print(f"Warning: Transport data not loaded: {e}")
 
 try:
     es = get_es_client()
@@ -48,29 +37,6 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-
-all_stop_coords = []
-all_stop_lines = []
-
-for ligne in lignes_casabus:
-    for point in ligne["coordinates"]:
-        all_stop_coords.append([point[0], point[1]])
-        all_stop_lines.append(ligne)
-stop_tree = KDTree(np.array(all_stop_coords))
-
-
-
-# @app.get("/startup")
-# async def startup_event():
-#     try:
-#         from elastic_script import indexing
-#         success = indexing()
-#         if success:
-#             print("Events indexed successfully at startup")
-#         else:
-#             print("No events were indexed at startup")
-#     except Exception as e:
-#         print(f"Error during startup indexing: {str(e)}")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -101,62 +67,31 @@ async def reindex_events():
         if es.indices.exists(index="events_index"):
             es.indices.delete(index="events_index")
             print("Deleted existing index")
-        from elastic_script import indexing
+        from elastic.elastic_script import indexing
         success = indexing()
         return {"status": "reindexing complete", "success": success}
     except Exception as e:
         return {"status": "error", "error": str(e)}
 
 
-def get_transport_info(event_coords, threshold_km=0.5):
-    transport_info = {
-        "bus_lines": [],
-        "tramway_info": None
-    }
-
-    if not event_coords or len(event_coords) < 2:
-        return transport_info
-
-    event_lon, event_lat = event_coords[0], event_coords[1]
-    indices = stop_tree.query_ball_point([event_lon, event_lat], r=threshold_km / 111)
-
-    seen_lines = set()
-    unique_lines = []
-
-    for i in indices:
-        ligne = all_stop_lines[i]
-        ligne_nb = ligne["ligne_nb"]
-        if ligne_nb not in seen_lines:
-            unique_lines.append({
-                "ligne_nb": ligne_nb,
-                "start": ligne["start"],
-                "end": ligne["end"],
-            })
-            seen_lines.add(ligne_nb)
-            if len(unique_lines) >= 3:
-                break
-
-    transport_info["bus_lines"] = unique_lines
-    return transport_info
-
 @app.get("/transport/{event_id}")
 async def get_event_transport(event_id: str):
-    """Get transport information for a specific event"""
     try:
         response = es.search(
             index="events_index",
             query={"term": {"id.keyword": event_id}}
         )
-        
         if response["hits"]["hits"]:
             event = response["hits"]["hits"][0]["_source"]
-            coords = event.get("coordinates")
-            transport_info = get_transport_info(coords)
-            return transport_info
+            return {
+                "bus_lines": event.get("bus_lines", []),
+                "tramway_lines": event.get("tramway_lines", [])
+            }
         else:
             raise HTTPException(status_code=404, detail="Event not found")
     except Exception as e:
-        return JSONResponse({"error": str(e), "bus_lines": [], "tramway_info": None}, status_code=500)
+        return JSONResponse({"error": str(e), "bus_lines": [], "tramway_lines": []}, status_code=500)
+    
 
 @app.get("/search")
 async def search_events(
@@ -241,6 +176,7 @@ async def search_events(
         logging.error(f"Search error: {str(e)}")
         return JSONResponse({"error": str(e), "events": [], "total": 0}, status_code=500)
 
+
 @app.get("/events")
 async def get_all_events(
     page: int = Query(1, ge=1),
@@ -277,6 +213,7 @@ async def get_all_events(
 
     except Exception as e:
         return JSONResponse({"error": str(e), "events": [], "total": 0}, status_code=500)
+
 
 @app.get("/event/{event_id}")
 async def get_event_detail(event_id: str):

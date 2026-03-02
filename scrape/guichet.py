@@ -1,6 +1,5 @@
 import requests
 from struct_events.models import Events
-from into_db.connection import insert_events
 import time
 from struct_events.get_coords import get_event_coords
 

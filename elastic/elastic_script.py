@@ -1,14 +1,15 @@
-from elasticsearch import Elasticsearch, helpers
+from elasticsearch import helpers
 from into_db.connection import get_db_events
 from scrape.casaevents import get_casa_events
 from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 import hashlib
-from elastic.elastic_client import get_es_client
+from elastic_client import get_es_client
 import logging
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from transport.bus import get_transport_info
 
 
 
@@ -21,7 +22,6 @@ INDEX_NAME = "events_index"
 
 
 def normalize_coordinates(coords):
-    """Safely normalize coordinates to [lon, lat] list or return empty list."""
     if coords is None:
         return []
     if isinstance(coords, list):
@@ -35,7 +35,6 @@ def normalize_coordinates(coords):
 
 def indexing():
     try:
-        logger.info("starting the indexing process ------")
         logger.info("testing Elasticsearch connection--------")
         if not es.ping():
             logger.error("cant connect to Elasticsearch !!!")
@@ -77,6 +76,7 @@ def indexing():
             doc_id = hashlib.md5(
                 (str(event.get("name", "")) + str(event.get("date", "")) + str(event.get("city", ""))).encode()
             ).hexdigest()
+            transport = get_transport_info(normalize_coordinates(event.get("coordinates")))
 
             doc = {
                 "id": event.get("id", ""),
@@ -87,6 +87,8 @@ def indexing():
                 "city": event.get("city", ""),
                 "place": event.get("place", ""),
                 "coordinates": normalize_coordinates(event.get("coordinates")),
+                "bus_lines": transport.get("bus_lines", []),
+                "tramway_lines": transport.get("tramway_lines", []),
                 "location": event.get("city", "") + " " + event.get("place", ""),
                 "producer": event.get("producer", ""),
                 "category": event.get("category", []),
