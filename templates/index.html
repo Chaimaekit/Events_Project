@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evently — Discover Events</title>
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -13,14 +14,13 @@
         <div class="container">
             <div class="logo">
                 <svg viewBox="0 0 24 24" class="logo-icon" aria-hidden="true">
-                    <path class="hat-brim" d="M2 12c0 2.21 4.48 4 10 4s10-1.79 10-4-4.48-4-10-4S2 9.79 2 12z"/>
-                    <path class="hat-top" d="M6 10c0-3.31 2.69-6 6-6s6 2.69 6 6v1H6v-1z"/>
+                    <path class="hat-brim" d="M2 12c0 2.21 4.48 4 10 4s10-1.79 10-4-4.48-4-10-4S2 9.79 2 12z" style="fill:var(--primary);"/>
+                    <path class="hat-top" d="M6 10c0-3.31 2.69-6 6-6s6 2.69 6 6v1H6v-1z" style="fill:var(--primary-dark);"/>
                 </svg>
                 <span class="logo-text">Evently</span>
             </div>
             <nav class="nav">
                 <button class="nav-btn" id="view-toggle" title="Toggle view">🔲 Grid</button>
-                <button class="nav-btn" id="calendar-btn" title="Calendar view">📅 Calendar</button>
                 <button class="nav-btn" id="favorites-btn" title="My favorites">❤️ Saved</button>
                 <button class="filter-btn" id="filter-toggle">
                     <span class="filter-icon">⚙️</span> Filters
@@ -42,6 +42,7 @@
             <div class="hero-search">
                 <div class="search-box">
                     <input type="text" id="quick-search" placeholder="🔍 Search events...">
+                    <button id="clear-search" class="clear-search" type="button" title="Clear search" style="display:none;">✕</button>
                 </div>
             </div>
         </div>
@@ -99,16 +100,6 @@
 
     <main class="main-content">
         <div class="container">
-            <div class="stats-bar" id="stats-bar">
-                <div class="stat-item">
-                    <span class="stat-label">Total Events:</span>
-                    <span class="stat-value" id="stat-total">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Upcoming:</span>
-                    <span class="stat-value" id="stat-upcoming">0</span>
-                </div>
-            </div>
 
             <div id="loading" class="loading-state">
                 <div class="loader"></div>
@@ -118,20 +109,15 @@
             <div id="events-grid" class="events-grid">
             </div>
 
-            <div id="calendar-view" class="calendar-view" style="display: none;">
-                <div class="calendar-header">
-                    <button id="prev-month">&lt;</button>
-                    <h3 id="month-year"></h3>
-                    <button id="next-month">&gt;</button>
-                </div>
-                <div id="calendar-grid"></div>
-            </div>
+
 
             <div id="empty-state" class="empty-state" style="display: none;">
                 <div class="empty-icon">🎪</div>
                 <h3>No Events Found</h3>
                 <p>Try adjusting your filters or search terms</p>
             </div>
+
+            <div id="results-count" class="results-count">&nbsp;</div>
 
             <div id="pagination" class="pagination">
                 <button class="pagination-btn pagination-prev" id="prev-page">← Previous</button>
@@ -141,10 +127,11 @@
         </div>
     </main>
 
-    <div id="event-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="modal-body">
+    <div id="event-modal-backdrop" class="modal-backdrop">
+        <div id="event-modal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">&times;</button>
+                <div class="modal-body">
                 <img id="modal-image" src="" alt="" class="modal-image">
                 <div class="modal-info">
                     <h2 id="modal-title"></h2>
@@ -176,6 +163,7 @@
                         <button class="btn-secondary" id="modal-share">🔗 Share</button>
                         <a id="modal-link" href="" target="_blank" class="btn-primary">Visit Event</a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

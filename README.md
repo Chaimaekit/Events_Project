@@ -34,7 +34,6 @@ All scraping and indexing are automated using GitHub Actions on a scheduled cron
 | GET | `/stats` | Total events, upcoming, cities, categories |
 | GET | `/trending` | Trending upcoming events |
 | GET | `/recommendations` | Similar events by category and city |
-| GET | `/calendar` | Events grouped by date for a given month |
 | POST | `/favorites/{event_id}` | Add event to favorites |
 | DELETE | `/favorites/{event_id}` | Remove event from favorites |
 | GET | `/favorites` | Get favorite events |

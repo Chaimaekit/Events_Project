@@ -3,9 +3,9 @@ name: Deploy Scraper and Index to Elastic Cloud
 on:
   push:
     branches:
-      - build
-  schedule:
-    - cron: '*/10 * * * *'
+      - master
+  # schedule:
+  #   - cron: '*/10 * * * *'
 
 jobs:
   deploy:

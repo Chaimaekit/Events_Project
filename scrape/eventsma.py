@@ -14,8 +14,6 @@ def get_event(data):
 
                 city = event.get("scene", {}).get("city", {}).get("name", "") if event.get("scene", {}) else ""
                 place = str(event.get("scene", {}).get("libelle", "")) +" "+ str(event.get("scene", {}).get("address", "")) if event.get("scene", {}) else ""
-
-                # Only geocode for Casablanca with valid place info
                 coords = None
                 if city and "casablanca" in city.lower():
                     coords = get_event_coords(place) if place and place.strip() else get_event_coords(city)
@@ -26,9 +24,9 @@ def get_event(data):
                     img = event.get("main_image", ""),
                     description = event.get("meta_description", "") or "No description available",
                     date = {
-                        "customDate": event.get("customDate", ""),
-                        "startAt": event.get("date_start", ""),
-                        "endAt": event.get("date_end", ""),
+                        "customDate": event.get("customDate", None),
+                        "startAt": event.get("date_start", None),
+                        "endAt": event.get("date_end", None),
                     },
                     city = city or "Unknown",
                     place = place or "Unknown",

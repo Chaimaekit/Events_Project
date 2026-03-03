@@ -324,47 +324,6 @@ async def get_favorites(user_id: str = Query("guest")):
         return JSONResponse({"error": str(e), "favorites": [], "count": 0}, status_code=500)
 
 
-@app.get("/calendar")
-async def get_calendar_events(month: int = Query(1), year: int = Query(2026)):
-    try:
-        start_date = f"{year}-{month:02d}-01"
-        if month == 12:
-            end_date = f"{year+1}-01-01"
-        else:
-            end_date = f"{year}-{month+1:02d}-01"
-        
-        response = es.search(
-            index="events_index",
-            query={
-                "range": {
-                    "date.startAt": {
-                        "gte": start_date,
-                        "lt": end_date
-                    }
-                }
-            },
-            size=1000
-        )
-        
-        events_by_date = {}
-        for hit in response["hits"]["hits"]:
-            event = hit["_source"]
-            date_key = event.get("date", {}).get("startAt", "").split("T")[0]
-            if date_key:
-                if date_key not in events_by_date:
-                    events_by_date[date_key] = []
-                events_by_date[date_key].append(event)
-        
-        return {
-            "month": month,
-            "year": year,
-            "events": events_by_date
-        }
-        
-    except Exception as e:
-        return JSONResponse({"error": str(e), "events": {}}, status_code=500)
-
-
 @app.get("/recommendations")
 async def get_recommendations(event_id: str = Query("")):
     """Get recommended events based on similar events"""

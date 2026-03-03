@@ -32,24 +32,152 @@ const pageInfo = document.getElementById('page-info');
 const prevPage = document.getElementById('prev-page');
 const nextPage = document.getElementById('next-page');
 const viewToggle = document.getElementById('view-toggle');
-const calendarBtn = document.getElementById('calendar-btn');
 const favoritesBtn = document.getElementById('favorites-btn');
-const statsBar = document.getElementById('stats-bar');
-const eventModal = document.getElementById('event-modal');
 const modalClose = document.getElementById('modal-close');
 const shareModal = document.getElementById('share-modal');
 const shareClose = document.getElementById('share-close');
 const copyLinkBtn = document.getElementById('copy-link');
-const calendarView = document.getElementById('calendar-view');
 
 
 document.addEventListener('DOMContentLoaded', () => {
     loadFilterOptions();
-    loadStats();
     loadFavorites();
     performSearch();
     setupEventListeners();
+
+    document.getElementById('event-modal-backdrop').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('event-modal-backdrop')) closeModal();
+    });
+
+    const clearBtn = document.getElementById('clear-search');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            quickSearch.value = '';
+            state.search = '';
+            currentPage = 1;
+            performSearch();
+            clearBtn.style.display = 'none';
+            quickSearch.focus();
+        });
+        quickSearch.addEventListener('input', () => {
+            clearBtn.style.display = quickSearch.value ? 'block' : 'none';
+        });
+    }
+
+    quickSearch.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            state.search = quickSearch.value;
+            currentPage = 1;
+            performSearch();
+            console.log('Search triggered by Enter');
+        }
+    });
+
+    if (!eventsGrid._delegationAttached) {
+        eventsGrid.addEventListener('click', function(e) {
+            const btn = e.target.closest('[data-action="view-details"]');
+            if (btn) {
+                const eventId = btn.dataset.eventId;
+                if (eventId) openEventModal(eventId);
+            }
+        });
+        eventsGrid._delegationAttached = true;
+    }
 });
+
+
+function debounce(fn, delay) {
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
+
+function formatDate(dateStr) {
+    if (!dateStr) return 'Date TBA';
+    const date = new Date(dateStr);
+    if (isNaN(date)) return dateStr;
+    
+    const hasTime = date.getHours() !== 0 || date.getMinutes() !== 0;
+    
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    if (hasTime) {
+        options.hour = '2-digit';
+        options.minute = '2-digit';
+    }
+    
+    return date.toLocaleDateString('en-US', options);
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showEmpty() {
+    emptyState.style.display = 'block';
+    eventsGrid.style.display = 'none';
+}
+
+async function performSearch() {
+    showLoading();
+    const params = new URLSearchParams({
+        q: state.search,
+        city: state.city,
+        category: state.category,
+        date: state.date,
+        upcoming: state.upcoming,
+        page: currentPage,
+        size: 12,
+        sort: state.sort
+    });
+    try {
+        const response = await fetch(`/search?${params}`);
+        const data = await response.json();
+        allEvents = data.events || [];
+        totalPages = data.pages || 1;
+        renderEvents(allEvents);
+        updatePagination();
+        const countEl = document.getElementById('results-count');
+        if (countEl) {
+            countEl.innerHTML = allEvents.length > 0
+                ? `<strong>${data.total}</strong> events found`
+                : '';
+        }
+    } catch (error) {
+        console.error('Search error:', error);
+        hideLoading();
+    }
+}
+
+function applyFilters() {
+    state.city = citySelect.value;
+    state.category = categorySelect.value;
+    state.date = dateInput.value;
+    currentPage = 1;
+    performSearch();
+    toggleFilters();
+}
+
+function resetFilters() {
+    state.search = '';
+    state.city = '';
+    state.category = '';
+    state.date = '';
+    state.upcoming = false;
+    state.sort = 'date_desc';
+    quickSearch.value = '';
+    citySelect.value = '';
+    categorySelect.value = '';
+    dateInput.value = '';
+    sortSelect.value = 'date_desc';
+    const upcomingCheckbox = document.getElementById('upcoming-checkbox');
+    if (upcomingCheckbox) upcomingCheckbox.checked = false;
+    currentPage = 1;
+    performSearch();
+}
 
 
 function setupEventListeners() {
@@ -60,7 +188,6 @@ function setupEventListeners() {
     prevPage.addEventListener('click', () => goToPage(currentPage - 1));
     nextPage.addEventListener('click', () => goToPage(currentPage + 1));
     viewToggle.addEventListener('click', toggleView);
-    calendarBtn.addEventListener('click', showCalendar);
     favoritesBtn.addEventListener('click', showFavorites);
     modalClose.addEventListener('click', closeModal);
     shareClose.addEventListener('click', closeShareModal);
@@ -86,11 +213,6 @@ function setupEventListeners() {
             performSearch();
         });
     }
-
-    window.addEventListener('click', (e) => {
-        if (e.target === eventModal) closeModal();
-        if (e.target === shareModal) closeShareModal();
-    });
 }
 
 function toggleFilters() {
@@ -131,80 +253,19 @@ async function loadFilterOptions() {
     }
 }
 
-
-async function loadStats() {
-    try {
-        const response = await fetch('/stats');
-        const data = await response.json();
-        
-        document.getElementById('stat-total').textContent = data.total_events;
-        document.getElementById('stat-upcoming').textContent = data.upcoming_events;
-    } catch (error) {
-        console.error('Error loading stats:', error);
-    }
-}
-
-
-async function performSearch() {
-    showLoading();
-    try {
-        const params = new URLSearchParams({
-            q: state.search,
-            city: state.city,
-            category: state.category,
-            date: state.date,
-            upcoming: state.upcoming,
-            page: currentPage,
-            size: 12,
-            sort: state.sort
-        });
-
-        const response = await fetch(`/search?${params}`);
-        const data = await response.json();
-
-        allEvents = data.events || [];
-        totalPages = data.pages || 1;
-        
-        renderEvents(allEvents);
-        updatePagination();
-        filtersPanel.classList.remove('active');
-    } catch (error) {
-        console.error('Search error:', error);
-        showEmpty();
-    }
-}
-
-function applyFilters() {
-    state.city = citySelect.value;
-    state.category = categorySelect.value;
-    state.date = dateInput.value;
-    currentPage = 1;
-    performSearch();
-}
-
-function resetFilters() {
-    quickSearch.value = '';
-    citySelect.value = '';
-    categorySelect.value = '';
-    dateInput.value = '';
-    sortSelect.value = 'date_desc';
-    const upcomingCheckbox = document.getElementById('upcoming-checkbox');
-    if (upcomingCheckbox) upcomingCheckbox.checked = false;
-    state.search = '';
-    state.city = '';
-    state.category = '';
-    state.date = '';
-    state.upcoming = false;
-    state.sort = 'date_desc';
-    currentPage = 1;
-    performSearch();
-}
-
 function renderEvents(events) {
     eventsGrid.innerHTML = '';
 
     if (events.length === 0) {
         hideLoading();
+        const isFiltered = state.search || state.city || state.category || state.date || state.upcoming;
+        if (isFiltered) {
+            emptyState.querySelector('h3').textContent = 'No events found for your search';
+            emptyState.querySelector('p').textContent = 'Try different keywords or filters.';
+        } else {
+            emptyState.querySelector('h3').textContent = 'No Events Found';
+            emptyState.querySelector('p').textContent = 'Try adjusting your filters or search terms';
+        }
         showEmpty();
         return;
     }
@@ -235,8 +296,8 @@ function createEventCard(event) {
     if (event.date) {
         if (typeof event.date === 'string') {
             dateStr = event.date;
-        } else if (event.date.startAt) {
-            dateStr = event.date.startAt;
+        } else if (event.date.startAt !== undefined && event.date.startAt !== null && event.date.startAt.trim() !== '') {
+            dateStr = event.date.startAt; 
         } else if (event.date.customDate) {
             dateStr = event.date.customDate;
         }
@@ -246,27 +307,23 @@ function createEventCard(event) {
     card.innerHTML = `
         <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)}" class="event-image" 
              onerror="this.src='https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=500&h=300&fit=crop'">
-        
         <div class="event-content">
             <div class="event-header">
                 <div>
                     <div class="event-category">${escapeHtml(category)}</div>
                     <h3 class="event-title">${escapeHtml(title)}</h3>
                 </div>
-                <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" onclick="toggleFavorite('${event.id}', this)">
+                <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" onclick="toggleFavorite('${event.id}', this)" aria-label="Toggle favorite">
                     ${isFavorited ? '❤️' : '🤍'}
                 </button>
             </div>
-            
             <p class="event-description">${escapeHtml(description.substring(0, 100))}${description.length > 100 ? '...' : ''}</p>
-            
             <div class="event-meta">
                 <span class="meta-item">📍 ${escapeHtml(city)} • ${escapeHtml(place)}</span>
                 <span class="meta-item">📅 ${date}</span>
             </div>
-
             <div class="event-footer">
-                <button class="btn-secondary" onclick="openEventModal('${event.id}')">View Details</button>
+                <button class="btn-secondary" data-action="view-details" data-event-id="${event.id}">View Details</button>
                 <a href="${escapeHtml(event.url)}" target="_blank" class="btn-primary">Visit Event →</a>
             </div>
         </div>
@@ -278,36 +335,56 @@ function createEventCard(event) {
 
 async function openEventModal(eventId) {
     try {
+        console.log(`Fetching details for event ID: ${eventId}`);
         const response = await fetch(`/event/${eventId}`);
         const event = await response.json();
-        
-        // Fetch transport information
+        console.log('Event details fetched:', event);
+
         let transportHTML = '';
         try {
             const transportResponse = await fetch(`/transport/${eventId}`);
             const transportData = await transportResponse.json();
-            if (transportData.bus_lines && transportData.bus_lines.length > 0) {
-                transportData.bus_lines.forEach(bus => {
-                    transportHTML += `
-                        <div class="bus-line-item">
-                            <span class="bus-line-badge">L${bus.ligne_nb}</span>
-                            <div style="flex: 1;">
-                                <p style="margin: 0; font-weight: 600; color: var(--text-primary);">${bus.start} → ${bus.end}</p>
-                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">${bus.distance_km} km away</p>
+            console.log('Transport details fetched:', transportData);
+
+            if ((transportData.bus_lines && transportData.bus_lines.length > 0) || (transportData.tramway_lines && transportData.tramway_lines.length > 0)) {
+                if (transportData.bus_lines && transportData.bus_lines.length > 0) {
+                    transportHTML += `<div style="margin-bottom:0.5rem;"><strong>🚌 CasaBus Lines</strong></div>`;
+                    transportData.bus_lines.forEach(bus => {
+                        transportHTML += `
+                            <div class="bus-line-item">
+                                <span class="bus-line-badge">L${bus.ligne_nb}</span>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-weight: 600; color: var(--text-primary);">${bus.start} → ${bus.end}</p>
+                                </div>
                             </div>
-                        </div>
-                    `;
-                });
+                        `;
+                    });
+                }
+                if (transportData.tramway_lines && transportData.tramway_lines.length > 0) {
+                    transportHTML += `<div style="margin:0.75rem 0 0.5rem;"><strong>🚋 Tramway Lines</strong></div>`;
+                    transportData.tramway_lines.forEach(tram => {
+                        transportHTML += `
+                            <div class="bus-line-item">
+                                <span class="bus-line-badge" style="background:linear-gradient(135deg,var(--secondary),var(--primary-light));">T${tram.ligne_nb}</span>
+                                <div style="flex: 1;">
+                                    <p style="margin: 0; font-weight: 600; color: var(--text-primary);">${tram.start} → ${tram.end}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
                 document.getElementById('transport-info').style.display = 'block';
                 document.getElementById('transport-content').innerHTML = transportHTML;
             } else {
-                document.getElementById('transport-info').style.display = 'none';
+                document.getElementById('transport-info').style.display = 'block';
+                document.getElementById('transport-content').innerHTML = '<div class="transport-empty">No transport available nearby</div>';
             }
         } catch (error) {
             console.warn('Error loading transport info:', error);
-            document.getElementById('transport-info').style.display = 'none';
+            document.getElementById('transport-info').style.display = 'block';
+            document.getElementById('transport-content').innerHTML = '<div class="transport-empty">No transport available nearby</div>';
         }
-        
+
         let dateStr = '';
         if (event.date) {
             if (typeof event.date === 'string') {
@@ -318,28 +395,30 @@ async function openEventModal(eventId) {
                 dateStr = event.date.customDate;
             }
         }
-        
+
         document.getElementById('modal-image').src = event.img || 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&h=400&fit=crop';
-        document.getElementById('modal-title').textContent = event.name;
-        document.getElementById('modal-description').textContent = event.description;
-        document.getElementById('modal-location').textContent = `${event.city}, ${event.place}`;
+        document.getElementById('modal-title').textContent = event.name || 'Untitled Event';
+        document.getElementById('modal-description').textContent = event.description || 'No description available';
+        document.getElementById('modal-location').textContent = `${event.city || 'Unknown City'}, ${event.place || 'Unknown Place'}`;
         document.getElementById('modal-date').textContent = formatDate(dateStr);
         document.getElementById('modal-category').textContent = Array.isArray(event.category) ? event.category.join(', ') : (event.category || 'N/A');
         document.getElementById('modal-producer').textContent = event.producer || 'N/A';
-        document.getElementById('modal-link').href = event.url;
-        
+        document.getElementById('modal-link').href = event.url || '#';
+
         document.getElementById('modal-favorite').textContent = favorites.has(event.id) ? '❤️ Remove from Favorites' : '❤️ Add to Favorites';
         document.getElementById('modal-favorite').onclick = () => toggleFavorite(event.id);
         document.getElementById('modal-share').onclick = () => openShareModal(event.name, event.url);
-        
-        eventModal.style.display = 'flex';
+
+        document.getElementById('event-modal-backdrop').classList.add('active');
+
     } catch (error) {
         console.error('Error loading event details:', error);
+        alert('Failed to load event details. Please try again later.');
     }
 }
 
 function closeModal() {
-    eventModal.style.display = 'none';
+    document.getElementById('event-modal-backdrop').classList.remove('active');
 }
 
 
@@ -397,62 +476,10 @@ async function showFavorites() {
         renderEvents(allEvents);
         updatePagination();
         
-        calendarView.style.display = 'none';
         eventsGrid.style.display = 'grid';
     } catch (error) {
         console.error('Error loading favorites:', error);
     }
-}
-
-
-async function showCalendar() {
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const year = now.getFullYear();
-    
-    try {
-        const response = await fetch(`/calendar?month=${month}&year=${year}`);
-        const data = await response.json();
-        
-        renderCalendar(data);
-        calendarView.style.display = 'block';
-        eventsGrid.style.display = 'none';
-        emptyState.style.display = 'none';
-    } catch (error) {
-        console.error('Error loading calendar:', error);
-    }
-}
-
-function renderCalendar(data) {
-    const monthYear = document.getElementById('month-year');
-    const calendarGrid = document.getElementById('calendar-grid');
-    
-    monthYear.textContent = new Date(data.year, data.month - 1).toLocaleDateString('en-US', {
-        month: 'long',
-        year: 'numeric'
-    });
-    
-    calendarGrid.innerHTML = '';
-    
-    for (const [date, events] of Object.entries(data.events)) {
-        const dayCell = document.createElement('div');
-        dayCell.className = 'calendar-day';
-        dayCell.innerHTML = `
-            <strong>${new Date(date).getDate()}</strong>
-            <span class="event-count">${events.length} event${events.length !== 1 ? 's' : ''}</span>
-        `;
-        dayCell.onclick = () => showDayEvents(events, date);
-        calendarGrid.appendChild(dayCell);
-    }
-}
-
-function showDayEvents(events, date) {
-    allEvents = events;
-    currentPage = 1;
-    totalPages = 1;
-    renderEvents(events);
-    calendarView.style.display = 'none';
-    eventsGrid.style.display = 'grid';
 }
 
 
@@ -574,41 +601,3 @@ function hideLoading() {
     eventsGrid.style.display = 'grid';
 }
 
-function showEmpty() {
-    loadingDiv.style.display = 'none';
-    eventsGrid.style.display = 'none';
-    emptyState.style.display = 'flex';
-}
-
-
-function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => func(...args), delay);
-    };
-}
-
-function formatDate(dateString) {
-    if (!dateString) return 'N/A';
-    try {
-        const date = new Date(dateString.replace(' ', 'T'));
-        if (isNaN(date.getTime())) {
-            return dateString;
-        }
-        return date.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-        });
-    } catch (e) {
-        return dateString;
-    }
-}
-
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}

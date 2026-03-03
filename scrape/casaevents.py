@@ -10,9 +10,7 @@ def get_casa_events():
         response = requests.get("https://casaevents.ma/actualites/")
         soup = BeautifulSoup(response.text, "html.parser")
         results = []
-
-        # Fixed: changed "srcipt" to "script"
-        items = soup.select_one("html > body > div:nth-of-type(3) > script > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div")
+        items = soup.select_one("html > body > div:nth-of-type(3) > srcipt > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div")
         if not items:
             print("Warning: Could not find events container in casaevents.ma")
             return results
@@ -24,27 +22,26 @@ def get_casa_events():
                     link = item.find("a")['href']
                     title = item.find("a")['title']
                     img = item.find("img")['src'] if item.find("img") else ""
-                    date = item.find_all("div")[1].find_all("div")[1].text.strip() if len(item.find_all("div")[1].find_all("div")) > 1 else ""
+                    date = item.find_all("div")[1].find_all("div")[1].text.strip() if len(item.find_all("div")[1].find_all("div")) > 1 else None
 
                     resp = requests.get(link)
                     inside_soup = BeautifulSoup(resp.text, "html.parser")
                     desc = inside_soup.select_one("div.post_ctn.clearfix div.entry")
                     categ = inside_soup.select("div.post_ctn.clearfix div.post-info a")
 
-                    if title != "" and date != "":
+                    if title != "" and date is not None:
                         send_event = Events(
                                 id = "",
                                 name = title,
                                 img = img,
                                 description = desc.text.strip() if desc and desc.text else "No description available",
                                 date = {
-                                    "customDate": "",
+                                    "customDate": None,
                                     "startAt": date,
-                                    "endAt": "",
+                                    "endAt": None,
                                 },
                                 city = "Casablanca",
                                 place = "Casablanca",
-                                # Don't geocode with empty string; use city name instead
                                 coordinates = get_event_coords("Casablanca"),
                                 producer = "Casablanca Events & Animation",
                                 category = [name.text.strip() for name in categ if name.get("rel", []) == ['category', 'tag']] or ["Event"],

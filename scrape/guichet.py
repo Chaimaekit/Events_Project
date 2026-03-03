@@ -49,8 +49,6 @@ def get_guichet():
                 for event in data.get("events", []):
                     city=event.get("city", {}).get("name", "")
                     place=event.get("place", {}).get("name", "")
-                    
-                    # Only geocode for Casablanca with valid place
                     coords = None
                     if city and "casablanca" in city.lower():
                         coords = get_event_coords(place) if place else get_event_coords(city)
@@ -61,9 +59,9 @@ def get_guichet():
                         img=event.get("meta", {}).get("image", ""),
                         description=event.get("meta", {}).get("description", "") or "No description available",
                         date={
-                            "customDate": event.get("customDate", ""),
-                            "startAt": event.get("startAt", ""),
-                            "endAt": event.get("closingTime", ""),
+                            "customDate": event.get("customDate", None),
+                            "startAt": event.get("startAt", None),
+                            "endAt": event.get("closingTime", None),
                         },
                         city=city or "Unknown",
                         place=place or "Unknown",

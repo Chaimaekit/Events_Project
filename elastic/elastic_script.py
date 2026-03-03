@@ -1,11 +1,10 @@
 from elasticsearch import helpers
-from into_db.connection import get_db_events
 from scrape.casaevents import get_casa_events
 from scrape.eventbrit import get_event_brit
 from scrape.eventsma import get_events_ma
 from scrape.guichet import get_guichet
 import hashlib
-from elastic_client import get_es_client
+from elastic.elastic_client import get_es_client
 import logging
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed

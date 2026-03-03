@@ -4,6 +4,12 @@ from struct_events.models import Events
 from struct_events.get_coords import get_event_coords
 
 
+
+def concat_datetime(date, time):
+    if date and time:
+        return f"{date} {time}"
+    return date or None
+
 def get_event_brit():
 
     results = []
@@ -51,8 +57,6 @@ def get_event_brit():
         for obj in data.get("events", []):
             place = obj.get("primary_venue", {}).get("address", {}).get("address_1", "")
             city = obj.get("primary_venue", {}).get("address", {}).get("city", "")
-            
-            # Only geocode if city is Casablanca and we have location info
             coords = None
             if city and "casablanca" in city.lower():
                 coords = get_event_coords(place) if place else get_event_coords(city)
@@ -63,9 +67,9 @@ def get_event_brit():
                 img = obj.get("image", {}).get("original", {}).get("url", ""),
                 description = obj.get("summary", "") or "No description available",
                 date = {
-                        "customDate": obj.get("published", ""),
-                        "startAt": obj.get("start_date", "") + obj.get("start_time", ""),
-                        "endAt": obj.get("end_date", "") + obj.get("end_time", ""),
+                        "customDate": obj.get("published", None),
+                        "startAt": concat_datetime(obj.get("start_date", None), obj.get("start_time", None)),
+                        "endAt": concat_datetime(obj.get("end_date", None), obj.get("end_time", None)),
                         },
                 city = city or "Unknown",
                 place = place or "Unknown",
