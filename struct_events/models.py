@@ -1,5 +1,5 @@
 from pydantic import BaseModel, model_validator
-from typing import Optional
+from typing import Optional, List
 from dateutil import parser
 import pytz
 
@@ -35,11 +35,11 @@ class Events(BaseModel):#rating
     date: Optional[EventDate]
     city: Optional[str]
     place: Optional[str]
-    coordinates: Optional[list[float]]
-    bus_lines: Optional[list[dict]] = []
-    tramway_lines: Optional[list[dict]] = []
+    coordinates: Optional[List[float]]
+    bus_lines: Optional[List[dict]] = []
+    tramway_lines: Optional[List[dict]] = []
     producer: Optional[str]
-    category: Optional[list[str]]
-    offers: Optional[list[dict]]
+    category: Optional[List[str]]
+    offers: Optional[List[dict]]
     url: str
 

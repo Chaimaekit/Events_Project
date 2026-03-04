@@ -14,7 +14,7 @@ def get_event_brit():
 
     results = []
     session = requests.Session()
-    try:
+    try:#the block needs to request on the other pages 1,2,3... to get the rest of the events
         session.get("https://www.eventbrite.com/d/morocco/free--events/")
 
         csrf_token = session.cookies.get("csrftoken")

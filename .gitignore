@@ -2,3 +2,5 @@ __pycache__/
 .venv
 .env
 env
+Evently_notes.md
+struct_events/coords_cache.json

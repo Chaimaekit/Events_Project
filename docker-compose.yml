@@ -25,15 +25,137 @@ services:
     build: .
     container_name: fastapi_app
     ports:
-      - "8000:8000" 
+      - "8000:8000"
     networks:
       - backend
     environment:
       - ELASTICSEARCH_HOST=http://elasticsearch:9200
       - ELASTICSEARCH_USER=elastic
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    volumes:
+      - ./elastic:/app/elastic
+      - ./struct_events:/app/struct_events
+
+  postgres-airflow:
+    image: postgres:13
+    container_name: postgres_airflow
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_airflow_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  airflow-init:
+    image: apache/airflow:2.8.1
+    container_name: airflow_init
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./elastic:/opt/airflow/elastic
+      - ./scrape:/opt/airflow/scrape
+      - ./transport:/opt/airflow/transport
+      - ./struct_events:/opt/airflow/struct_events
+      - airflow_logs:/opt/airflow/logs
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+       airflow db init &&
+       airflow users create \
+       --username admin \
+       --password admin123 \
+       --firstname Scraper \
+       --lastname Tester \
+       --role Admin \
+       --email scrapertester@evently.com
+    networks:
+      - backend
+
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_webserver
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__WEBSERVER__SECRET_KEY: 'evently-secret-key'
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./elastic:/opt/airflow/elastic
+      - ./scrape:/opt/airflow/scrape
+      - ./transport:/opt/airflow/transport
+      - ./struct_events:/opt/airflow/struct_events
+      - airflow_logs:/opt/airflow/logs
+    ports:
+      - "8080:8080"
+    command: webserver
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_scheduler
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
+      SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./elastic:/opt/airflow/elastic
+      - ./scrape:/opt/airflow/scrape
+      - ./transport:/opt/airflow/transport
+      - ./struct_events:/opt/airflow/struct_events
+      - airflow_logs:/opt/airflow/logs
+    command: scheduler
+    networks:
+      - backend
+
+volumes:
+  postgres_airflow_data:
+  airflow_logs:
 
 networks:
   backend:
     driver: bridge
-
